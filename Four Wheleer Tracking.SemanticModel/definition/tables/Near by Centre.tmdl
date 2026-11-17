@@ -1,0 +1,27 @@
+table 'Near by Centre'
+	lineageTag: d468e753-6fa5-4f92-906e-a4bc8dcff31b
+
+	column 'Near by Centre'
+		dataType: string
+		lineageTag: 1e4252ad-4db7-4dd1-9171-58a7c974f67b
+		summarizeBy: none
+		sourceColumn: Near by Centre
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Near by Centre' = m
+		mode: import
+		source =
+				let
+				    Source = Indore_Ward,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"Tata_Near_by"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"Tata_Near_by", "Near_by_Centre"}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Renamed Columns"),
+				    Near_by_Centre = #"Removed Duplicates"[Near_by_Centre]
+				in
+				    Near_by_Centre
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = List
+

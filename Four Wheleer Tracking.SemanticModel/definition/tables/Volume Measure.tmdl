@@ -1,0 +1,166 @@
+table 'Volume Measure'
+	lineageTag: b5a98008-2b53-4410-af52-09b00027954b
+
+	measure '0 Active' = CALCULATE(COUNT(Vehicle_Service_Tracking[Chassis_No]),Vehicle_Service_Tracking[STATUS FLAG]="Active")
+		formatString: 0
+		lineageTag: 48e15966-08d2-43d5-90a5-5f93f9e1ea77
+
+	measure '0 Need to call' = ```
+			
+			    CALCULATE
+			        (
+			            COUNT(Vehicle_Service_Tracking[Chassis_No]),
+			            Vehicle_Service_Tracking[STATUS FLAG]="Need to call"
+			        )
+			
+			```
+		formatString: 0
+		lineageTag: 98debdb1-57ef-4158-a434-a88026574f7e
+
+	measure '0 Dead' = CALCULATE(COUNT(Vehicle_Service_Tracking[Chassis_No]),Vehicle_Service_Tracking[STATUS FLAG]="Dead")
+		formatString: 0
+		lineageTag: bd295bb5-17c6-4873-bf14-da20b7f49133
+
+	measure '0 In-Active' = CALCULATE(COUNT(Vehicle_Service_Tracking[Chassis_No]),Vehicle_Service_Tracking[STATUS FLAG]="In-Active")
+		formatString: 0
+		lineageTag: ed64d2a8-fb4a-49a1-933a-8dbd15fbb148
+
+	measure '0 Missed' = CALCULATE(COUNT(Vehicle_Service_Tracking[Chassis_No]),Vehicle_Service_Tracking[STATUS FLAG]="Missed")
+		formatString: 0
+		lineageTag: 57360035-3649-40cc-961f-589ba370d213
+
+	measure '0.1 Active Service Base' = [0 Active]+[0 Need to call]+[0 Missed]
+		formatString: 0
+		lineageTag: 5bfa8286-0305-4c81-8726-b4a3b576ae07
+
+	measure '0 Inside Vehicles' = CALCULATE(COUNT(Vehicle_Service_Tracking[Chassis_No]),Vehicle_Service_Tracking[Is Inside] = "Inside")
+		formatString: 0
+		lineageTag: 4053e281-a897-4305-a689-ccd6231fde31
+
+	measure '0 Outsite Vehicles' = CALCULATE(COUNT(Vehicle_Service_Tracking[Chassis_No]),Vehicle_Service_Tracking[Is Inside] = "Outside")
+		formatString: 0
+		lineageTag: ad8f4ae5-b957-4eb5-bb5d-9aed2b912e7d
+
+	measure '5 Running Repairs' = CALCULATE([Total Service],'Fact Service_Raw'[SR_Type] = "Running Repairs")
+		formatString: 0
+		lineageTag: 75312d54-543f-4387-8327-e0eda1e12c1f
+
+	measure '3rd Service Retention%' = DIVIDE([3rd Service],[2nd Service])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1831a6db-7c35-43fb-bd02-f01a417b71b5
+
+	measure 'Last year' = CALCULATE(TOTALYTD([Total Service],Dim_Date[Date]),SAMEPERIODLASTYEAR(Dim_Date[Date]))
+		formatString: 0
+		lineageTag: c481f4b6-5609-4d67-9ca7-60bacf3503c4
+
+	measure 'Last Year Service till date' = CALCULATE([Service Till Date],SAMEPERIODLASTYEAR(Dim_Date[Date]))
+		formatString: 0
+		lineageTag: d352d46f-8a5f-4ea8-b2f6-5f774a44dbbd
+
+	measure 'Serviced Chassis Total %' = DIVIDE([Serviced Base],[Running Total Vehicles base])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 25ed72ac-b102-499c-b34b-e4ca0ee14926
+
+	measure 'Service Free %' = DIVIDE([Total Free Job Card],[Total Service])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 33d7ea40-9df4-43d3-b339-1b46518a791d
+
+	measure 'Service Growth for Card %' = [Serviced Chassis Total %] - [Service Growth % smpl]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 27b609ca-7b05-45f2-9abd-a1b92ae46431
+
+	measure 'Last Year Service' = CALCULATE([Total Service],SAMEPERIODLASTYEAR(dim_date[Date]))
+		formatString: 0
+		lineageTag: 09ea99d4-5f39-43fc-bfa1-e78aeedbb445
+
+	measure 'Service Growth % smpl' = CALCULATE([Serviced Chassis Total %],SAMEPERIODLASTYEAR(Dim_Date[Date]))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 14b861be-4099-4cf1-9a0a-8dff3217df77
+
+	measure 'Max Date' =
+			
+			
+			
+			VAR MaxServiceDate =
+			    CALCULATE(
+			        MAX('Fact Service_Raw'[Closed_Date_Time - Copy]),
+			        ALL(Dim_Date)
+			    )
+			
+			RETURN
+			    MaxServiceDate
+		formatString: General Date
+		lineageTag: a356c652-07f8-4719-97c0-5b1dd7637bf1
+
+	measure 'Loss Customer' = [0 Dead] + [0 In-Active]
+		formatString: 0
+		lineageTag: b2991dab-2854-4410-9019-c12b0b91398e
+
+	measure 'Previous Month Total Service' = CALCULATE([Total Service],DATEADD(Dim_Date[Date],-1,MONTH))
+		formatString: 0
+		lineageTag: 03ca3d67-40c3-4e9a-88f8-5b70c7811744
+
+	measure 'MTD Service' = CALCULATE([Total Service],DATESMTD(Dim_Date[Date]))
+		formatString: 0
+		lineageTag: 4ad9c9e5-52f0-40b0-b659-bfcc36523a6d
+
+	measure 'LMTD Service' = CALCULATE([MTD Service],DATEADD(Dim_Date[Date],-1,MONTH))
+		formatString: 0
+		lineageTag: 722ac47e-e151-4f0b-8e6c-05e0af185acf
+
+	measure 'Month on Month Growth%' = DIVIDE([MTD Service]-[LMTD Service],[LMTD Service])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 52f14c33-7712-45bd-ac32-e051020f4198
+
+	measure 'Min Date' = ```
+			
+			    CALCULATE(MIN('Fact Sales_Raw'[Invoice_Date]),ALL(Dim_Date))
+			```
+		formatString: Short Date
+		lineageTag: ca8766cc-e0f9-4fea-aa1e-abe48aad0ec1
+
+	measure '0 Total Vehicles' =
+			
+			--Running Total/Cumulative Base of Vehicles
+			CALCULATE(COUNTROWS(Vehicle_Service_Tracking),
+			FILTER(ALL(dim_date),
+			dim_date[Date]<=MAX(dim_date[Date])))
+		formatString: 0
+		lineageTag: 862e69a4-fc24-4b53-b442-d7e85d47b62b
+
+	measure 'smpl groth' = CALCULATE([Serviced Chassis Total %],SAMEPERIODLASTYEAR(Dim_Date[Date]))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: a621cf3c-fd6f-42dd-a40b-a2369b3cd5d7
+
+	measure '0 Inside Vehicles new' = ```
+			
+			
+			   CALCULATE(DISTINCTCOUNT('Fact Sales_Raw'[Chassis_NO])
+			
+			)
+			```
+		formatString: 0
+		lineageTag: 3cc7b020-2c9a-4eff-9955-21763eb253e7
+
+	measure 'Last Year Service(Without PDI)' = CALCULATE([Total Service (Without Campaign Refurbish PDI)],SAMEPERIODLASTYEAR(dim_date[Date]))
+		formatString: 0
+		lineageTag: 24197f65-8472-43c9-8039-3df790a800c6
+
+	column Column
+		isHidden
+		formatString: 0
+		lineageTag: c0991a05-2fd7-4fac-9e6b-9987d65db030
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Volume Measure' = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = 28b28ea04e364a449492f99b6df4262e
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

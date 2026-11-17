@@ -1,0 +1,574 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "a3fe63e0f84ae3f4d9fe",
+  "position": {
+    "x": 0,
+    "y": 414.62904911180772,
+    "z": 5000,
+    "height": 278.20271682340649,
+    "width": 1280,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Chassis_No"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.Chassis_No",
+              "nativeQueryRef": "Chassis_No"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Invoice_Date"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.Invoice_Date",
+              "nativeQueryRef": "Invoice_Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Delivery_Date"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.Delivery_Date",
+              "nativeQueryRef": "Delivery_Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Delivery_Location"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.Delivery_Location",
+              "nativeQueryRef": "Delivery_Location"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "First SR Date"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.First SR Date",
+              "nativeQueryRef": "First SR Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "First SR_Type"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.First SR_Type",
+              "nativeQueryRef": "First SR_Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Second Last SR Date"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.Second Last SR Date",
+              "nativeQueryRef": "Second Last SR Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Second Last SR_Type"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.Second Last SR_Type",
+              "nativeQueryRef": "Second Last SR_Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Last SR Date"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.Last SR Date",
+              "nativeQueryRef": "Last SR Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Last SR_Type"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.Last SR_Type",
+              "nativeQueryRef": "Last SR_Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Service Status All Coalesce New"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.Service Status All Coalesce New",
+              "nativeQueryRef": "Service Status",
+              "displayName": "Service Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Total Service"
+                }
+              },
+              "queryRef": "Sum(Vehicle_Service_Tracking.Total Service)",
+              "nativeQueryRef": "Total Service"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Paid SR Cnt"
+                }
+              },
+              "queryRef": "Sum(Vehicle_Service_Tracking.Paid SR Cnt)",
+              "nativeQueryRef": "Paid SR Cnt"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Rau"
+                }
+              },
+              "queryRef": "Sum(Vehicle_Service_Tracking.Rau)",
+              "nativeQueryRef": "Rau"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Bhicholi"
+                }
+              },
+              "queryRef": "Sum(Vehicle_Service_Tracking.Bhicholi)",
+              "nativeQueryRef": "Bhicholi"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Service-Rural"
+                }
+              },
+              "queryRef": "Sum(Vehicle_Service_Tracking.Service-Rural)",
+              "nativeQueryRef": "Service-Rural"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Contact_Cell_Phone"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.Contact_Cell_Phone",
+              "nativeQueryRef": "Contact1",
+              "displayName": "Contact1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Contact_No"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.Contact_No",
+              "nativeQueryRef": "Contact2",
+              "displayName": "Contact2"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Contact_Phones_Res_Off_Mob"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.Contact_Phones_Res_Off_Mob",
+              "nativeQueryRef": "Contact3",
+              "displayName": "Contact3"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "First_Name"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.First_Name",
+              "nativeQueryRef": "First_Name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Last_Name"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.Last_Name",
+              "nativeQueryRef": "Last_Name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Address"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.Address",
+              "nativeQueryRef": "Address"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Colony"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.Colony",
+              "nativeQueryRef": "Colony"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "City"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.City",
+              "nativeQueryRef": "City"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Near by Centre"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.Near by Centre",
+              "nativeQueryRef": "Near by Centre"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Final_Remark"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.Final_Remark",
+              "nativeQueryRef": "Soldout/Shifted",
+              "displayName": "Soldout/Shifted"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Model"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.Model",
+              "nativeQueryRef": "Model"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "Vehicle_Registration_Number"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.Vehicle_Registration_Number",
+              "nativeQueryRef": "Vehicle_Registration_Number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "NEXT DATE FOR PAID SERVICE"
+                }
+              },
+              "queryRef": "Vehicle_Service_Tracking.NEXT DATE FOR PAID SERVICE",
+              "nativeQueryRef": "NEXT DATE FOR PAID SERVICE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Vehicle_Service_Tracking"
+                    }
+                  },
+                  "Property": "KMS"
+                }
+              },
+              "queryRef": "Sum(Vehicle_Service_Tracking.KMS)",
+              "nativeQueryRef": "KMS"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Vehicle_Service_Tracking"
+                  }
+                },
+                "Property": "Address"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "151.5246654898397D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Vehicle_Service_Tracking.Chassis_No"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "91.4798206278027D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Vehicle_Service_Tracking.Contact_No"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "94.5289895143276D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Vehicle_Service_Tracking.City"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "474.23689922543605D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Vehicle_Service_Tracking.Address"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'BoldHeader'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "2a9425f8eb5f522469fa",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Vehicle_Service_Tracking"
+              }
+            },
+            "Property": "Service Status All Coalesce New"
+          }
+        },
+        "type": "Categorical",
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+table 'City List'
+	lineageTag: 7389541e-106b-4a35-a893-b77124545723
+
+	column 'City List'
+		dataType: string
+		lineageTag: 672297ca-ddf9-4267-9e52-e66cff5b45fd
+		summarizeBy: none
+		sourceColumn: City List
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'City List' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("ZVbbjts4DP2VoM/F/kOnWWQ6adJgnLYPRR+YSAgVy1Kgyxjdr1/aJikP+pRzZIoiqUMqv359+HSDtDmAH+HD749EvUtwf9TELJYFhDsYRvWhnzPGPgB5EFrYS00QbnDhPU9gII2QhbQtMxkbGQEbDI7xzQvycEMoTIJBeCNPsoWOQGhYttsygKDqF4SunwKMQagHJzBw0BgfwOYOYmIf7orRu80zPDLvoL1ZKvLkAttVgxJATQhBLD4TNjYtn65I2UB6gHxbqJpOwVB1gOnMzDvG37aAjoGPRtaGiIyK4zUb+eitpezkpK2V29kiDCFE00jDQYpAOCmAgbw4pQM0ShHqcdFT0rw9/bP5NFys6Ul6R9XCtqbbDP6FXDZHN/D6blEPn71bKWMH4b55giwZ70gL0MeiLBZkSDFJ0DvKJEfG8Ubyg8AkQY9SE2IDH1M9XG50FjO+4t0I3omfPxSfquAZEkdEKFfDsERFD/fw7s9igzGvm+U5Zlz4XwvM6398zpepvnaBpBsW5AtZ6s2+gFeZv6iKXyhpo4gtES5YQXGDQRzHC/feHgIYiZ+IiGQPOanrPRS+J0IFnUp3j3DFJFumfoARGmk4aegzibAm77AVUuxqj/NXdFIJoqnXmKPntPe1z9w7+0oyE5j58r+Cv0Diun0lEfByvfYhjjM+ANqMUscDqNIOcEeoPLwO0BsJlObtnB1LSihPsgNVN4PC5jgYDw2+OzOYDHVFYiMPhbWdaG/YpvDBolaNsDO6BSVF0hnL/lB94SodajALoi7myyUku48USE0XEEYd4sIN22caFgY2J3oshvXKY72Q3YCw2jK70FLJwspg1PNyqp4eDMn5SOJILKGjtUO9sg+ahK0WRztuttazJKYpJGZu6vcZfkvT4J7hiT5LD57k+2l+moJYhIYyDPymnGgmL8AWD2/cMyd6Xpo/Rw+DKJaITvaTKziP3YVVlcsrPY9Ri/MKLtvA8L5a1vf9FejsgWFdfi33X6cl6YCeuCCrQRuc8GjFZHrwxW03zb/UWJHNVnPrLJVITrKRB8WMVv9GOgQ00SvWHCYyyUTIXSVCZFibDTQ8ZXJ2aGOzc2/6UnVY721mds7w9XekregbTtrNHf1NajCyxDpX6IKXQnYRWyt0UecawR4Ki+o81W1ZP1PuRSbHGVuzn+nPCsd5pr8tLbvz9ERy5c7kdbPHmpZMv9/v4Jar/05G/PD+AEMS4qr9mLLMqETxT0h88k/bHuLf/wM=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"City List" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"City List", type text}}),
+				    #"Sorted Rows" = Table.Sort(#"Changed Type",{{"City List", Order.Ascending}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Sorted Rows"),
+				    #"City List1" = #"Removed Duplicates"[City List]
+				in
+				    #"City List1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

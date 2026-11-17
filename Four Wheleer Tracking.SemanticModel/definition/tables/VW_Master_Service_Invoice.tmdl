@@ -1,0 +1,337 @@
+table VW_Master_Service_Invoice
+	lineageTag: 7370b3f4-b3bd-4ec7-b101-98823e220bbe
+
+	column Cancellation_Reason
+		dataType: string
+		lineageTag: ee06b586-23cb-493d-af7f-311686f8b48d
+		summarizeBy: none
+		sourceColumn: Cancellation_Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bill_To_First_Name
+		dataType: string
+		lineageTag: 0424d85c-51e2-4af7-bab8-be6e6a1b6aec
+		summarizeBy: none
+		sourceColumn: Bill_To_First_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bill_To_Last_Name
+		dataType: string
+		lineageTag: 6e03a561-e599-4950-a96c-9c7a3a711558
+		summarizeBy: none
+		sourceColumn: Bill_To_Last_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Contact_Work_Phone
+		dataType: string
+		lineageTag: d546f98f-4a6c-4811-a6da-8748df44ab72
+		summarizeBy: none
+		sourceColumn: Contact_Work_Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_Cancellation_Date
+		dataType: string
+		lineageTag: 14ce701d-24af-4644-8608-ef0c995bcae3
+		summarizeBy: none
+		sourceColumn: Invoice_Cancellation_Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account_Phone
+		dataType: string
+		lineageTag: 2a029d70-1935-480d-b625-adc5c2180497
+		summarizeBy: none
+		sourceColumn: Account_Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column Contact_Cell_Phone
+		dataType: string
+		lineageTag: 5ed39042-18de-4e56-86da-83ec9c67fc92
+		summarizeBy: none
+		sourceColumn: Contact_Cell_Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column Final_Consolidated_Invoice_Amount
+		dataType: double
+		lineageTag: 78a674d2-3afc-4237-b2cf-45380f7ff124
+		summarizeBy: sum
+		sourceColumn: Final_Consolidated_Invoice_Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Final_Labour_Invoice_Amount
+		dataType: double
+		lineageTag: 2873dc7c-21ab-4842-aa39-5d2766340c6b
+		summarizeBy: sum
+		sourceColumn: Final_Labour_Invoice_Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Final_Spares_Invoice_Amount
+		dataType: double
+		lineageTag: e96197a4-6190-4d9d-a1dd-3e3b231e9f97
+		summarizeBy: sum
+		sourceColumn: Final_Spares_Invoice_Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Discounts_Labour
+		dataType: double
+		lineageTag: de5345d0-37bb-42b7-9f72-26797d294c47
+		summarizeBy: sum
+		sourceColumn: Discounts_Labour
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Other_Charges_Labour
+		dataType: string
+		lineageTag: b2436b17-9f3b-4cba-a6ed-5675af295bb2
+		summarizeBy: none
+		sourceColumn: Other_Charges_Labour
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mode_of_payment
+		dataType: string
+		lineageTag: c5586b1b-0896-4181-aaa1-282744fae955
+		summarizeBy: none
+		sourceColumn: Mode_of_payment
+
+		annotation SummarizationSetBy = Automatic
+
+	column JC_Supervisor
+		dataType: string
+		lineageTag: bce3bb66-6863-4cd7-a961-c0b202325223
+		summarizeBy: none
+		sourceColumn: JC_Supervisor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Other_Charges_Parts
+		dataType: double
+		lineageTag: 08a46101-b8c9-4e58-bc90-90b1b1f892cf
+		summarizeBy: sum
+		sourceColumn: Other_Charges_Parts
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Contact_Home_Phone
+		dataType: string
+		lineageTag: 80d022b2-879f-443a-814e-3f355bc88651
+		summarizeBy: none
+		sourceColumn: Contact_Home_Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chassis
+		dataType: string
+		lineageTag: 48d1bf3f-7a29-4d7c-82b6-006c330e2853
+		summarizeBy: none
+		sourceColumn: Chassis
+
+		annotation SummarizationSetBy = Automatic
+
+	column Kms
+		dataType: double
+		lineageTag: fa84d08a-e4b0-4af2-86c6-287aa03d7cb7
+		summarizeBy: sum
+		sourceColumn: Kms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SR
+		dataType: string
+		lineageTag: df88fa06-17ea-4c41-ac39-f6f2f26b8a42
+		summarizeBy: none
+		sourceColumn: SR
+
+		annotation SummarizationSetBy = Automatic
+
+	column SR_Assigned_To
+		dataType: string
+		lineageTag: 4eb34ef5-7c7d-42c9-b805-806a8d4a6a70
+		summarizeBy: none
+		sourceColumn: SR_Assigned_To
+
+		annotation SummarizationSetBy = Automatic
+
+	column SR_Type
+		dataType: string
+		lineageTag: c18ed876-0078-4eae-a43e-143c82092355
+		summarizeBy: none
+		sourceColumn: SR_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column VRN
+		dataType: string
+		lineageTag: 8a71db78-92cb-4a52-9296-9ccafbc069ae
+		summarizeBy: none
+		sourceColumn: VRN
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reason_for_Delay
+		dataType: string
+		lineageTag: c36f33c9-5634-4751-8a68-528e13c4340e
+		summarizeBy: none
+		sourceColumn: Reason_for_Delay
+
+		annotation SummarizationSetBy = Automatic
+
+	column Service_Tax
+		dataType: double
+		lineageTag: 1ee15d07-6a36-4067-a311-9ec89396fb1b
+		summarizeBy: sum
+		sourceColumn: Service_Tax
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Tax_Parts
+		dataType: double
+		lineageTag: 00ca08fd-2ba9-431c-ae14-3798344700d4
+		summarizeBy: sum
+		sourceColumn: Tax_Parts
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Delivery_Date
+		dataType: string
+		lineageTag: 3b906b67-92a1-47b3-b321-f00793f782cb
+		summarizeBy: none
+		sourceColumn: Delivery_Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order
+		dataType: string
+		lineageTag: 14c3e789-f1ec-4109-8456-dbb38b3fd53e
+		summarizeBy: none
+		sourceColumn: Order
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice
+		dataType: string
+		lineageTag: 972c8651-d22e-4d4d-89a0-47e08473444f
+		summarizeBy: none
+		sourceColumn: Invoice
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account
+		dataType: string
+		lineageTag: cf92e9a5-7ff2-45a8-a09c-7c63475a917f
+		summarizeBy: none
+		sourceColumn: Account
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_Status
+		dataType: string
+		lineageTag: b400c368-8ac3-4eeb-bfff-7a64680618e6
+		summarizeBy: none
+		sourceColumn: Invoice_Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fd163b39-2a71-4126-a0c9-ea776befc140
+		summarizeBy: none
+		sourceColumn: Invoice_Date
+
+		variation Variation
+			isDefault
+			relationship: a5138f8d-7a0d-4eea-aacc-c09678aff4f5
+			defaultHierarchy: LocalDateTable_00c0ee82-75f8-493b-a198-29188b375782.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Invoice_Type
+		dataType: string
+		lineageTag: 150d2cab-0eff-40ca-b98c-bfd2b1187359
+		summarizeBy: none
+		sourceColumn: Invoice_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		type: calculated
+		lineageTag: 1f978186-509b-4312-a9b6-85d6f714ebc9
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Final_Labour_Invoice_Amount_Without_Tax = VW_Master_Service_Invoice[Final_Labour_Invoice_Amount] - VW_Master_Service_Invoice[Service_Tax]
+		lineageTag: ca568152-16d6-4baf-ab90-f87aeab3ac64
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Final_Spares_Invoice_Amount_Without_Tax = VW_Master_Service_Invoice[Final_Spares_Invoice_Amount] - VW_Master_Service_Invoice[Tax_Parts]
+		lineageTag: f3c608d6-f46f-438b-b1b2-36a8132b9f80
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition VW_Master_Service_Invoice = m
+		mode: import
+		queryGroup: 'Fact SQL Table'
+		source =
+				let
+				    Source = Sql.Databases("DESKTOP-M0KE14I\MSSQLSERVERSHYAM"),
+				    Tata = Source{[Name="Tata"]}[Data],
+				    dbo_VW_Master_Service_Invoice = Tata{[Schema="dbo",Item="VW_Master_Service_Invoice"]}[Data],
+				    #"Changed Type7" = Table.TransformColumnTypes(dbo_VW_Master_Service_Invoice,{{"Invoice_Date", type date}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type7","Rs.","",Replacer.ReplaceText,{"Final_Labour_Invoice_Amount"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Replaced Value",{{"Final_Labour_Invoice_Amount", type number}}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Changed Type","Rs.","",Replacer.ReplaceText,{"Final_Spares_Invoice_Amount"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Replaced Value1",{{"Final_Spares_Invoice_Amount", type number}}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Changed Type1","Rs.","",Replacer.ReplaceText,{"Final_Consolidated_Invoice_Amount"}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Replaced Value2",{{"Final_Consolidated_Invoice_Amount", type number}}),
+				    #"Replaced Value3" = Table.ReplaceValue(#"Changed Type2","Rs.","",Replacer.ReplaceText,{"Discounts_Labour"}),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Replaced Value3",{{"Discounts_Labour", type number}}),
+				    #"Replaced Value4" = Table.ReplaceValue(#"Changed Type3","Rs.","",Replacer.ReplaceText,{"Other_Charges_Labour"}),
+				    #"Replaced Value5" = Table.ReplaceValue(#"Replaced Value4","Rs.","",Replacer.ReplaceText,{"Other_Charges_Parts"}),
+				    #"Changed Type4" = Table.TransformColumnTypes(#"Replaced Value5",{{"Other_Charges_Parts", type number}}),
+				    #"Replaced Value6" = Table.ReplaceValue(#"Changed Type4","Rs.","",Replacer.ReplaceText,{"Service_Tax"}),
+				    #"Changed Type5" = Table.TransformColumnTypes(#"Replaced Value6",{{"Service_Tax", type number}}),
+				    #"Replaced Value7" = Table.ReplaceValue(#"Changed Type5","Rs.","",Replacer.ReplaceText,{"Tax_Parts"}),
+				    #"Changed Type6" = Table.TransformColumnTypes(#"Replaced Value7",{{"Tax_Parts", type number}})
+				in
+				    #"Changed Type6"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

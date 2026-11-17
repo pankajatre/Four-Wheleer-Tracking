@@ -1,0 +1,31 @@
+table 'Dim Model'
+	lineageTag: b110da6a-9af4-4936-a6b9-ee2fb0752da6
+
+	column Model_name
+		dataType: string
+		lineageTag: 7f23d5bb-c23a-466e-87a1-9a0aa6c36d88
+		summarizeBy: none
+		sourceColumn: Model_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim Model' = m
+		mode: import
+		queryGroup: 'Dim Table'
+		source =
+				let
+				    Source = Sql.Databases("DESKTOP-M0KE14I\MSSQLSERVERSHYAM"),
+				    Tata = Source{[Name="Tata"]}[Data],
+				    dbo_VW_Dim_Model = Tata{[Schema="dbo",Item="VW_Dim_Model"]}[Data],
+				    #"Replaced Value" = Table.ReplaceValue(dbo_VW_Dim_Model,"EV","",Replacer.ReplaceText,{"Model_name"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","2.0","",Replacer.ReplaceText,{"Model_name"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","3.0","",Replacer.ReplaceText,{"Model_name"}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Replaced Value2",{{"Model_name", Text.Trim, type text}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Trimmed Text")
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

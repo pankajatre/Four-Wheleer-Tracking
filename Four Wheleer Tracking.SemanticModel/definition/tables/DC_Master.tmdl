@@ -1,0 +1,83 @@
+table DC_Master
+	lineageTag: 5e4e9883-d910-4480-9ce3-817678c3a31b
+
+	column Customer_Name
+		dataType: string
+		lineageTag: ab6338c7-7f33-4b23-9a5e-3bd9ce646d1e
+		summarizeBy: none
+		sourceColumn: Customer_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Address
+		dataType: string
+		lineageTag: 522d17fd-d1ed-40b8-bd9d-5cb194c67d19
+		summarizeBy: none
+		sourceColumn: Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column Contact_No
+		dataType: string
+		lineageTag: 81f0d773-ca77-44e9-b78e-9f1aa9310b44
+		summarizeBy: none
+		sourceColumn: Contact_No
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales_Man
+		dataType: string
+		lineageTag: e242c56e-0fa1-4bcb-98e8-06c441ec17f4
+		summarizeBy: none
+		sourceColumn: Sales_Man
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chassis_No
+		dataType: string
+		lineageTag: 51f5b00b-1ffa-4fd1-933d-ea81b7159a34
+		summarizeBy: none
+		sourceColumn: Chassis_No
+
+		annotation SummarizationSetBy = Automatic
+
+	column Delivery_Date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d02e6eea-9a84-4a9e-b93f-fb659abd0e1f
+		summarizeBy: none
+		sourceColumn: Delivery_Date
+
+		variation Variation
+			isDefault
+			relationship: 1f0b05a9-e429-48b6-b110-9096a7b41b89
+			defaultHierarchy: LocalDateTable_68c94321-39de-4152-b784-73bc4e956b94.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Delivery_Location
+		dataType: string
+		lineageTag: 54139cf3-de2f-42a6-8bfe-3e9415120fc5
+		summarizeBy: none
+		sourceColumn: Delivery_Location
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DC_Master = m
+		mode: import
+		queryGroup: 'Fact SQL Table'
+		source =
+				let
+				    Source = Sql.Databases("DESKTOP-M0KE14I\MSSQLSERVERSHYAM"),
+				    Tata = Source{[Name="Tata"]}[Data],
+				    Sales_vw_DC_Master = Tata{[Schema="Sales",Item="vw_DC_Master"]}[Data],
+				    #"Trimmed Text" = Table.TransformColumns(Sales_vw_DC_Master,{{"Customer_Name", Text.Trim, type text}, {"Address", Text.Trim, type text}, {"Sales_Man", Text.Trim, type text}, {"Delivery_Location", Text.Trim, type text}}),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Trimmed Text",{{"Customer_Name", Text.Proper, type text}, {"Address", Text.Proper, type text}, {"Sales_Man", Text.Proper, type text}, {"Delivery_Location", Text.Proper, type text}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Capitalized Each Word", each ([Chassis_No] <> null and [Chassis_No] <> ""))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

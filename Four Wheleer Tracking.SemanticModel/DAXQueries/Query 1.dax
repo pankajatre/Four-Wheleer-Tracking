@@ -1,0 +1,8 @@
+EVALUATE 
+distinct (UNION
+        (
+            (SELECTCOLUMNS(FILTER('Fact Service_Raw', NOT'Fact Service_Raw'[SR_Type] = "PDI"),'Fact Service_Raw'[Chassis_No])),
+            SELECTCOLUMNS('Fact Sales_Raw','Fact Sales_Raw'[Chassis_NO])))
+
+
+     

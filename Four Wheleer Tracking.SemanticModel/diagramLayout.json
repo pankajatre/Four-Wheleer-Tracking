@@ -1,0 +1,423 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 8.9787195934816744,
+        "y": 267.56584388575391
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 265.7700999670576,
+            "y": 177.05919451605149
+          },
+          "nodeIndex": "Dim_Date",
+          "nodeLineageTag": "82c1fa32-59b8-4e88-a225-8579f9dd8027",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 18
+        },
+        {
+          "location": {
+            "x": 637.7969650592471,
+            "y": 0
+          },
+          "nodeIndex": "Volume Measure",
+          "nodeLineageTag": "b5a98008-2b53-4410-af52-09b00027954b",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 938.90660871153716,
+            "y": 0
+          },
+          "nodeIndex": "01 Base Measure",
+          "nodeLineageTag": "f0e3999a-9896-43f4-b4c0-8c4cb62ae397",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 302.57999037616963,
+            "y": 0
+          },
+          "nodeIndex": "Paid Service",
+          "nodeLineageTag": "d1cd6018-a4ab-4ea9-9d23-4e13d49da677",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 1204.3549380215775,
+            "y": 4.8050115606025514
+          },
+          "nodeIndex": "Growth (2)",
+          "nodeLineageTag": "616c97fc-e2ea-4d28-9b8f-f83550eaa2ef",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 479.07623255125026,
+            "y": 489.78273286423178
+          },
+          "nodeIndex": "Vehicle_Service_Tracking",
+          "nodeLineageTag": "3cfa3aaf-c600-4b7d-aea3-488c92b845a1",
+          "size": {
+            "height": 326.936158780445,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1123.5182480569274,
+            "y": 506.47481380082644
+          },
+          "nodeIndex": "Fact Sales_Raw",
+          "nodeLineageTag": "aba046d0-0b80-4611-ab13-cb00aee32ee0",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 816.48792367426893,
+            "y": 549.58027640888179
+          },
+          "nodeIndex": "Fact Service_Raw",
+          "nodeLineageTag": "bc5d3af0-4a73-46d5-ad10-d1bfe14f2029",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 275.78563926192646,
+            "y": 906.36440603648566
+          },
+          "nodeIndex": "Age Bucket",
+          "nodeLineageTag": "6548a567-097c-4c58-a46e-8c8213752328",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 11.02968640784654,
+            "y": 662.517865350389
+          },
+          "nodeIndex": "DC_Master",
+          "nodeLineageTag": "5e4e9883-d910-4480-9ce3-817678c3a31b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1405.0109000380571,
+            "y": 913.86038587739483
+          },
+          "nodeIndex": "Dim SR Type",
+          "nodeLineageTag": "84a09adf-4b4f-4b4c-a320-2314188870a8",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1466.6406523072937,
+            "y": 181.29719221491644
+          },
+          "nodeIndex": "Help Measure",
+          "nodeLineageTag": "a4e891fc-75a3-451f-beb4-ce3e4a6c7da9",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 451.12859411693859
+          },
+          "nodeIndex": "Dim Service Location",
+          "nodeLineageTag": "9bb3ff0d-b2aa-404d-b615-301f19a49c0f",
+          "size": {
+            "height": 178.28082972349739,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1396.3549380215816,
+            "y": 550.28258900294645
+          },
+          "nodeIndex": "Dim Lob",
+          "nodeLineageTag": "ea62adb4-358a-41b9-a570-845a540f3d62",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1053.1384965299605,
+            "y": 972.76248198435928
+          },
+          "nodeIndex": "Dim Model",
+          "nodeLineageTag": "b110da6a-9af4-4936-a6b9-ee2fb0752da6",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 748.70807036367285,
+            "y": 950.57403952035759
+          },
+          "nodeIndex": "VW_Master_Service_Invoice",
+          "nodeLineageTag": "7370b3f4-b3bd-4ec7-b101-98823e220bbe",
+          "size": {
+            "height": 406.43331585145256,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3476.3549380215773,
+            "y": 581.71116043151767
+          },
+          "nodeIndex": "Service Invoice Measure",
+          "nodeLineageTag": "d147d66c-fa52-4718-81e0-39dd31971e20",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3743.9380198576418,
+            "y": 0
+          },
+          "nodeIndex": "Test care",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4011.5211016937064,
+            "y": 642.81266722607677
+          },
+          "nodeIndex": "labour part summ",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4830.6872653658356,
+            "y": 690.81266722607677
+          },
+          "nodeIndex": "City List",
+          "nodeLineageTag": "7389541e-106b-4a35-a893-b77124545723",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5098.2703472019,
+            "y": 690.81266722607677
+          },
+          "nodeIndex": "Colony List",
+          "nodeLineageTag": "33f5ea39-1b21-4fea-953a-124f0e80391d",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 453.05281275519047,
+            "y": 1111.3209274980973
+          },
+          "nodeIndex": "Indore_Ward",
+          "nodeLineageTag": "1916abb9-760c-45b2-9a7d-24d09018b987",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5666.2703472019,
+            "y": 690.81266722607677
+          },
+          "nodeIndex": "Near by Centre",
+          "nodeLineageTag": "d468e753-6fa5-4f92-906e-a4bc8dcff31b",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5933.8534290379648,
+            "y": 690.81266722607677
+          },
+          "nodeIndex": "Sales Measure",
+          "nodeLineageTag": "e4cd7cf0-9e79-4bed-83c7-e62df52cfc61",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 6201.4365108740294,
+            "y": 690.81266722607677
+          },
+          "nodeIndex": "Delivery_Location",
+          "nodeLineageTag": "cde4fc10-94f8-4896-9fcf-cdc18b5ecb89",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 6469.019592710094,
+            "y": 690.81266722607677
+          },
+          "nodeIndex": "Vehicle Base Measure",
+          "nodeLineageTag": "f71a605d-4324-45d1-b1c1-b7c9209abf1e",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 7004.1857563822232,
+            "y": 690.81266722607677
+          },
+          "nodeIndex": "Service Mesures",
+          "nodeLineageTag": "807de022-63f5-442c-aa4c-f0efe75effa5",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 7271.7688382182878,
+            "y": 666.81266722607677
+          },
+          "nodeIndex": "Soldout_Shifted_Master",
+          "nodeLineageTag": "d3244688-f0ed-4c17-9e3e-5faad1aba994",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 12.570207430874348,
+            "y": 1077.6954865412608
+          },
+          "nodeIndex": "Salesman",
+          "nodeLineageTag": "f2189f6a-aee3-444e-b6aa-df13e1f65083",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 7555.7688382182878,
+            "y": 0
+          },
+          "nodeIndex": "Parts Revenue",
+          "nodeLineageTag": "6b8383a6-8677-4d2e-b040-fefb5a3a0219",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 7839.7688382182878,
+            "y": 677.97785738375853
+          },
+          "nodeIndex": "Labour Revenue",
+          "nodeLineageTag": "c167e0cd-471a-4bef-8a1b-b1d90b5bb0e1",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 55.68722742639023,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

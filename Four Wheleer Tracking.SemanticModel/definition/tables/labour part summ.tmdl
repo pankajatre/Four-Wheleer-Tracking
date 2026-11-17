@@ -1,0 +1,37 @@
+table 'labour part summ'
+	lineageTag: 8618eab1-a334-4eaf-bccb-5542a3044485
+
+	column SR_Type
+		lineageTag: 55c85dbc-48fb-49bf-be1c-d7113189adb5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Fact Service_Raw[SR_Type]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Labour
+		lineageTag: 5733f7a3-78b7-49d4-a1f5-288f4c5f6d97
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Labour]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Parts
+		lineageTag: 4663a0c6-e016-48f8-b189-f5b34ba09688
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Parts]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'labour part summ' = calculated
+		mode: import
+		source = SUMMARIZECOLUMNS('Fact Service_Raw'[SR_Type],"Labour",SUM(VW_Master_Service_Invoice[Final_Labour_Invoice_Amount_Without_Tax]),"Parts",SUM(VW_Master_Service_Invoice[Final_Spares_Invoice_Amount_Without_Tax]))
+
+	annotation PBI_Id = 90d1f279d7bc4e0e87276cfed3774ea4
+

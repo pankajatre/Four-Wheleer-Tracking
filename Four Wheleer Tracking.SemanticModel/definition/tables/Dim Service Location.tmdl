@@ -1,0 +1,33 @@
+table 'Dim Service Location'
+	lineageTag: 9bb3ff0d-b2aa-404d-b615-301f19a49c0f
+
+	column Division
+		dataType: string
+		lineageTag: 8ba9690a-e46a-4904-be5e-633926aeacb3
+		summarizeBy: none
+		sourceColumn: Division
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Service Location'
+		dataType: string
+		lineageTag: c1c5904b-a768-4aec-a3e4-42b3eb3b8cd4
+		summarizeBy: none
+		sourceColumn: Service Location
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim Service Location' = m
+		mode: import
+		queryGroup: 'Dim Table'
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("ldBBD4IgFAfw78JZNqyZXbUu1dzaPJqHt3DDldIIbH77lDCSjVpHHr/34P2LAi0JSdYRwXl3UoQsVkfAaX1m/FrjvG8y2aEAmQIqA+3jMJz5XUu5qHDOmkTJgb/OWkd/6WF2GMczfVCXOxu+wvoMRv06+/S+kjclwPItA+HDw13TcqoxN3gs+HwGLTxA2OGm4PMpUNugH5gqUzRfgk9k8zv4DUjBgfqydPk7S6PnWbrarmu4s67rP9Y1DXbd8gk=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Division = _t, #"Service Location" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Division", type text}, {"Service Location", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

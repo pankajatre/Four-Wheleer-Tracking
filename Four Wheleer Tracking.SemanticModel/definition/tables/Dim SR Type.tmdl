@@ -1,0 +1,45 @@
+table 'Dim SR Type'
+	lineageTag: 84a09adf-4b4f-4b4c-a320-2314188870a8
+
+	column SR_Type_Input
+		dataType: string
+		lineageTag: 76a9fbc9-f6cd-4742-bc31-0a17f9de81d7
+		summarizeBy: none
+		sourceColumn: SR_Type_Input
+
+		annotation SummarizationSetBy = Automatic
+
+	column SR_Type
+		dataType: string
+		lineageTag: 3914c136-1d57-4722-8a1a-0041b000af9d
+		summarizeBy: none
+		sourceColumn: SR_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Free/Paid
+		dataType: string
+		lineageTag: f45dbd33-55aa-4f6f-9de7-3cb15b3fff5b
+		summarizeBy: none
+		sourceColumn: Free/Paid
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim SR Type' = m
+		mode: import
+		queryGroup: 'Dim Table'
+		source =
+				let
+				    Source = #"Fact Service_Raw",
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"Delivery_Variance", "SR_Type_Input", "SR_Type"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Removed Other Columns",{"Delivery_Variance"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Columns", {"SR_Type_Input"}),
+				    #"Added Conditional Column" = Table.AddColumn(#"Removed Duplicates", "Free/Paid", each if [SR_Type] = "First Free Service" then "Free" else if [SR_Type] = "Second Free Service" then "Free" else if [SR_Type] = "Third Free Service" then "Free" else "Paid"),
+				    #"Filtered Rows" = Table.SelectRows(#"Added Conditional Column", each ([SR_Type_Input] <> null))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

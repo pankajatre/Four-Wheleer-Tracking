@@ -1,0 +1,2873 @@
+table Vehicle_Service_Tracking
+	lineageTag: 3cfa3aaf-c600-4b7d-aea3-488c92b845a1
+
+	column Chassis_No
+		dataType: string
+		lineageTag: ccb950b8-1ab2-49b3-9010-77faec8e8c77
+		summarizeBy: none
+		sourceColumn: Chassis_No
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 3dadbd68-1e9d-4121-a95d-90a567bd964c
+		summarizeBy: none
+		sourceColumn: Invoice_Date
+
+		variation Variation
+			isDefault
+			relationship: eb40b73f-597b-40c2-af54-3396336fa7b6
+			defaultHierarchy: LocalDateTable_5e0725d0-6576-45a1-b15c-e07524343b2e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Delivery_Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 1e5b7172-ebbf-42c4-9165-a111c6853582
+		summarizeBy: none
+		sourceColumn: Delivery_Date
+
+		variation Variation
+			isDefault
+			relationship: 419f9d26-de58-43c8-94bc-fd805150f7d5
+			defaultHierarchy: LocalDateTable_1744306f-e9fc-4ce3-9e82-cd37958c804e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Customer_Name
+		dataType: string
+		lineageTag: 2897c746-ec54-4207-ba87-f0f6e954dbdc
+		summarizeBy: none
+		sourceColumn: Customer_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Address
+		dataType: string
+		lineageTag: 63af4f33-b0c8-4fd9-8550-c061dc7a449d
+		summarizeBy: none
+		sourceColumn: Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column Contact_No
+		dataType: string
+		lineageTag: 55d90888-4038-4252-8945-4bf9e84902bc
+		summarizeBy: none
+		sourceColumn: Contact_No
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales_Man
+		dataType: string
+		lineageTag: 4922fab8-b9a5-4908-bccd-c6575ec2749b
+		summarizeBy: none
+		sourceColumn: Sales_Man
+
+		annotation SummarizationSetBy = Automatic
+
+	column Delivery_Location
+		dataType: string
+		lineageTag: 644e6f09-2359-407a-82db-53db0cc2fbde
+		summarizeBy: none
+		sourceColumn: Delivery_Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First SR Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: eed0eed5-9a5d-47d8-8940-7b2c62c7e73a
+		summarizeBy: none
+		sourceColumn: First SR Date
+
+		variation Variation
+			isDefault
+			relationship: df6746cd-ec47-4592-b057-51f7b0dc6a85
+			defaultHierarchy: LocalDateTable_7cf3a45b-48a8-44ee-9381-f7a1b8ad9a4b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last SR Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 1d80bc9d-64ae-4dd8-b63d-337c120a602b
+		summarizeBy: none
+		sourceColumn: Last SR Date
+
+		variation Variation
+			isDefault
+			relationship: 088221a2-c6da-46a8-abfb-de66c7071c4b
+			defaultHierarchy: LocalDateTable_0260fc0f-9181-485a-9ac5-87ef31402d39.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paid SR Cnt'
+		dataType: int64
+		lineageTag: 143c5239-5c0a-4412-923e-1b98951aacee
+		summarizeBy: sum
+		sourceColumn: Paid SR Cnt
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Total Service'
+		dataType: int64
+		formatString: 0
+		lineageTag: be528192-5342-44ee-9c77-3f5975d8ab48
+		summarizeBy: sum
+		sourceColumn: Total Service
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rau
+		dataType: int64
+		formatString: 0
+		lineageTag: 67a179f5-b786-41ef-bd1a-7daf679699d4
+		summarizeBy: sum
+		sourceColumn: Rau
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkShop
+		dataType: int64
+		lineageTag: 4efbc004-70c8-454a-931f-3421e8c04d80
+		summarizeBy: sum
+		sourceColumn: WorkShop
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Badnawar
+		dataType: int64
+		formatString: 0
+		lineageTag: 2a6c4ca7-50bc-4626-8fb5-b8ce626b02c9
+		summarizeBy: sum
+		sourceColumn: Badnawar
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column Bhicholi
+		dataType: int64
+		formatString: 0
+		lineageTag: 7091e2c5-0789-4681-aad5-0c81e199ed43
+		summarizeBy: sum
+		sourceColumn: Bhicholi
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dhamnod
+		dataType: int64
+		lineageTag: beee1d79-0346-4318-bae0-c0d4e4372f69
+		summarizeBy: sum
+		sourceColumn: Dhamnod
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Dhar
+		dataType: int64
+		lineageTag: 670cf2c3-5acb-45f9-90e0-e0cc8f187c5a
+		summarizeBy: sum
+		sourceColumn: Dhar
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Kukshi
+		dataType: int64
+		lineageTag: a5c64550-2c71-49ee-88bd-cff88a5d9ce5
+		summarizeBy: sum
+		sourceColumn: Kukshi
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Manawar
+		dataType: int64
+		formatString: 0
+		lineageTag: 0a9ffbee-39e8-40c1-9c5a-152c0ddf8acd
+		summarizeBy: sum
+		sourceColumn: Manawar
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column Contact_Cell_Phone
+		dataType: string
+		lineageTag: 054c6fe8-2e5a-40cf-a85a-5d29a50cfbbc
+		summarizeBy: none
+		sourceColumn: Contact_Cell_Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First SR_Type'
+		dataType: string
+		lineageTag: d2396a12-13e6-40e3-99ac-f8affa0f04da
+		summarizeBy: none
+		sourceColumn: First SR_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Age Bucket' =
+			SWITCH(TRUE(),
+			Vehicle_Service_Tracking[Vechele Age Month] <= 12,"0-1 year",
+			Vehicle_Service_Tracking[Vechele Age Month] > 12 && Vehicle_Service_Tracking[Vechele Age Month] <= 24,"1-2 year",
+			Vehicle_Service_Tracking[Vechele Age Month] > 24 && Vehicle_Service_Tracking[Vechele Age Month] <= 36,"2-3 year",
+			Vehicle_Service_Tracking[Vechele Age Month] > 36 && Vehicle_Service_Tracking[Vechele Age Month] <= 48,"3-4 year",
+			Vehicle_Service_Tracking[Vechele Age Month] > 48 && Vehicle_Service_Tracking[Vechele Age Month] <= 60,"4-5 year",
+			Vehicle_Service_Tracking[Vechele Age Month] > 60 && Vehicle_Service_Tracking[Vechele Age Month] <= 72,"5-6 year",
+			Vehicle_Service_Tracking[Vechele Age Month] > 72 && Vehicle_Service_Tracking[Vechele Age Month] <= 84,"6-7 year",
+			Vehicle_Service_Tracking[Vechele Age Month] > 84, "8+ year"
+			
+			)
+		lineageTag: ba83d99c-6500-49d8-aff7-6752243cb81d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First System Login Date' = IF(ISBLANK(Vehicle_Service_Tracking[Invoice_Date]),Vehicle_Service_Tracking[First SR Date],Vehicle_Service_Tracking[Invoice_Date])
+		formatString: Short Date
+		lineageTag: fbc5af00-5a9a-4ae9-b43d-88efeb251b7d
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Is Inside' = IF(ISBLANK(Vehicle_Service_Tracking[Invoice_Date]),"Outside","Inside")
+		lineageTag: 1e1a5c8d-f9c9-492f-b2f9-27f69bd5a98f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'LAST ACTIVE' = DATEDIFF('Vehicle_Service_Tracking'[Last SR Date],TODAY(),DAY)
+		formatString: 0
+		lineageTag: f3c40162-5926-4a92-a2c6-c81f38bc57c5
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NEXT DATE FOR PAID SERVICE' = ```
+			
+			    IF
+			        (Vehicle_Service_Tracking[Last SR_Type] 
+			        IN{"Paid Service","Running Repairs""Chassis Not Existing","E Breakdown","Third Free Service"},
+			        Vehicle_Service_Tracking[Last SR Date]+180,
+			        BLANK()
+			    )
+			```
+		formatString: Short Date
+		lineageTag: fb224908-3e04-4748-871f-6a55dda9e9b9
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 3fc94f3f-c8a9-4bcb-9a95-91d474bb51b1
+			defaultHierarchy: LocalDateTable_00acc482-1c1f-491d-b768-f9b87d6c91a1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Vechele Age Month' = DATEDIFF(Vehicle_Service_Tracking[First System Login Date],TODAY(),MONTH)
+		formatString: 0
+		lineageTag: c7a0bcde-44d1-462a-abc8-bda17921c8e7
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SERVICE STATUS' = ```
+			
+			VAR LASTSERVDATE = 'Vehicle_Service_Tracking'[Last SR Date]
+			
+			VAR BASEDATE = IF(ISBLANK(Vehicle_Service_Tracking[Last SR Date]),'Vehicle_Service_Tracking'[Invoice_Date],Vehicle_Service_Tracking[Last SR Date])
+			VAR DAYSGAP = DATEDIFF(BASEDATE,TODAY(),DAY)
+			VAR ISNEWVEHICLE = ISBLANK(Vehicle_Service_Tracking[Last SR Date])
+			
+			VAR SALEDATE = 'Vehicle_Service_Tracking'[Invoice_Date]
+			VAR SALDAYSGAP = DATEDIFF(SALEDATE,TODAY(),DAY)
+			VAR SERVICE_AGGING =IF(DATEDIFF('Vehicle_Service_Tracking'[Invoice_Date],Vehicle_Service_Tracking[Last SR Date],DAY)>0,DATEDIFF('Vehicle_Service_Tracking'[Invoice_Date],Vehicle_Service_Tracking[Last SR Date],DAY),0)
+			
+			
+			VAR PDI = Vehicle_Service_Tracking[Last SR_Type]="PDI"
+			
+			
+			RETURN
+			SWITCH(TRUE(),
+			--------------------------------FIRST---------------------------------------------
+			ISNEWVEHICLE && DAYSGAP >=1 && DAYSGAP <=45, "NEW VEHICLE",
+			
+			NOT ISNEWVEHICLE && DAYSGAP >=1 && DAYSGAP <=45, "ACTIVE",
+			NOT ISNEWVEHICLE && DAYSGAP >=46 && DAYSGAP <=60, "ACTIVE",
+			NOT ISNEWVEHICLE && DAYSGAP >=61 && DAYSGAP <=159 && Vehicle_Service_Tracking[Last SR_Type] = "FIRST FREE SERVICE", "ACTIVE",
+			
+			ISNEWVEHICLE && DAYSGAP >=40 && DAYSGAP <= 55,"CALL FOR FIRST SERVICE", 
+			ISNEWVEHICLE && DAYSGAP >=56 && DAYSGAP <=159 ,"FS MISSED",
+			
+			---------------------SECOND --------------------------
+			ISNEWVEHICLE && DAYSGAP >=160 && DAYSGAP <= 175 ||
+			NOT ISNEWVEHICLE && SALDAYSGAP >=160 && SALDAYSGAP <=175
+			&& Vehicle_Service_Tracking[Last SR_Type] = "FIRST FREE SERVICE","CALL FOR SECOND SERVICE",
+			
+			Vehicle_Service_Tracking[LAST ACTIVE] >=160 && Vehicle_Service_Tracking[LAST ACTIVE] <=175 
+			&& Vehicle_Service_Tracking[Last SR_Type] = "FIRST FREE SERVICE", "CALL FOR SECOND SERVICE",
+			
+			ISNEWVEHICLE && DAYSGAP >=181 && DAYSGAP <= 344 ||
+			NOT ISNEWVEHICLE && SALDAYSGAP >=181 && SALDAYSGAP <= 344 && Vehicle_Service_Tracking[Last SR_Type] = "FIRST FREE SERVICE" , "SS MISSED",
+			
+			
+			NOT ISNEWVEHICLE && DAYSGAP <=180 &&
+			Vehicle_Service_Tracking[Last SR_Type] = "SECOND FREE SERVICE", "ACTIVE",
+			
+			--NOT ISNEWVEHICLE && DAYSGAP >=161 && DAYSGAP <=180 &&
+			--Vehicle_Service_Tracking[Last Service Type] = "SECOND FREE SERVICE", "ACTIVE",
+			
+			
+			
+			---------------------THIRD --------------------------
+			
+			ISNEWVEHICLE && DAYSGAP >=345 && DAYSGAP <= 360 ||
+			NOT ISNEWVEHICLE && SALDAYSGAP >=345 && SALDAYSGAP <=360 
+			&& Vehicle_Service_Tracking[Last SR_Type] = "SECOND FREE SERVICE" || 
+			Vehicle_Service_Tracking[LAST ACTIVE] >=345 && Vehicle_Service_Tracking[LAST ACTIVE] <=365 
+			&& Vehicle_Service_Tracking[Last SR_Type] = "SECOND FREE SERVICE", "CALL FOR THIRD SERVICE",
+			
+			ISNEWVEHICLE && DAYSGAP >=365 && DAYSGAP <= 544 ||
+			NOT ISNEWVEHICLE && SALDAYSGAP >=365 && SALDAYSGAP <= 544 && Vehicle_Service_Tracking[Last SR_Type] = "SECOND FREE SERVICE" , "TS MISSED",
+			
+			NOT ISNEWVEHICLE && DAYSGAP <=345 &&
+			Vehicle_Service_Tracking[Last SR_Type] = "THIRD FREE SERVICE", "ACTIVE",
+			
+			NOT ISNEWVEHICLE && DAYSGAP >=345 && DAYSGAP <=365 &&
+			Vehicle_Service_Tracking[Last SR_Type] = "THIRD FREE SERVICE", "ACTIVE",
+			
+			
+			------------------------------------------PAID---------------------------
+			
+			NOT ISNEWVEHICLE && DAYSGAP <= 154 &&
+			Vehicle_Service_Tracking[Last SR_Type] IN{"THIRD FREE SERVICE","PAID SERVICE","Running Repairs","Campaign","Accident" ,"E Breakdown","Chassis Not Existing" ,"Fourth Free Service" ,"Refurbish" }, "ACTIVE",
+			
+			NOT ISNEWVEHICLE && DAYSGAP >=155 && DAYSGAP <=175 &&
+			Vehicle_Service_Tracking[Last SR_Type] IN{"THIRD FREE SERVICE","PAID SERVICE","Running Repairs","Campaign","Accident" ,"E Breakdown","Chassis Not Existing" ,"Fourth Free Service" ,"Refurbish" }, "CALL FOR PAID SERVICE",
+			
+			NOT ISNEWVEHICLE && DAYSGAP >= 176  && DAYSGAP <=200 &&
+			Vehicle_Service_Tracking[Last SR_Type] IN{"THIRD FREE SERVICE","PAID SERVICE","Running Repairs","Campaign","Accident" ,"E Breakdown","Chassis Not Existing" ,"Fourth Free --Service" ,"Refurbish" }, "CALL FOR MINOR PAID",
+			
+			--IF ISSUE THEN DELETE THIS LOGIC
+			NOT ISNEWVEHICLE && DAYSGAP >= 201  && DAYSGAP <=363 &&
+			Vehicle_Service_Tracking[Last SR_Type] IN{"THIRD FREE SERVICE","PAID SERVICE","Running Repairs","Campaign","Accident" ,"E Breakdown","Chassis Not Existing" ,"Fourth Free --Service" ,"Refurbish" }, "PAID MISSED MINOR",
+			
+			NOT ISNEWVEHICLE && DAYSGAP >= 364 && DAYSGAP <= 400  &&
+			Vehicle_Service_Tracking[Last SR_Type] IN{"THIRD FREE SERVICE","PAID SERVICE","Running Repairs","Campaign","Accident" ,"E Breakdown","Chassis Not Existing" ,"Fourth Free Service" ,"Refurbish" },"CALL FOR MAJOR PAID",
+			
+			NOT ISNEWVEHICLE && DAYSGAP >= 401 && DAYSGAP <= 546  &&
+			Vehicle_Service_Tracking[Last SR_Type] IN{"THIRD FREE SERVICE","PAID SERVICE","Running Repairs","Campaign","Accident" ,"E Breakdown","Chassis Not Existing" ,"Fourth Free Service" ,"Refurbish" },"PAID MISSED MAJOR",
+			--IF ISSUE THEN DELETE THIS LOGIC
+			
+			
+			--NOT ISNEWVEHICLE && DAYSGAP >= 156 && DAYSGAP <= 180 &&
+			--Vehicle_Service_Tracking[Last Service Type] IN{"THIRD FREE SERVICE","PAID SERVICE","Running Repairs","Campaign","Accident" ,"E Breakdown","Chassis Not Existing" ,"Fourth Free Service" ,"Refurbish" }, "ACTIVE",
+			
+			
+			
+			-----------------------------------IN ACTIVE----------------
+			--IF ISSUE THEN DELETE THIS LOGIC
+			Vehicle_Service_Tracking[LAST ACTIVE] >= 366 && Vehicle_Service_Tracking[LAST ACTIVE] <= 544 && Vehicle_Service_Tracking[Last SR_Type] IN{"FIRST FREE SERVICE","SECOND FREE SERVICE"},"IN-ACTIVE",
+			--IF ISSUE THEN DELETE THIS LOGIC
+			
+			 PDI && Vehicle_Service_Tracking[LAST ACTIVE] >= 366 ,"IN-ACTIVE",
+			
+			Vehicle_Service_Tracking[LAST ACTIVE] >= 547 && Vehicle_Service_Tracking[LAST ACTIVE] <= 730,"IN-ACTIVE",
+			NOT ISBLANK(Vehicle_Service_Tracking[LAST ACTIVE]) && Vehicle_Service_Tracking[LAST ACTIVE] <= 364,"ACTIVE", 
+			Vehicle_Service_Tracking[LAST ACTIVE] >= 731 || DAYSGAP >=546,"DEAD"
+			
+			
+			
+			)
+			
+			```
+		lineageTag: a40a5041-b12e-4bf5-b2c0-f7a206b0f65e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Service-Rural = Vehicle_Service_Tracking[Dhar] + Vehicle_Service_Tracking[Badnawar]+ Vehicle_Service_Tracking[Dhamnod]+Vehicle_Service_Tracking[Manawar]+Vehicle_Service_Tracking[Kukshi]
+		formatString: 0
+		lineageTag: 47083c97-3e5e-404f-ad79-07f52858425d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'STATUS FLAG' = ```
+			
+			SWITCH(TRUE(), 
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "PAID MISSED"|| 
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "PAID MISSED 0"|| 
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "PAID MISSED 1"|| 
+			
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "FS MISSED"||
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "FS MISSED 0"||
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "FS MISSED 1"||
+			
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "SS MISSED"|| 
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "SS MISSED 0"||
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "SS MISSED 1"||
+			
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "TS MISSED"||
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "TS MISSED 0"||
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "TS MISSED 1"||
+			
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "PAID MISSED MINOR"||
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "PAID MISSED MINOR 0"||
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "PAID MISSED MINOR 1"||
+			
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "PAID MISSED MAJOR"|| 
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "PAID MISSED MAJOR 0"|| 
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "PAID MISSED MAJOR 1", 
+			
+			"MISSED",
+			
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "CALL FOR FIRST SERVICE"|| 
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "CALL FOR SECOND SERVICE"|| 
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "CALL FOR THIRD SERVICE"|| 
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "CALL FOR PAID SERVICE"||
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "CALL FOR MAJOR PAID" ||
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "CALL FOR MINOR PAID",
+			"NEED TO CALL",
+			
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "ACTIVE"|| 
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "NEW VEHICLE",
+			"ACTIVE",
+			
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "DEAD",
+			"DEAD",
+			
+			Vehicle_Service_Tracking[Service Status All Coalesce New]= "IN-ACTIVE",
+			"IN-ACTIVE", "NEVER SERVICED"
+			)
+			
+			```
+		lineageTag: 028f4291-8db8-448d-a1c0-a2f6bf48879d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Last_Name
+		dataType: string
+		lineageTag: f8aca9d7-54a7-47dc-a85f-86f6fbe51be2
+		summarizeBy: none
+		sourceColumn: Last_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column First_Name
+		dataType: string
+		lineageTag: f965585f-8690-4a47-a0b1-70e8b6c56481
+		summarizeBy: none
+		sourceColumn: First_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Model =
+			IF(ISBLANK(LOOKUPVALUE('Fact Sales_Raw'[Parent_Product_Line],'Fact Sales_Raw'[Chassis_NO],Vehicle_Service_Tracking[Chassis_No])),
+			                LOOKUPVALUE('Fact Service_Raw'[Parent_Product_Line],'Fact Service_Raw'[Chassis_No],Vehicle_Service_Tracking[Chassis_No]),
+			                LOOKUPVALUE('Fact Sales_Raw'[Parent_Product_Line],'Fact Sales_Raw'[Chassis_NO],Vehicle_Service_Tracking[Chassis_No]))
+		lineageTag: 3835fe45-8617-4aee-9ef7-585758830424
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Remove Outer chassis'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0b0fa02c-07d4-48a2-894a-002d93ea99b8
+		summarizeBy: sum
+		sourceColumn: Remove Outer chassis
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SERVICE STATUS New from Sale Date' =
+			
+			
+			VAR SaleDate =
+			    'Vehicle_Service_Tracking'[Invoice_Date]
+			
+			VAR LastServiceDate =
+			    'Vehicle_Service_Tracking'[Last SR Date]
+			
+			VAR LastSRType =
+			    UPPER(
+			        TRIM(
+			            'Vehicle_Service_Tracking'[Last SR_Type]
+			        )
+			    )
+			
+			VAR TotalServiceCount =
+			    COALESCE(
+			        'Vehicle_Service_Tracking'[Total Service],
+			        0
+			    )
+			
+			VAR SaleDays =
+			    IF(
+			        NOT ISBLANK(SaleDate),
+			        DATEDIFF(
+			            SaleDate,
+			            TODAY(),
+			            DAY
+			        )
+			    )
+			
+			VAR ServiceDays =
+			    IF(
+			        NOT ISBLANK(LastServiceDate),
+			        DATEDIFF(
+			            LastServiceDate,
+			            TODAY(),
+			            DAY
+			        )
+			    )
+			
+			VAR IsNewVehicle =
+			    ISBLANK(LastServiceDate)
+			
+			VAR IsPDI =
+			    LastSRType = "PDI"
+			
+			VAR IsFirstFree =
+			    LastSRType = "FIRST FREE SERVICE"
+			
+			VAR IsSecondFree =
+			    LastSRType = "SECOND FREE SERVICE"
+			
+			VAR IsThirdFree =
+			    LastSRType = "THIRD FREE SERVICE"
+			
+			VAR IsPaidHistory =
+			    LastSRType IN {
+			        "PAID SERVICE",
+			        "RUNNING REPAIRS",
+			        "CAMPAIGN",
+			        "ACCIDENT",
+			        "E BREAKDOWN",
+			        "CHASSIS NOT EXISTING",
+			        "FOURTH FREE SERVICE",
+			        "REFURBISH"
+			    }
+			
+			RETURN
+			
+			SWITCH(
+			    TRUE(),
+			
+			    /* =====================================================
+			       1. FIRST FREE SERVICE
+			       ===================================================== */
+			
+			    IsFirstFree
+			        && ServiceDays >= 0
+			        && ServiceDays <= 60,
+			        "ACTIVE",
+			
+			    IsNewVehicle
+			        && SaleDays >= 1
+			        && SaleDays <= 45,
+			        "NEW VEHICLE",
+			
+			    IsNewVehicle
+			        && SaleDays >= 46
+			        && SaleDays <= 60,
+			        "CALL FOR FIRST SERVICE",
+			
+			    IsNewVehicle
+			        && SaleDays >= 61
+			        && SaleDays <= 159,
+			        "FS MISSED",
+			
+			
+			    /* =====================================================
+			       2. SECOND FREE SERVICE
+			       ===================================================== */
+			
+			    IsSecondFree
+			        && ServiceDays >= 0
+			        && ServiceDays < 165,
+			        "ACTIVE",
+			
+			    IsFirstFree
+			        && SaleDays >= 165
+			        && SaleDays <= 180,
+			        "CALL FOR SECOND SERVICE",
+			
+			    IsFirstFree
+			        && SaleDays >= 181
+			        && SaleDays <= 195,
+			        "SS MISSED 0",
+			
+			    IsFirstFree
+			        && SaleDays >= 196
+			        && SaleDays <= 225,
+			        "SS MISSED 1",
+			
+			    IsFirstFree
+			        && SaleDays >= 226
+			        && SaleDays <= 344,
+			        "SS MISSED",
+			
+			
+			    /* =====================================================
+			       3. THIRD FREE SERVICE
+			       ===================================================== */
+			
+			    IsThirdFree
+			        && ServiceDays >= 0
+			        && ServiceDays < 345,
+			        "ACTIVE",
+			
+			    IsSecondFree
+			        && SaleDays >= 345
+			        && SaleDays <= 365,
+			        "CALL FOR THIRD SERVICE",
+			
+			    IsSecondFree
+			        && SaleDays >= 366
+			        && SaleDays <= 380,
+			        "TS MISSED 0",
+			
+			    IsSecondFree
+			        && SaleDays >= 381
+			        && SaleDays <= 410,
+			        "TS MISSED 1",
+			
+			    IsSecondFree
+			        && SaleDays >= 411
+			        && SaleDays <= 545,
+			        "TS MISSED",
+			
+			
+			    /* =====================================================
+			       4. PAID SERVICE
+			       ===================================================== */
+			
+			    IsPaidHistory
+			        && SaleDays >= 0
+			        && SaleDays < 155,
+			        "ACTIVE",
+			
+			    IsThirdFree
+			        && ServiceDays >= 155
+			        && ServiceDays <= 175,
+			        "CALL FOR PAID SERVICE",
+			
+			    IsThirdFree
+			        && ServiceDays >= 176
+			        && ServiceDays <= 190,
+			        "PAID MISSED 0",
+			
+			    IsThirdFree
+			        && ServiceDays >= 191
+			        && ServiceDays <= 220,
+			        "PAID MISSED 1",
+			
+			    IsThirdFree
+			        && ServiceDays >= 221
+			        && ServiceDays <= 365,
+			        "PAID MISSED",
+			
+			
+			    /* =====================================================
+			       5. PAID SERVICE / OTHER SERVICE HISTORY
+			       ===================================================== */
+			
+			    IsPaidHistory
+			        && ServiceDays >= 0
+			        && ServiceDays <= 154,
+			        "ACTIVE",
+			
+			    IsPaidHistory
+			        && ServiceDays >= 155
+			        && ServiceDays <= 175,
+			        "CALL FOR MINOR PAID",
+			
+			    IsPaidHistory
+			        && ServiceDays >= 176
+			        && ServiceDays <= 190,
+			        "PAID MISSED MINOR 0",
+			
+			    IsPaidHistory
+			        && ServiceDays >= 191
+			        && ServiceDays <= 220,
+			        "PAID MISSED MINOR 1",
+			
+			    IsPaidHistory
+			        && ServiceDays >= 221
+			        && ServiceDays <= 350,
+			        "PAID MISSED MINOR",
+			
+			    IsPaidHistory
+			        && ServiceDays >= 351
+			        && ServiceDays <= 365,
+			        "CALL FOR MAJOR PAID",
+			
+			    IsPaidHistory
+			        && ServiceDays >= 366
+			        && ServiceDays <= 380,
+			        "PAID MISSED MAJOR 0",
+			
+			    IsPaidHistory
+			        && ServiceDays >= 381
+			        && ServiceDays <= 410,
+			        "PAID MISSED MAJOR 1",
+			
+			    IsPaidHistory
+			        && ServiceDays >= 411
+			        && ServiceDays <= 545,
+			        "PAID MISSED MAJOR",
+			
+			
+			    /* =====================================================
+			       6. NEVER SERVICED
+			       Sold vehicle but never took service
+			       ===================================================== */
+			
+			    TotalServiceCount = 0
+			        && SaleDays > 380
+			        && SaleDays <= 545,
+			        "NEVER SERVICED",
+			
+			
+			    /* =====================================================
+			       7. PREVIOUSLY SERVICED - INACTIVE
+			       ===================================================== */
+			
+			    TotalServiceCount > 0
+			        && ServiceDays > 365
+			        && ServiceDays <= 545
+			        && TotalServiceCount <= 3,
+			        "INACTIVE FROM 1 YEAR WITH <= 3",
+			
+			    TotalServiceCount > 3
+			        && ServiceDays > 365
+			        && ServiceDays <= 545,
+			        "INACTIVE FROM 1 YEAR WITH >3",
+			
+			
+			    /* =====================================================
+			       8. INACTIVE - 546 TO 730 DAYS
+			       ===================================================== */
+			
+			    TotalServiceCount > 0
+			        && ServiceDays >= 546
+			        && ServiceDays <= 730,
+			        "IN-ACTIVE",
+			
+			
+			    /* =====================================================
+			       9. DEAD
+			       ===================================================== */
+			
+			    TotalServiceCount = 0
+			        && SaleDays > 545,
+			        "DEAD",
+			
+			    TotalServiceCount > 0
+			        && ServiceDays > 730,
+			        "DEAD"
+			
+			
+			
+			
+			
+			    /* =====================================================
+			       DEFAULT
+			       ===================================================== */
+			)
+		lineageTag: 83c42516-d96e-4e09-ab87-d38602cae5f2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SERVICE STATUS OLD' = ```
+			
+			VAR LASTSERVDATE = 'Vehicle_Service_Tracking'[Last SR Date]
+			
+			VAR BASEDATE = IF(ISBLANK(Vehicle_Service_Tracking[Last SR Date]),'Vehicle_Service_Tracking'[Invoice_Date],Vehicle_Service_Tracking[Last SR Date])
+			VAR DAYSGAP = DATEDIFF(BASEDATE,TODAY(),DAY)
+			VAR ISNEWVEHICLE = ISBLANK(Vehicle_Service_Tracking[Last SR Date])
+			
+			VAR SALEDATE = 'Vehicle_Service_Tracking'[Invoice_Date]
+			VAR SALDAYSGAP = DATEDIFF(SALEDATE,TODAY(),DAY)
+			VAR SERVICE_AGGING =IF(DATEDIFF('Vehicle_Service_Tracking'[Invoice_Date],Vehicle_Service_Tracking[Last SR Date],DAY)>0,DATEDIFF('Vehicle_Service_Tracking'[Invoice_Date],Vehicle_Service_Tracking[Last SR Date],DAY),0)
+			
+			
+			VAR PDI = Vehicle_Service_Tracking[Last SR_Type]="PDI"
+			
+			
+			RETURN
+			SWITCH(TRUE(),
+			--------------------------------FIRST---------------------------------------------
+			ISNEWVEHICLE && DAYSGAP >=1 && DAYSGAP <=45, "NEW VEHICLE",
+			
+			NOT ISNEWVEHICLE && DAYSGAP >=1 && DAYSGAP <=45, "ACTIVE",
+			NOT ISNEWVEHICLE && DAYSGAP >=46 && DAYSGAP <=60, "ACTIVE",
+			NOT ISNEWVEHICLE && DAYSGAP >=61 && DAYSGAP <=159 && Vehicle_Service_Tracking[Last SR_Type] = "FIRST FREE SERVICE", "ACTIVE",
+			
+			ISNEWVEHICLE && DAYSGAP >=40 && DAYSGAP <= 55,"CALL FOR FIRST SERVICE", 
+			ISNEWVEHICLE && DAYSGAP >=56 && DAYSGAP <=159 ,"FS MISSED",
+			
+			---------------------SECOND --------------------------
+			ISNEWVEHICLE && DAYSGAP >=160 && DAYSGAP <= 175 ||
+			NOT ISNEWVEHICLE && SALDAYSGAP >=160 && SALDAYSGAP <=175
+			&& Vehicle_Service_Tracking[Last SR_Type] = "FIRST FREE SERVICE","CALL FOR SECOND SERVICE",
+			
+			Vehicle_Service_Tracking[LAST ACTIVE] >=160 && Vehicle_Service_Tracking[LAST ACTIVE] <=175 
+			&& Vehicle_Service_Tracking[Last SR_Type] = "FIRST FREE SERVICE", "CALL FOR SECOND SERVICE",
+			
+			ISNEWVEHICLE && DAYSGAP >=181 && DAYSGAP <= 344 ||
+			NOT ISNEWVEHICLE && SALDAYSGAP >=181 && SALDAYSGAP <= 344 && Vehicle_Service_Tracking[Last SR_Type] = "FIRST FREE SERVICE" , "SS MISSED",
+			
+			
+			NOT ISNEWVEHICLE && DAYSGAP <=180 &&
+			Vehicle_Service_Tracking[Last SR_Type] = "SECOND FREE SERVICE", "ACTIVE",
+			
+			--NOT ISNEWVEHICLE && DAYSGAP >=161 && DAYSGAP <=180 &&
+			--Vehicle_Service_Tracking[Last Service Type] = "SECOND FREE SERVICE", "ACTIVE",
+			
+			
+			
+			---------------------THIRD --------------------------
+			
+			ISNEWVEHICLE && DAYSGAP >=345 && DAYSGAP <= 360 ||
+			NOT ISNEWVEHICLE && SALDAYSGAP >=345 && SALDAYSGAP <=360 
+			&& Vehicle_Service_Tracking[Last SR_Type] = "SECOND FREE SERVICE" || 
+			Vehicle_Service_Tracking[LAST ACTIVE] >=345 && Vehicle_Service_Tracking[LAST ACTIVE] <=365 
+			&& Vehicle_Service_Tracking[Last SR_Type] = "SECOND FREE SERVICE", "CALL FOR THIRD SERVICE",
+			
+			ISNEWVEHICLE && DAYSGAP >=365 && DAYSGAP <= 544 ||
+			NOT ISNEWVEHICLE && SALDAYSGAP >=365 && SALDAYSGAP <= 544 && Vehicle_Service_Tracking[Last SR_Type] = "SECOND FREE SERVICE" , "TS MISSED",
+			
+			NOT ISNEWVEHICLE && DAYSGAP <=345 &&
+			Vehicle_Service_Tracking[Last SR_Type] = "THIRD FREE SERVICE", "ACTIVE",
+			
+			NOT ISNEWVEHICLE && DAYSGAP >=345 && DAYSGAP <=365 &&
+			Vehicle_Service_Tracking[Last SR_Type] = "THIRD FREE SERVICE", "ACTIVE",
+			
+			
+			------------------------------------------PAID---------------------------
+			
+			NOT ISNEWVEHICLE && DAYSGAP <= 154 &&
+			Vehicle_Service_Tracking[Last SR_Type] IN{"THIRD FREE SERVICE","PAID SERVICE","Running Repairs","Campaign","Accident" ,"E Breakdown","Chassis Not Existing" ,"Fourth Free Service" ,"Refurbish" }, "ACTIVE",
+			
+			NOT ISNEWVEHICLE && DAYSGAP >=155 && DAYSGAP <=175 &&
+			Vehicle_Service_Tracking[Last SR_Type] IN{"THIRD FREE SERVICE","PAID SERVICE","Running Repairs","Campaign","Accident" ,"E Breakdown","Chassis Not Existing" ,"Fourth Free Service" ,"Refurbish" }, "CALL FOR PAID SERVICE",
+			
+			NOT ISNEWVEHICLE && DAYSGAP >= 176  && DAYSGAP <=200 &&
+			Vehicle_Service_Tracking[Last SR_Type] IN{"THIRD FREE SERVICE","PAID SERVICE","Running Repairs","Campaign","Accident" ,"E Breakdown","Chassis Not Existing" ,"Fourth Free --Service" ,"Refurbish" }, "CALL FOR MINOR PAID",
+			
+			--IF ISSUE THEN DELETE THIS LOGIC
+			NOT ISNEWVEHICLE && DAYSGAP >= 201  && DAYSGAP <=363 &&
+			Vehicle_Service_Tracking[Last SR_Type] IN{"THIRD FREE SERVICE","PAID SERVICE","Running Repairs","Campaign","Accident" ,"E Breakdown","Chassis Not Existing" ,"Fourth Free --Service" ,"Refurbish" }, "PAID MISSED MINOR",
+			
+			NOT ISNEWVEHICLE && DAYSGAP >= 364 && DAYSGAP <= 400  &&
+			Vehicle_Service_Tracking[Last SR_Type] IN{"THIRD FREE SERVICE","PAID SERVICE","Running Repairs","Campaign","Accident" ,"E Breakdown","Chassis Not Existing" ,"Fourth Free Service" ,"Refurbish" },"CALL FOR MAJOR PAID",
+			
+			NOT ISNEWVEHICLE && DAYSGAP >= 401 && DAYSGAP <= 546  &&
+			Vehicle_Service_Tracking[Last SR_Type] IN{"THIRD FREE SERVICE","PAID SERVICE","Running Repairs","Campaign","Accident" ,"E Breakdown","Chassis Not Existing" ,"Fourth Free Service" ,"Refurbish" },"PAID MISSED MAJOR",
+			--IF ISSUE THEN DELETE THIS LOGIC
+			
+			
+			--NOT ISNEWVEHICLE && DAYSGAP >= 156 && DAYSGAP <= 180 &&
+			--Vehicle_Service_Tracking[Last Service Type] IN{"THIRD FREE SERVICE","PAID SERVICE","Running Repairs","Campaign","Accident" ,"E Breakdown","Chassis Not Existing" ,"Fourth Free Service" ,"Refurbish" }, "ACTIVE",
+			
+			
+			
+			-----------------------------------IN ACTIVE----------------
+			--IF ISSUE THEN DELETE THIS LOGIC
+			Vehicle_Service_Tracking[LAST ACTIVE] >= 366 && Vehicle_Service_Tracking[LAST ACTIVE] <= 544 && Vehicle_Service_Tracking[Last SR_Type] IN{"FIRST FREE SERVICE","SECOND FREE SERVICE"},"IN-ACTIVE",
+			--IF ISSUE THEN DELETE THIS LOGIC
+			
+			 PDI && Vehicle_Service_Tracking[LAST ACTIVE] >= 366 ,"IN-ACTIVE",
+			
+			Vehicle_Service_Tracking[LAST ACTIVE] >= 547 && Vehicle_Service_Tracking[LAST ACTIVE] <= 730,"IN-ACTIVE",
+			NOT ISBLANK(Vehicle_Service_Tracking[LAST ACTIVE]) && Vehicle_Service_Tracking[LAST ACTIVE] <= 364,"ACTIVE", 
+			Vehicle_Service_Tracking[LAST ACTIVE] >= 731 || DAYSGAP >=546,"DEAD"
+			
+			
+			
+			)
+			
+			```
+		lineageTag: 7b8f34c2-eca5-4816-9e64-9c9e6a313f86
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NEW VEHICLE' = ```
+			
+			VAR LastServDate =
+			    'Vehicle_Service_Tracking'[Last SR Date]
+			
+			VAR SaleDate =
+			    'Vehicle_Service_Tracking'[Invoice_Date]
+			
+			VAR LastSRType =
+			    UPPER(
+			        TRIM(
+			            'Vehicle_Service_Tracking'[Last SR_Type]
+			        )
+			    )
+			
+			VAR SecondLastServDate =
+			    'Vehicle_Service_Tracking'[Second Last SR Date]
+			
+			VAR SecondLastSRType =
+			    UPPER(
+			        TRIM(
+			            'Vehicle_Service_Tracking'[Second Last SR_Type]
+			        )
+			    )
+			
+			VAR LastActive =
+			    'Vehicle_Service_Tracking'[LAST ACTIVE]
+			
+			VAR IsNewVehicle =
+			    ISBLANK(LastServDate)
+			
+			VAR SaleDays =
+			    DATEDIFF(
+			        SaleDate,
+			        TODAY(),
+			        DAY
+			    )
+			
+			VAR ServiceDays =
+			    IF(
+			        NOT ISBLANK(LastServDate),
+			        DATEDIFF(
+			            LastServDate,
+			            TODAY(),
+			            DAY
+			        )
+			    )
+			
+			VAR PDI =
+			    LastSRType = "PDI"
+			
+			VAR IsFirstFree =
+			    LastSRType = "FIRST FREE SERVICE"
+			
+			VAR IsSecondFree =
+			    LastSRType = "SECOND FREE SERVICE"
+			
+			VAR IsThirdFree =
+			    LastSRType = "THIRD FREE SERVICE"
+			
+			VAR IsPaidHistory =
+			    LastSRType IN {
+			        
+			        "PAID SERVICE",
+			        "RUNNING REPAIRS",
+			        "CAMPAIGN",
+			        "ACCIDENT",
+			        "E BREAKDOWN",
+			        "CHASSIS NOT EXISTING",
+			        "FOURTH FREE SERVICE",
+			        "REFURBISH"
+			    }
+			
+			RETURN
+			
+			SWITCH(
+			    TRUE(),
+			
+			    /* =====================================================
+			       1. NEVER SERVICED / NEW VEHICLE
+			       ===================================================== */
+			
+			    IsNewVehicle
+			        && SaleDays >= 1
+			        && SaleDays <= 39,
+			        "NEW VEHICLE",
+			    
+			    PDI && SaleDays >= 1
+			        && SaleDays <= 39,
+			        "NEW VEHICLE"
+			    
+			        
+			        
+			        )
+			```
+		isHidden
+		lineageTag: 6bada6d8-0d64-44af-a8f8-9f1d426d5565
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FREE SERVICE(INSIDE)' = ```
+			
+			
+			VAR LastServDate =
+			    'Vehicle_Service_Tracking'[Last SR Date]
+			
+			VAR SaleDate =
+			    'Vehicle_Service_Tracking'[Invoice_Date]
+			
+			VAR OUTSIDER =
+			    Vehicle_Service_Tracking[Is Inside] = "OUTSIDE"
+			
+			VAR LastSRType =
+			    UPPER(
+			        TRIM(
+			            'Vehicle_Service_Tracking'[Last SR_Type]
+			        )
+			    )
+			
+			VAR LastActive =
+			    'Vehicle_Service_Tracking'[LAST ACTIVE]
+			
+			VAR IsNewVehicle =
+			    ISBLANK(LastServDate)
+			
+			VAR SaleDays =
+			    DATEDIFF(
+			        SaleDate,
+			        TODAY(),
+			        DAY
+			    )
+			
+			VAR ServiceDays =
+			    IF(
+			        NOT ISBLANK(LastServDate),
+			        DATEDIFF(
+			            LastServDate,
+			            TODAY(),
+			            DAY
+			        )
+			    )
+			
+			VAR PDI =
+			    LastSRType = "PDI"
+			
+			VAR IsFirstFree =
+			    LastSRType = "FIRST FREE SERVICE"
+			
+			VAR IsSecondFree =
+			    LastSRType = "SECOND FREE SERVICE"
+			
+			VAR IsThirdFree =
+			    LastSRType = "THIRD FREE SERVICE"
+			
+			VAR IsPaidHistory =
+			    LastSRType IN {
+			        "PAID SERVICE",
+			        "RUNNING REPAIRS",
+			        "CAMPAIGN",
+			        "ACCIDENT",
+			        "E BREAKDOWN",
+			        "CHASSIS NOT EXISTING",
+			        "FOURTH FREE SERVICE",
+			        "REFURBISH"
+			    }
+			
+			RETURN
+			
+			SWITCH(
+			    TRUE(),
+			
+			/*============================FREE SERVICE FOR INSIDE==============================================================*/
+			
+			  IsNewVehicle && ISBLANK(Vehicle_Service_Tracking[ACTIVE])
+			        && SaleDays >= 40
+			        && SaleDays <= 55,
+			        "CALL FOR FIRST SERVICE",
+			
+			
+			    PDI && SaleDays >= 40
+			        && SaleDays <= 55,
+			        "CALL FOR FIRST SERVICE",
+			
+			     PDI && ServiceDays >= 40
+			        && ServiceDays <= 55,
+			        "CALL FOR FIRST SERVICE",
+			
+			   
+			------------------
+			
+			     PDI && SaleDays > 55
+			        && SaleDays <= 71,
+			        "FS MISSED 0",
+			
+			     PDI
+			        && SaleDays > 55
+			        && SaleDays <= 71
+			        && ServiceDays > 55
+			        && ServiceDays <= 71,
+			        "FS MISSED 0",
+			
+			    IsNewVehicle && ISBLANK(Vehicle_Service_Tracking[ACTIVE])
+			        && SaleDays > 55
+			        && SaleDays <= 71,
+			        "FS MISSED 0",
+			
+			------------------
+			
+			     PDI && SaleDays > 71
+			        && SaleDays <= 101,
+			        "FS MISSED 1",
+			
+			     PDI
+			        && SaleDays > 71
+			        && SaleDays <= 101
+			        && ServiceDays > 71
+			        && ServiceDays <= 101,
+			        "FS MISSED 1",
+			
+			    IsNewVehicle && ISBLANK(Vehicle_Service_Tracking[ACTIVE])
+			        && SaleDays > 71
+			        && SaleDays <= 101,
+			        "FS MISSED 1",
+			
+			    ----------------------
+			    PDI && SaleDays > 101
+			        && SaleDays <= 159,
+			        "FS MISSED",
+			
+			     PDI
+			        && SaleDays > 101
+			        && SaleDays <= 159
+			        && ServiceDays > 56
+			        && ServiceDays <= 159,
+			        "FS MISSED",
+			
+			    IsNewVehicle && ISBLANK(Vehicle_Service_Tracking[ACTIVE])
+			        && SaleDays > 101
+			        && SaleDays <= 159,
+			        "FS MISSED",
+			
+			
+			    /* =====================================================
+			       2. SECOND FREE SERVICE
+			       ===================================================== */
+			
+			    IsFirstFree && ISBLANK(Vehicle_Service_Tracking[ACTIVE])
+			        && SaleDays >= 160
+			        && SaleDays <= 180,
+			        "CALL FOR SECOND SERVICE",
+			
+			    IsFirstFree && ISBLANK(Vehicle_Service_Tracking[ACTIVE])
+			        && SaleDays > 180
+			        && SaleDays <= 195,
+			        "SS MISSED 0",
+			
+			    IsFirstFree && ISBLANK(Vehicle_Service_Tracking[ACTIVE])
+			        && SaleDays > 195
+			        && SaleDays <= 225,
+			        "SS MISSED 1",
+			
+			    IsFirstFree && ISBLANK(Vehicle_Service_Tracking[ACTIVE])
+			        && SaleDays >= 225
+			        && SaleDays <= 344,
+			        "SS MISSED",
+			
+			
+			    /* =====================================================
+			       3. THIRD FREE SERVICE 
+			       ===================================================== */
+			
+			    IsSecondFree && ISBLANK(Vehicle_Service_Tracking[ACTIVE])
+			        && SaleDays >= 345
+			        && SaleDays <= 365,
+			        "CALL FOR THIRD SERVICE",
+			
+			    IsSecondFree && ISBLANK(Vehicle_Service_Tracking[ACTIVE])
+			        && SaleDays >= 366
+			        && SaleDays <= 380,
+			        "TS MISSED 0",
+			        
+			    IsSecondFree && ISBLANK(Vehicle_Service_Tracking[ACTIVE])
+			        && SaleDays >= 381
+			        && SaleDays <= 411,
+			        "TS MISSED 1" ,
+			    
+			    IsSecondFree && ISBLANK(Vehicle_Service_Tracking[ACTIVE])
+			        && SaleDays >= 412
+			        && SaleDays <= 545,
+			        "TS MISSED"
+			        
+			        )
+			```
+		isHidden
+		lineageTag: 94bdefd5-f26a-4fa5-804c-64fe1f105852
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PAID SERVICE' = ```
+			
+			
+			VAR LastServDate =
+			    'Vehicle_Service_Tracking'[Last SR Date]
+			
+			VAR SaleDate =
+			    'Vehicle_Service_Tracking'[Invoice_Date]
+			
+			VAR OUTSIDER =
+			    Vehicle_Service_Tracking[Is Inside] = "OUTSIDE"
+			
+			VAR LastSRType =
+			    UPPER(
+			        TRIM(
+			            'Vehicle_Service_Tracking'[Last SR_Type]
+			        )
+			    )
+			
+			VAR SecondLastServDate =
+			    'Vehicle_Service_Tracking'[Second Last SR Date]
+			
+			VAR SecondLastSRType =
+			    UPPER(
+			        TRIM(
+			            'Vehicle_Service_Tracking'[Second Last SR_Type]
+			        )
+			    )
+			
+			VAR LastActive =
+			    'Vehicle_Service_Tracking'[LAST ACTIVE]
+			
+			VAR IsNewVehicle =
+			    ISBLANK(LastServDate)
+			
+			VAR SaleDays =
+			    DATEDIFF(
+			        SaleDate,
+			        TODAY(),
+			        DAY
+			    )
+			
+			VAR ServiceDays =
+			    IF(
+			        NOT ISBLANK(LastServDate),
+			        DATEDIFF(
+			            LastServDate,
+			            TODAY(),
+			            DAY
+			        )
+			    )
+			
+			VAR SeondLastServiceDays =
+			    IF(
+			        NOT ISBLANK(SecondLastServDate),
+			        DATEDIFF(
+			            SecondLastServDate,
+			            TODAY(),
+			            DAY
+			        )
+			    )
+			
+			VAR PDI =
+			    LastSRType = "PDI"
+			
+			VAR ACCIDENTorCAMPAIGN =
+			    LastSRType in {"ACCIDENT","CAMPAIGN"}
+			
+			VAR IsFirstFree =
+			    LastSRType = "FIRST FREE SERVICE"
+			
+			VAR IsSecondFree =
+			    LastSRType = "SECOND FREE SERVICE"
+			
+			VAR IsThirdFree =
+			    LastSRType = "THIRD FREE SERVICE"
+			
+			VAR IsPaidHistory =
+			    LastSRType IN {
+			        "PAID SERVICE",
+			        "RUNNING REPAIRS",
+			        "CAMPAIGN",
+			        "ACCIDENT",
+			        "E BREAKDOWN",
+			        "CHASSIS NOT EXISTING",
+			        "FOURTH FREE SERVICE",
+			        "REFURBISH"
+			    }
+			
+			RETURN
+			
+			
+			SWITCH(
+			    TRUE(),
+			
+			
+			
+			 
+			   /* =====================================================
+			       4. PAID SERVICE
+			       ===================================================== */
+			
+			 
+			    IsThirdFree
+			        && ServiceDays > 155
+			        && ServiceDays <= 175,
+			        "CALL FOR PAID SERVICE",
+			
+			    IsThirdFree
+			        && ServiceDays >= 176
+			        && ServiceDays <= 190,
+			        "PAID MISSED 0",
+			
+			    IsThirdFree
+			        && ServiceDays >= 191
+			        && ServiceDays <= 220,
+			        "PAID MISSED 1",
+			
+			    IsThirdFree
+			        && ServiceDays >= 221
+			        && ServiceDays <= 365,
+			        "PAID MISSED",
+			
+			
+			    /* =====================================================
+			       5. PAID SERVICE / OTHER SERVICE HISTORY
+			       ===================================================== */
+			
+			    IsPaidHistory
+			        && ServiceDays > 155
+			        && ServiceDays <= 175,
+			        "CALL FOR MINOR PAID",
+			
+			    IsPaidHistory
+			        && ServiceDays >= 176
+			        && ServiceDays <= 190,
+			        "PAID MISSED MINOR 0",
+			
+			    IsPaidHistory
+			        && ServiceDays >= 191
+			        && ServiceDays <= 220,
+			        "PAID MISSED MINOR 1",
+			
+			    IsPaidHistory
+			        && ServiceDays >= 221
+			        && ServiceDays <= 350,
+			        "PAID MISSED MINOR",
+			
+			    IsPaidHistory
+			        && ServiceDays >= 351
+			        && ServiceDays <= 365,
+			        "CALL FOR MAJOR PAID",
+			
+			    IsPaidHistory
+			        && ServiceDays >= 366
+			        && ServiceDays <= 380,
+			        "PAID MISSED MAJOR 0",
+			
+			    IsPaidHistory
+			        && ServiceDays >= 381
+			        && ServiceDays <= 410,
+			        "PAID MISSED MAJOR 1",
+			
+			    IsPaidHistory
+			        && ServiceDays >= 411
+			        && ServiceDays <= 545,
+			        "PAID MISSED MAJOR")
+			```
+		isHidden
+		lineageTag: c20b4675-38dd-414c-812c-4bd8ed7133c9
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NEVER SERVICED' = ```
+			
+			
+			VAR LastServDate =
+			    'Vehicle_Service_Tracking'[Last SR Date]
+			
+			VAR SaleDate =
+			    'Vehicle_Service_Tracking'[Invoice_Date]
+			
+			VAR OUTSIDER =
+			    Vehicle_Service_Tracking[Is Inside] = "OUTSIDE"
+			
+			VAR LastSRType =
+			    UPPER(
+			        TRIM(
+			            'Vehicle_Service_Tracking'[Last SR_Type]
+			        )
+			    )
+			
+			VAR LastActive =
+			    'Vehicle_Service_Tracking'[LAST ACTIVE]
+			
+			
+			    
+			
+			VAR SaleDays =
+			    DATEDIFF(
+			        SaleDate,
+			        TODAY(),
+			        DAY
+			    )
+			
+			VAR ServiceDays =
+			    IF(
+			        NOT ISBLANK(LastServDate),
+			        DATEDIFF(
+			            LastServDate,
+			            TODAY(),
+			            DAY
+			        )
+			    )
+			
+			VAR IsNewVehicle =
+			    SaleDays <= 60
+			
+			VAR TotalServiceCount =
+			    Vehicle_Service_Tracking[Total Service]>0
+			VAR PDI =
+			    LastSRType = "PDI"
+			
+			VAR IsFirstFree =
+			    LastSRType = "FIRST FREE SERVICE"
+			
+			VAR IsSecondFree =
+			    LastSRType = "SECOND FREE SERVICE"
+			
+			VAR IsThirdFree =
+			    LastSRType = "THIRD FREE SERVICE"
+			
+			VAR IsPaidHistory =
+			    LastSRType IN {
+			        "PAID SERVICE",
+			        "RUNNING REPAIRS",
+			        "CAMPAIGN",
+			        "ACCIDENT",
+			        "E BREAKDOWN",
+			        "CHASSIS NOT EXISTING",
+			        "FOURTH FREE SERVICE",
+			        "REFURBISH"
+			    }
+			
+			RETURN
+			
+			
+			SWITCH(
+			    TRUE(),
+			
+			        Vehicle_Service_Tracking[Total Service] = 0
+			        && SaleDays > 380
+			        && SaleDays <= 545,
+			        "NEVER SERVICED"
+			)
+			```
+		isHidden
+		lineageTag: 51a1a60a-255e-445b-b5fa-2ac1f23453f5
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACTIVE = ```
+			
+			
+			VAR LastServDate =
+			    'Vehicle_Service_Tracking'[Last SR Date]
+			
+			VAR SaleDate =
+			    'Vehicle_Service_Tracking'[Invoice_Date]
+			
+			VAR LastSRType =
+			    UPPER(
+			        TRIM(
+			            'Vehicle_Service_Tracking'[Last SR_Type]
+			        )
+			    )
+			
+			VAR LastActive =
+			    'Vehicle_Service_Tracking'[LAST ACTIVE]
+			
+			VAR IsNewVehicle =
+			    ISBLANK(LastServDate)
+			
+			VAR SaleDays =
+			    DATEDIFF(
+			        SaleDate,
+			        TODAY(),
+			        DAY
+			    )
+			
+			VAR ServiceDays =
+			    IF(
+			        NOT ISBLANK(LastServDate),
+			        DATEDIFF(
+			            LastServDate,
+			            TODAY(),
+			            DAY
+			        )
+			    )
+			
+			VAR PDI =
+			    LastSRType = "PDI"
+			
+			VAR IsFirstFree =
+			    LastSRType = "FIRST FREE SERVICE"
+			
+			VAR IsSecondFree =
+			    LastSRType = "SECOND FREE SERVICE"
+			
+			VAR IsThirdFree =
+			    LastSRType = "THIRD FREE SERVICE"
+			
+			VAR IsPaidHistory =
+			    LastSRType IN {
+			        "THIRD FREE SERVICE",
+			        "PAID SERVICE",
+			        "RUNNING REPAIRS",
+			        "CAMPAIGN",
+			        "ACCIDENT",
+			        "E BREAKDOWN",
+			        "CHASSIS NOT EXISTING",
+			        "FOURTH FREE SERVICE",
+			        "REFURBISH"
+			    }
+			
+			RETURN
+			
+			SWITCH(
+			    TRUE(),
+			
+			
+			
+			 /* =====================================================
+			       6. OLD ACTIVE VEHICLES
+			       ===================================================== */
+			
+			   NOT PDI && ServiceDays <= 155 && NOT ISBLANK(LastServDate), "ACTIVE",
+			
+			    IsSecondFree 
+			        && ServiceDays >= 156
+			        && ServiceDays <= 345,
+			        "ACTIVE",
+			
+			    IsThirdFree
+			        && ServiceDays >= 156
+			        && ServiceDays <= 345,
+			        "ACTIVE"
+			   
+			   
+			
+			
+			      
+			)
+			```
+		isHidden
+		lineageTag: 705020a0-90c7-492c-9422-e2acc3ca188d
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DEAD = ```
+			
+			
+			VAR LastServDate =
+			    'Vehicle_Service_Tracking'[Last SR Date]
+			
+			VAR SaleDate =
+			    'Vehicle_Service_Tracking'[Invoice_Date]
+			
+			VAR LastSRType =
+			    UPPER(
+			        TRIM(
+			            'Vehicle_Service_Tracking'[Last SR_Type]
+			        )
+			    )
+			
+			VAR LastActive =
+			    'Vehicle_Service_Tracking'[LAST ACTIVE]
+			
+			VAR IsNewVehicle =
+			    ISBLANK(LastServDate)
+			
+			VAR SaleDays =
+			    DATEDIFF(
+			        SaleDate,
+			        TODAY(),
+			        DAY
+			    )
+			
+			VAR ServiceDays =
+			    IF(
+			        NOT ISBLANK(LastServDate),
+			        DATEDIFF(
+			            LastServDate,
+			            TODAY(),
+			            DAY
+			        )
+			    )
+			
+			VAR PDI =
+			    LastSRType = "PDI"
+			
+			VAR IsFirstFree =
+			    LastSRType = "FIRST FREE SERVICE"
+			
+			VAR IsSecondFree =
+			    LastSRType = "SECOND FREE SERVICE"
+			
+			VAR IsThirdFree =
+			    LastSRType = "THIRD FREE SERVICE"
+			
+			VAR IsPaidHistory =
+			    LastSRType IN {
+			        "THIRD FREE SERVICE",
+			        "PAID SERVICE",
+			        "RUNNING REPAIRS",
+			        "CAMPAIGN",
+			        "ACCIDENT",
+			        "E BREAKDOWN",
+			        "CHASSIS NOT EXISTING",
+			        "FOURTH FREE SERVICE",
+			        "REFURBISH"
+			    }
+			
+			RETURN
+			
+			SWITCH(
+			    TRUE(),
+			
+			   PDI && ISBLANK(Vehicle_Service_Tracking[ACTIVE]) 
+			   && SaleDays >344 && SaleDays <545,
+			        "In-Active",
+			
+			    PDI && ISBLANK(Vehicle_Service_Tracking[ACTIVE]) 
+			    && ServiceDays >=160 && ServiceDays <545,
+			        "In-Active",
+			
+			
+			IsFirstFree && ISBLANK(Vehicle_Service_Tracking[ACTIVE])
+			        && SaleDays >344 && SaleDays <545,
+			        "In-Active",
+			
+			IsFirstFree 
+			        && ServiceDays >344  && ServiceDays <= 545,
+			        "In-Active",
+			
+			
+			IsSecondFree && ISBLANK(Vehicle_Service_Tracking[ACTIVE])
+			        && SaleDays >344 && SaleDays <545,
+			        "In-Active",
+			
+			IsThirdFree && ISBLANK(Vehicle_Service_Tracking[ACTIVE])
+			        && SaleDays >344 && SaleDays <545,
+			        "In-Active",
+			
+			IsThirdFree && ISBLANK(Vehicle_Service_Tracking[ACTIVE])
+			        && ServiceDays >344 && ServiceDays <545,
+			        "In-Active",
+			
+			
+			  IsPaidHistory
+			        && ServiceDays > 545
+			        && ServiceDays <= 731,
+			        "In-Active",
+			ISBLANK(Vehicle_Service_Tracking[NEVER SERVICED]) &&
+			    SaleDays > 160 && ServiceDays = 0,
+			        "In-Active",
+			
+			  /* =====================================================
+			       7. DEAD
+			       ===================================================== */
+			
+			    LastActive > 731
+			        || ServiceDays >= 546,
+			        "DEAD")
+			
+			
+			```
+		isHidden
+		lineageTag: 4f302038-1908-4802-843c-d6029baf53d6
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FREE SERVICE(OUTSIDE)' = ```
+			
+			
+			VAR LastServDate =
+			    'Vehicle_Service_Tracking'[Last SR Date]
+			
+			VAR SaleDate =
+			    'Vehicle_Service_Tracking'[Invoice_Date]
+			
+			VAR OUTSIDER =
+			    Vehicle_Service_Tracking[Is Inside] = "Outside"
+			
+			VAR LastSRType =
+			    UPPER(
+			        TRIM(
+			            'Vehicle_Service_Tracking'[Last SR_Type]
+			        )
+			    )
+			
+			VAR LastActive =
+			    'Vehicle_Service_Tracking'[LAST ACTIVE]
+			
+			VAR IsNewVehicle =
+			    ISBLANK(LastServDate)
+			
+			VAR SaleDays =
+			    DATEDIFF(
+			        SaleDate,
+			        TODAY(),
+			        DAY
+			    )
+			
+			VAR ServiceDays =
+			    IF(
+			        NOT ISBLANK(LastServDate),
+			        DATEDIFF(
+			            LastServDate,
+			            TODAY(),
+			            DAY
+			        )
+			    )
+			
+			VAR PDI =
+			    LastSRType = "PDI"
+			
+			VAR IsFirstFree =
+			    LastSRType = "FIRST FREE SERVICE"
+			
+			VAR IsSecondFree =
+			    LastSRType = "SECOND FREE SERVICE"
+			
+			VAR IsThirdFree =
+			    LastSRType = "THIRD FREE SERVICE"
+			
+			VAR IsPaidHistory =
+			    LastSRType IN {
+			        "PAID SERVICE",
+			        "RUNNING REPAIRS",
+			        "CAMPAIGN",
+			        "ACCIDENT",
+			        "E BREAKDOWN",
+			        "CHASSIS NOT EXISTING",
+			        "FOURTH FREE SERVICE",
+			        "REFURBISH"
+			    }
+			
+			RETURN
+			
+			SWITCH(
+			    TRUE(),
+			
+			
+			    /*============================FREE SERVICE FOR OUTSIDER==============================================================*/
+			
+			  /* =====================================================
+			       2. SECOND FREE SERVICE
+			       ===================================================== */
+			
+			    IsFirstFree 
+			        && ServiceDays >= 160
+			        && ServiceDays <= 180,
+			        "CALL FOR SECOND SERVICE",
+			
+			    IsFirstFree 
+			        && ServiceDays > 180
+			        && ServiceDays <= 195,
+			        "SS MISSED 0",
+			
+			    IsFirstFree 
+			        && ServiceDays > 195
+			        && ServiceDays <= 225,
+			        "SS MISSED 1",
+			
+			    IsFirstFree 
+			        && ServiceDays >= 225
+			        && ServiceDays <= 344,
+			        "SS MISSED",
+			
+			
+			    /* =====================================================
+			       3. THIRD FREE SERVICE 
+			       ===================================================== */
+			
+			    IsSecondFree 
+			        && ServiceDays >= 345
+			        && ServiceDays <= 365,
+			        "CALL FOR THIRD SERVICE",
+			
+			    IsSecondFree
+			        && ServiceDays >= 366
+			        && ServiceDays <= 380,
+			        "TS MISSED 0",
+			        
+			    IsSecondFree
+			        && ServiceDays >= 381
+			        && ServiceDays <= 411,
+			        "TS MISSED 1" ,
+			    
+			    IsSecondFree
+			        && ServiceDays >= 412
+			        && ServiceDays <= 545,
+			        "TS MISSED"
+			        
+			        
+			        
+			        
+			        
+			        )
+			```
+		isHidden
+		lineageTag: d4b28f49-ff29-411d-b0cb-08c41eb5f36b
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Service Status All Coalesce New' =
+			COALESCE
+			            (
+			               Vehicle_Service_Tracking[FREE SERVICE(OUTSIDE)],
+			               Vehicle_Service_Tracking[FREE SERVICE(INSIDE)],
+			               Vehicle_Service_Tracking[PAID SERVICE],
+			               Vehicle_Service_Tracking[ACTIVE],
+			               Vehicle_Service_Tracking[NEVER SERVICED],
+			               Vehicle_Service_Tracking[DEAD],
+			               Vehicle_Service_Tracking[NEW VEHICLE]
+			                )
+		lineageTag: 088e6687-071d-455f-aadd-2a5a55d731f3
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Colony
+		dataType: string
+		lineageTag: 1c9c372a-cbd4-4b25-acf8-32cb9afacb88
+		summarizeBy: none
+		sourceColumn: Colony
+
+		annotation SummarizationSetBy = Automatic
+
+	column Contact_Home_Phone
+		dataType: string
+		lineageTag: 36d32a3f-1a41-4816-9a66-e1678d6efc3e
+		summarizeBy: none
+		sourceColumn: Contact_Home_Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column Contact_Work_Phone
+		dataType: string
+		lineageTag: 91de1521-161b-4b3f-a31e-1717508f1ce9
+		summarizeBy: none
+		sourceColumn: Contact_Work_Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column Contact_Phones_Res_Off_Mob
+		dataType: string
+		lineageTag: 2f4c0173-5358-401f-b8e8-1aee7a7ba832
+		summarizeBy: none
+		sourceColumn: Contact_Phones_Res_Off_Mob
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Second Last SR Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 5aad980e-43a4-4c42-9454-56d5fa50031f
+		summarizeBy: none
+		sourceColumn: Second Last SR Date
+
+		variation Variation
+			isDefault
+			relationship: fecc753c-3eec-48ab-8447-58ef852aa662
+			defaultHierarchy: LocalDateTable_6a4df88c-b212-46db-a692-0007c1ca79e3.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Second Last SR_Type'
+		dataType: string
+		lineageTag: 4831a07b-69a0-4e9c-ae09-ee5935719edd
+		summarizeBy: none
+		sourceColumn: Second Last SR_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last SR_Type'
+		dataType: string
+		lineageTag: e5216c1c-74b9-401c-919e-267267e5854f
+		summarizeBy: none
+		sourceColumn: Last SR_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SERVICE STATUS Free and Paid for with second last sr type' = ```
+			
+			
+			VAR Chassis =
+			    'Vehicle_Service_Tracking'[Chassis_No]
+			
+			VAR SaleDate =
+			    'Vehicle_Service_Tracking'[Invoice_Date]
+			
+			VAR InsideOutside =
+			    UPPER(
+			        TRIM(
+			            'Vehicle_Service_Tracking'[Is Inside]
+			        )
+			    )
+			
+			VAR IsInside =
+			    InsideOutside = "INSIDE"
+			
+			VAR IsOutside =
+			    InsideOutside = "OUTSIDE"
+			
+			VAR TotalService =
+			    COALESCE(
+			        'Vehicle_Service_Tracking'[Total Service],
+			        0
+			    )
+			
+			VAR LastServDate =
+			    'Vehicle_Service_Tracking'[Last SR Date]
+			
+			VAR LastSRType =
+			    UPPER(
+			        TRIM(
+			            'Vehicle_Service_Tracking'[Last SR_Type]
+			        )
+			    )
+			
+			
+			/* =========================================================
+			   SALE DAYS
+			   ========================================================= */
+			
+			VAR SaleDays =
+			    IF(
+			        NOT ISBLANK(SaleDate),
+			        DATEDIFF(
+			            SaleDate,
+			            TODAY(),
+			            DAY
+			        )
+			    )
+			
+			
+			/* =========================================================
+			   FIND LATEST VALID SERVICE
+			
+			   ACCIDENT + CAMPAIGN ko ignore karega.
+			   ========================================================= */
+			
+			VAR ValidServiceTable =
+			    FILTER(
+			        ALL('Fact Service_Raw'),
+			
+			        'Fact Service_Raw'[Chassis_No] = Chassis
+			
+			            &&
+			
+			        NOT ISBLANK(
+			            'Fact Service_Raw'[Closed_Date_Time]
+			        )
+			
+			            &&
+			
+			        NOT(
+			            UPPER(
+			                TRIM(
+			                    'Fact Service_Raw'[SR_Type]
+			                )
+			            )
+			            IN {
+			                "ACCIDENT",
+			                "CAMPAIGN"
+			            }
+			        )
+			    )
+			
+			
+			/* =========================================================
+			   LATEST VALID SERVICE DATE
+			   ========================================================= */
+			
+			VAR EffectiveServiceDate =
+			    MAXX(
+			        TOPN(
+			            1,
+			            ValidServiceTable,
+			            'Fact Service_Raw'[Closed_Date_Time],
+			            DESC
+			        ),
+			        'Fact Service_Raw'[Closed_Date_Time]
+			    )
+			
+			
+			/* =========================================================
+			   LATEST VALID SERVICE TYPE
+			   ========================================================= */
+			
+			VAR EffectiveServiceType =
+			    MAXX(
+			        TOPN(
+			            1,
+			            ValidServiceTable,
+			            'Fact Service_Raw'[Closed_Date_Time],
+			            DESC
+			        ),
+			        UPPER(
+			            TRIM(
+			                'Fact Service_Raw'[SR_Type]
+			            )
+			        )
+			    )
+			
+			
+			/* =========================================================
+			   DAYS FROM LAST VALID SERVICE
+			
+			   IMPORTANT:
+			   ACTIVE / INACTIVE / PAID / FREE
+			   sab isi date se calculate honge.
+			   ========================================================= */
+			
+			VAR ServiceDays =
+			    IF(
+			        NOT ISBLANK(EffectiveServiceDate),
+			        DATEDIFF(
+			            EffectiveServiceDate,
+			            TODAY(),
+			            DAY
+			        )
+			    )
+			
+			
+			/* =========================================================
+			   SERVICE TYPE
+			   ========================================================= */
+			
+			VAR IsPDI =
+			    EffectiveServiceType = "PDI"
+			
+			VAR IsFirstFree =
+			    EffectiveServiceType = "FIRST FREE SERVICE"
+			
+			VAR IsSecondFree =
+			    EffectiveServiceType = "SECOND FREE SERVICE"
+			
+			VAR IsThirdFree =
+			    EffectiveServiceType = "THIRD FREE SERVICE"
+			
+			VAR IsPaidHistory =
+			    EffectiveServiceType IN {
+			        "PAID SERVICE",
+			        "RUNNING REPAIRS",
+			        "E BREAKDOWN",
+			        "CHASSIS NOT EXISTING",
+			        "FOURTH FREE SERVICE",
+			        "REFURBISH"
+			    }
+			
+			
+			/* =========================================================
+			   NEVER SERVICED
+			   ========================================================= */
+			
+			VAR NeverServiced =
+			    TotalService = 0
+			
+			
+			RETURN
+			
+			SWITCH(
+			    TRUE(),
+			
+			
+			/* =========================================================
+			   1. NEVER SERVICED - INSIDE
+			   ========================================================= */
+			
+			
+			    IsInside
+			        &&
+			    NeverServiced
+			        &&
+			    SaleDays >= 40
+			        &&
+			    SaleDays <= 55,
+			
+			    "CALL FOR FIRST SERVICE",
+			
+			
+			    IsInside
+			        &&
+			    NeverServiced
+			        &&
+			    SaleDays >= 56
+			        &&
+			    SaleDays <= 71,
+			
+			    "FS MISSED 0",
+			
+			
+			    IsInside
+			        &&
+			    NeverServiced
+			        &&
+			    SaleDays >= 72
+			        &&
+			    SaleDays <= 101,
+			
+			    "FS MISSED 1",
+			
+			
+			    IsInside
+			        &&
+			    NeverServiced
+			        &&
+			    SaleDays >= 102
+			        &&
+			    SaleDays <= 159,
+			
+			    "FS MISSED",
+			
+			
+			    IsInside
+			        &&
+			    IsPDI
+			        &&
+			    SaleDays >= 40
+			        &&
+			    SaleDays <= 55,
+			
+			    "CALL FOR FIRST SERVICE",
+			
+			
+			    IsInside
+			        &&
+			    IsPDI
+			        &&
+			    SaleDays >= 56
+			        &&
+			    SaleDays <= 71,
+			
+			    "FS MISSED 0",
+			
+			
+			    IsInside
+			        &&
+			    IsPDI
+			        &&
+			    SaleDays >= 72
+			        &&
+			    SaleDays <= 101,
+			
+			    "FS MISSED 1",
+			
+			
+			    IsInside
+			        &&
+			    IsPDI
+			        &&
+			    SaleDays >= 102
+			        &&
+			    SaleDays <= 159,
+			
+			    "FS MISSED",
+			
+			
+			/* =========================================================
+			   3. FIRST FREE → SECOND FREE
+			   INSIDE
+			   ========================================================= */
+			
+			    IsInside
+			        &&
+			    IsFirstFree
+			        &&
+			    SaleDays >= 160
+			        &&
+			    SaleDays <= 180,
+			
+			    "CALL FOR SECOND SERVICE",
+			
+			
+			    IsInside
+			        &&
+			    IsFirstFree
+			        &&
+			    SaleDays >= 181
+			        &&
+			    SaleDays <= 195,
+			
+			    "SS MISSED 0",
+			
+			
+			    IsInside
+			        &&
+			    IsFirstFree
+			        &&
+			    SaleDays >= 196
+			        &&
+			    SaleDays <= 224,
+			
+			    "SS MISSED 1",
+			
+			
+			    IsInside
+			        &&
+			    IsFirstFree
+			        &&
+			    SaleDays >= 225
+			        &&
+			    SaleDays <= 344,
+			
+			    "SS MISSED",
+			
+			
+			/* =========================================================
+			   4. SECOND FREE → THIRD FREE
+			   INSIDE
+			   ========================================================= */
+			
+			    IsInside
+			        &&
+			    IsSecondFree
+			        &&
+			    SaleDays >= 345
+			        &&
+			    SaleDays <= 365,
+			
+			    "CALL FOR THIRD SERVICE",
+			
+			
+			    IsInside
+			        &&
+			    IsSecondFree
+			        &&
+			    SaleDays >= 366
+			        &&
+			    SaleDays <= 380,
+			
+			    "TS MISSED 0",
+			
+			
+			    IsInside
+			        &&
+			    IsSecondFree
+			        &&
+			    SaleDays >= 381
+			        &&
+			    SaleDays <= 411,
+			
+			    "TS MISSED 1",
+			
+			
+			    IsInside
+			        &&
+			    IsSecondFree
+			        &&
+			    SaleDays >= 412
+			        &&
+			    SaleDays <= 545,
+			
+			    "TS MISSED",
+			
+			
+			/* =========================================================
+			   5. OUTSIDE → FIRST FREE
+			   ========================================================= */
+			
+			    IsOutside
+			        &&
+			    IsFirstFree
+			        &&
+			    ServiceDays >= 160
+			        &&
+			    ServiceDays <= 180,
+			
+			    "CALL FOR SECOND SERVICE",
+			
+			
+			    IsOutside
+			        &&
+			    IsFirstFree
+			        &&
+			    ServiceDays >= 181
+			        &&
+			    ServiceDays <= 195,
+			
+			    "SS MISSED 0",
+			
+			
+			    IsOutside
+			        &&
+			    IsFirstFree
+			        &&
+			    ServiceDays >= 196
+			        &&
+			    ServiceDays <= 224,
+			
+			    "SS MISSED 1",
+			
+			
+			    IsOutside
+			        &&
+			    IsFirstFree
+			        &&
+			    ServiceDays >= 225
+			        &&
+			    ServiceDays <= 344,
+			
+			    "SS MISSED",
+			
+			
+			/* =========================================================
+			   6. OUTSIDE → SECOND FREE
+			   ========================================================= */
+			
+			    IsOutside
+			        &&
+			    IsSecondFree
+			        &&
+			    ServiceDays >= 345
+			        &&
+			    ServiceDays <= 365,
+			
+			    "CALL FOR THIRD SERVICE",
+			
+			
+			    IsOutside
+			        &&
+			    IsSecondFree
+			        &&
+			    ServiceDays >= 366
+			        &&
+			    ServiceDays <= 380,
+			
+			    "TS MISSED 0",
+			
+			
+			    IsOutside
+			        &&
+			    IsSecondFree
+			        &&
+			    ServiceDays >= 381
+			        &&
+			    ServiceDays <= 411,
+			
+			    "TS MISSED 1",
+			
+			
+			    IsOutside
+			        &&
+			    IsSecondFree
+			        &&
+			    ServiceDays >= 412
+			        &&
+			    ServiceDays <= 545,
+			
+			    "TS MISSED",
+			
+			
+			/* =========================================================
+			   7. THIRD FREE → PAID
+			   INSIDE + OUTSIDE
+			   ========================================================= */
+			
+			    IsThirdFree
+			        &&
+			    ServiceDays >= 156
+			        &&
+			    ServiceDays <= 175,
+			
+			    "CALL FOR PAID SERVICE",
+			
+			
+			    IsThirdFree
+			        &&
+			    ServiceDays >= 176
+			        &&
+			    ServiceDays <= 190,
+			
+			    "PAID MISSED 0",
+			
+			
+			    IsThirdFree
+			        &&
+			    ServiceDays >= 191
+			        &&
+			    ServiceDays <= 220,
+			
+			    "PAID MISSED 1",
+			
+			
+			    IsThirdFree
+			        &&
+			    ServiceDays >= 221
+			        &&
+			    ServiceDays <= 350,
+			
+			    "PAID MISSED",
+			
+			
+			/* =========================================================
+			   8. PAID HISTORY → NEXT PAID
+			   ========================================================= */
+			
+			    IsPaidHistory
+			        &&
+			    ServiceDays >= 156
+			        &&
+			    ServiceDays <= 175,
+			
+			    "CALL FOR MINOR PAID",
+			
+			
+			    IsPaidHistory
+			        &&
+			    ServiceDays >= 176
+			        &&
+			    ServiceDays <= 190,
+			
+			    "PAID MISSED MINOR 0",
+			
+			
+			    IsPaidHistory
+			        &&
+			    ServiceDays >= 191
+			        &&
+			    ServiceDays <= 220,
+			
+			    "PAID MISSED MINOR 1",
+			
+			
+			    IsPaidHistory
+			        &&
+			    ServiceDays >= 221
+			        &&
+			    ServiceDays <= 350,
+			
+			    "PAID MISSED MINOR",
+			
+			
+			    IsPaidHistory
+			        &&
+			    ServiceDays >= 351
+			        &&
+			    ServiceDays <= 365,
+			
+			    "CALL FOR MAJOR PAID",
+			
+			
+			    IsPaidHistory
+			        &&
+			    ServiceDays >= 366
+			        &&
+			    ServiceDays <= 380,
+			
+			    "PAID MISSED MAJOR 0",
+			
+			
+			    IsPaidHistory
+			        &&
+			    ServiceDays >= 381
+			        &&
+			    ServiceDays <= 410,
+			
+			    "PAID MISSED MAJOR 1",
+			
+			
+			    IsPaidHistory
+			        &&
+			    ServiceDays >= 411
+			        &&
+			    ServiceDays <= 545,
+			
+			    "PAID MISSED MAJOR",
+			    /* =========================================================
+			   1. NEVER SERVICED - INSIDE
+			   ========================================================= */
+			
+			    IsInside
+			        &&
+			    NeverServiced
+			        &&
+			    SaleDays >= 1
+			        &&
+			    SaleDays <= 39,
+			
+			    "NEW VEHICLE",
+				
+				
+				/* =========================================================
+			   2. PDI - INSIDE
+			   ========================================================= */
+			
+			    IsInside
+			        &&
+			    IsPDI
+			        &&
+			    SaleDays >= 1
+			        &&
+			    SaleDays <= 39,
+			
+			    "NEW VEHICLE",
+			    /* =========================================================
+			   9. NEVER SERVICED - INACTIVE
+			   ========================================================= */
+			
+			    NeverServiced
+			        &&
+			    SaleDays >= 546
+			        &&
+			    SaleDays <= 731,
+			
+			    "IN-ACTIVE",
+			
+			
+			/* =========================================================
+			   10. SERVICED VEHICLE - INACTIVE
+			   ========================================================= */
+			
+			    NOT ISBLANK(EffectiveServiceDate)
+			        &&
+			    ServiceDays >= 546
+			        &&
+			    ServiceDays <= 731,
+			
+			    "IN-ACTIVE"
+				
+			)
+			```
+		lineageTag: 77d108c5-ae8b-45ea-aa5f-4637555dc0ec
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Active and New vehicle' = ```
+			
+			VAR Chassis =
+			    'Vehicle_Service_Tracking'[Chassis_No]
+			
+			VAR SaleDate =
+			    'Vehicle_Service_Tracking'[Invoice_Date]
+			
+			VAR InsideOutside =
+			    UPPER(
+			        TRIM(
+			            'Vehicle_Service_Tracking'[Is Inside]
+			        )
+			    )
+			
+			VAR IsInside =
+			    InsideOutside = "INSIDE"
+			
+			VAR IsOutside =
+			    InsideOutside = "OUTSIDE"
+			
+			VAR TotalService =
+			    COALESCE(
+			        'Vehicle_Service_Tracking'[Total Service],
+			        0
+			    )
+			
+			VAR LastServDate =
+			    'Vehicle_Service_Tracking'[Last SR Date]
+			
+			VAR LastSRType =
+			    UPPER(
+			        TRIM(
+			            'Vehicle_Service_Tracking'[Last SR_Type]
+			        )
+			    )
+			
+			
+			/* =========================================================
+			   SALE DAYS
+			   ========================================================= */
+			
+			VAR SaleDays =
+			    IF(
+			        NOT ISBLANK(SaleDate),
+			        DATEDIFF(
+			            SaleDate,
+			            TODAY(),
+			            DAY
+			        )
+			    )
+			
+			
+			/* =========================================================
+			   FIND LATEST VALID SERVICE
+			
+			   ACCIDENT + CAMPAIGN ko ignore karega.
+			   ========================================================= */
+			
+			VAR ValidServiceTable =
+			    FILTER(
+			        ALL('Fact Service_Raw'),
+			
+			        'Fact Service_Raw'[Chassis_No] = Chassis
+			
+			            &&
+			
+			        NOT ISBLANK(
+			            'Fact Service_Raw'[Closed_Date_Time]
+			        )
+			
+			            &&
+			
+			        NOT(
+			            UPPER(
+			                TRIM(
+			                    'Fact Service_Raw'[SR_Type]
+			                )
+			            )
+			            IN {
+			                "ACCIDENT",
+			                "CAMPAIGN"
+			            }
+			        )
+			    )
+			
+			
+			/* =========================================================
+			   LATEST VALID SERVICE DATE
+			   ========================================================= */
+			
+			VAR EffectiveServiceDate =
+			    MAXX(
+			        TOPN(
+			            1,
+			            ValidServiceTable,
+			            'Fact Service_Raw'[Closed_Date_Time],
+			            DESC
+			        ),
+			        'Fact Service_Raw'[Closed_Date_Time]
+			    )
+			
+			
+			/* =========================================================
+			   LATEST VALID SERVICE TYPE
+			   ========================================================= */
+			
+			VAR EffectiveServiceType =
+			    MAXX(
+			        TOPN(
+			            1,
+			            ValidServiceTable,
+			            'Fact Service_Raw'[Closed_Date_Time],
+			            DESC
+			        ),
+			        UPPER(
+			            TRIM(
+			                'Fact Service_Raw'[SR_Type]
+			            )
+			        )
+			    )
+			
+			
+			/* =========================================================
+			   DAYS FROM LAST VALID SERVICE
+			
+			   IMPORTANT:
+			   ACTIVE / INACTIVE / PAID / FREE
+			   sab isi date se calculate honge.
+			   ========================================================= */
+			
+			VAR ServiceDays =
+			    IF(
+			        NOT ISBLANK(EffectiveServiceDate),
+			        DATEDIFF(
+			            EffectiveServiceDate,
+			            TODAY(),
+			            DAY
+			        )
+			    )
+			
+			
+			/* =========================================================
+			   SERVICE TYPE
+			   ========================================================= */
+			
+			VAR IsPDI =
+			    EffectiveServiceType = "PDI"
+			
+			VAR IsFirstFree =
+			    EffectiveServiceType = "FIRST FREE SERVICE"
+			
+			VAR IsSecondFree =
+			    EffectiveServiceType = "SECOND FREE SERVICE"
+			
+			VAR IsThirdFree =
+			    EffectiveServiceType = "THIRD FREE SERVICE"
+			
+			VAR IsPaidHistory =
+			    EffectiveServiceType IN {
+			        "PAID SERVICE",
+			        "RUNNING REPAIRS",
+			        "E BREAKDOWN",
+			        "CHASSIS NOT EXISTING",
+			        "FOURTH FREE SERVICE",
+			        "REFURBISH"
+			    }
+			
+			
+			/* =========================================================
+			   NEVER SERVICED
+			   ========================================================= */
+			
+			VAR NeverServiced =
+			    TotalService = 0
+			
+			
+			RETURN
+			
+			SWITCH(
+			    TRUE(),
+			/* =========================================================
+			   1. NEVER SERVICED - INSIDE
+			   ========================================================= */
+			
+			    IsInside
+			        &&
+			    NeverServiced
+			        &&
+			    SaleDays >= 1
+			        &&
+			    SaleDays <= 39,
+			
+			    "NEW VEHICLE",
+				
+				
+				/* =========================================================
+			   2. PDI - INSIDE
+			   ========================================================= */
+			
+			    IsInside
+			        &&
+			    IsPDI
+			        &&
+			    SaleDays >= 1
+			        &&
+			    SaleDays <= 39,
+			
+			    "NEW VEHICLE",
+				
+				
+				/* =========================================================
+			   12. ACTIVE
+			   ========================================================= */
+			
+			    NOT ISBLANK(EffectiveServiceDate)
+			        &&
+			    ServiceDays >= 0
+			        &&
+			    ServiceDays <= 155,
+			
+			    "ACTIVE")
+			```
+		lineageTag: 1e979a15-1610-4336-9e6a-3b9b1aef62f2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Final_Remark
+		dataType: string
+		lineageTag: d9fb05dd-1bc1-44ac-bd61-b9b937556aef
+		summarizeBy: none
+		sourceColumn: Final_Remark
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Near by Centre' =
+			SWITCH(TRUE(),
+			ISBLANK(Vehicle_Service_Tracking[City]) || Vehicle_Service_Tracking[City] = "Indore", RELATED(Indore_Ward[Tata_Near_by]))
+		lineageTag: eac98b86-6526-4253-bf49-24499045e5bb
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: fe26955a-be6a-42e2-8fe6-eb90e344aa58
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vehicle_Registration_Number
+		dataType: string
+		lineageTag: 58fa67c9-0631-4518-84fd-f4e86b0afc78
+		summarizeBy: none
+		sourceColumn: Vehicle_Registration_Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column KMS
+		dataType: double
+		formatString: 0
+		lineageTag: 40844726-4547-4450-a4c8-f724cea93860
+		summarizeBy: sum
+		sourceColumn: KMS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	partition Vehicle_Service_Tracking = m
+		mode: import
+		queryGroup: Others
+		source =
+				let
+				    Source = Sql.Databases("DESKTOP-M0KE14I\MSSQLSERVERSHYAM"),
+				    Tata = Source{[Name="Tata"]}[Data],
+				    dbo_VW_Vehicle_Service_Tracking = Tata{[Schema="dbo",Item="VW_Vehicle_Service_Tracking"]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(dbo_VW_Vehicle_Service_Tracking, each ([Remove Outer chassis] = 0)),
+				    #"Trimmed Text" = Table.TransformColumns(#"Filtered Rows",{{"Address", Text.Trim, type text}}),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Trimmed Text",{{"Address", Text.Proper, type text}}),
+				 #"Changed Type" = Table.TransformColumnTypes(#"Capitalized Each Word",{{"Invoice_Date", type datetime}}),
+				    #"Reordered Columns1" = Table.ReorderColumns(#"Changed Type",{"Chassis_No", "Invoice_Date", "Delivery_Date", "Customer_Name", "Contact_No", "Contact_Cell_Phone", "Contact_Home_Phone", "Contact_Work_Phone", "Second Last SR Date", "Contact_Phones_Res_Off_Mob", "Sales_Man", "Delivery_Location", "First SR Date", "Last SR Date", "Paid SR Cnt", "Total Service", "Rau", "WorkShop", "Badnawar", "Bhicholi", "Dhamnod", "Dhar", "Kukshi", "Manawar", "Last_Name", "First_Name", "Last SR_Type", "First SR_Type", "Second Last SR_Type", "Final_Remark", "Address", "Remove Outer chassis", "Colony"})
+				in
+				    #"Reordered Columns1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

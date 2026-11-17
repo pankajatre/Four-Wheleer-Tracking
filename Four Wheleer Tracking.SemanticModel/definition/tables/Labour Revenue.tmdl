@@ -1,0 +1,90 @@
+table 'Labour Revenue'
+	lineageTag: c167e0cd-471a-4bef-8a1b-b1d90b5bb0e1
+
+	measure 'Total Labour Invoice Amount' =
+			SUMX(VW_Master_Service_Invoice,
+			                            VW_Master_Service_Invoice[Final_Labour_Invoice_Amount] - VW_Master_Service_Invoice[Service_Tax])
+		lineageTag: 059e9d18-c2a5-4163-85f4-b6298a6c9873
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MTD Labour Revenue' = TOTALMTD([Total Labour Invoice Amount],Dim_Date[Date])
+		lineageTag: 03bc6fdd-9491-441b-b1fa-7d63907a2366
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MTD Labour Revenue per Vehicle' = ```
+			
+			                    DIVIDE([MTD Labour Revenue],[MTD Total Job Card])
+			```
+		lineageTag: b1d85bb1-d845-4810-ad1f-5833008863c7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'LMTD Labour Revenue' = CALCULATE([MTD Labour Revenue],DATEADD(Dim_Date[Date],-1,MONTH))
+		lineageTag: c0afa8a8-74b1-4000-a9a7-6f7ec3c1c514
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Labour Revenue per Vehicle' = ```
+			
+			                    DIVIDE([Total Labour Invoice Amount],
+			                    CALCULATE(
+			                                DISTINCTCOUNT('Fact Service_Raw'[Chassis_No]),
+			                                NOT 'Fact Service_Raw'[SR_Type_Input] in {"PDI","Accident","Refurbish","Chassis Not xisting"})
+			                    )
+			```
+		lineageTag: 25e5bd26-a82f-4384-aba6-e4d14c826e73
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'LMTD Labour Revenue per Vehicle' = DIVIDE([LMTD Labour Revenue],[LMTD Total Job Card])
+		lineageTag: b07ee5f8-7756-4610-a47f-66e192c1103c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Month on Month Growth% Labour Invoice' = DIVIDE([MTD Labour Revenue]-[LMTD Labour Revenue],[LMTD Labour Revenue])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 9311b295-b658-46b1-b5ef-89aea2829534
+
+	measure 'Delta Labour Revenue Growth Per Vehicle' = [MTD Labour Revenue per Vehicle] - [LMTD Labour Revenue per Vehicle]
+		lineageTag: 45bcb52f-cb03-445f-a6ba-ae5d06bca7d3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YTD Labour Revenue' = TOTALYTD([Total Labour Invoice Amount],Dim_Date[Date],"31/3")
+		lineageTag: 99ff01ee-ebe1-4a9f-b3b4-d7a39e9c6807
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YTD Per Vehicle Labour Revenue' = DIVIDE([YTD Labour Revenue],[YTD Total Job Card])
+		lineageTag: 3bbcbb4c-583d-459b-af93-d7b0b243c37f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'LYTD Labour Revenue' = CALCULATE([YTD Labour Revenue], DATEADD(Dim_Date[Date],-1,YEAR))
+		lineageTag: e8566397-898e-4508-828a-56da868227c8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Labour Revenue Growth YTDvsLYTD' = DIVIDE([YTD Labour Revenue],[LYTD Labour Revenue])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 7b40d9e9-f61c-4a46-ae2a-8def91427f1e
+
+	measure 'LYTD Per Vehicle Labour Revenue' = DIVIDE([LYTD Labour Revenue],[LYTD Total Job Card])
+		lineageTag: 222543ba-9f8d-4080-aa4f-83a1969db246
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Labour Revenue' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

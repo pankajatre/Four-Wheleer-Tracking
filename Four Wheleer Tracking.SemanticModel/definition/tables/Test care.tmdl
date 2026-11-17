@@ -1,0 +1,26 @@
+table 'Test care'
+	lineageTag: bb529edd-cd48-4dc6-b845-203feaf4e03c
+
+	column SR
+		lineageTag: f4ad5d82-75c1-4779-9b9b-fdafdfafb234
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: VW_Master_Service_Invoice[SR]
+
+		annotation SummarizationSetBy = Automatic
+
+	column coun
+		formatString: 0
+		lineageTag: 01dfff7d-6060-439b-b790-0e06f7335feb
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [coun]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Test care' = calculated
+		mode: import
+		source = SUMMARIZE(VW_Master_Service_Invoice,VW_Master_Service_Invoice[SR],"coun",COUNT(VW_Master_Service_Invoice[SR]))
+
+	annotation PBI_Id = 388c376073b64611b6d08341c758e5e9
+

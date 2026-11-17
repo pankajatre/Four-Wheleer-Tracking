@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Four Wheleer Tracking"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ec252e31-fa49-4ec5-84e0-cabb23318af6"
+  }
+}

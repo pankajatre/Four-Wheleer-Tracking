@@ -1,0 +1,184 @@
+table 'Service Mesures'
+	lineageTag: 807de022-63f5-442c-aa4c-f0efe75effa5
+
+	measure 'Total Service' = COUNTROWS('Fact Service_Raw')
+		formatString: 0
+		lineageTag: a480808c-7236-4137-b5bc-8fbcae3b176a
+
+	measure 'Total Job Card' = COUNT('Fact Service_Raw'[Job_Card])
+		formatString: 0
+		lineageTag: 7f331346-78cc-41a6-a156-bbd55d128ce7
+
+	measure 'Service Till Date' = ```
+			
+			VAR MaxDataDate =
+			    CALCULATE (
+			        MAX ( 'Fact Service_Raw'[Closed_Date_Time] ),
+			        ALL ( 'Fact Service_Raw'))
+			
+			VAR SelectedYear =
+			    SELECTEDVALUE ( Dim_Date[Year] )
+			
+			VAR CutoffDate =
+			    DATE (
+			        SelectedYear,
+			        MONTH ( MaxDataDate ),
+			        DAY ( MaxDataDate )
+			    )
+			
+			RETURN
+			CALCULATE (
+			    [Total Job Card Without PDI], 
+			    --not'A1 Service_Raw'[SR Type] in { "Accident","Campaign","Refurbish"},
+			    FILTER (
+			        ALL ( Dim_Date ),
+			        Dim_Date[Year] = SelectedYear
+			            && Dim_Date[Date] <= CutoffDate
+			    )
+			)
+			
+			
+			
+			
+			
+			
+			```
+		formatString: 0
+		lineageTag: d4302a51-8ec4-4e19-b471-f3114c5c841b
+
+	measure 'Total Service (Without Campaign Refurbish PDI)' = ```
+			
+			    CALCULATE
+			    (
+			        COUNT('Fact Service_Raw'[Job_Card]),
+			        NOT'Fact Service_Raw'[SR_Type] in {"Campaign", "Refurbish","PDI"}
+			    )
+			```
+		formatString: 0
+		lineageTag: 8812a4bc-1fdd-4eb5-ab18-6c3ab0573456
+
+	measure 'Service Conversion %' =
+			
+			DIVIDE(
+			    [Our Serviced Vehicles],
+			    [Delivered Vehicles]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 943ccd85-af4d-4fc3-b4cb-63a393cae298
+
+	measure 'Service Growth %' = COALESCE(DIVIDE([Total Service]-[Last Year Service],[Last Year Service]),0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 8d9c0ef8-95e9-4e42-9924-2d00017e0a12
+
+	measure 'Avg Service Per Vihicle' = DIVIDE([Total Service (Without Campaign Refurbish PDI)],[Serviced Base])
+		lineageTag: 32740a6f-cb58-46d1-81b0-168e76ce1499
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '0 Total Service Ex PDI,Acc,Ref,Cam' = CALCULATE(COUNTROWS('Fact Service_Raw'),NOT'Fact Service_Raw'[SR_Type] in {"PDI","Accident","Campaign","Refurbish"})
+		formatString: 0
+		lineageTag: eb607831-bdd3-44db-9856-fb8eced05395
+
+	measure '1st Service' = CALCULATE(COUNT('Fact Service_Raw'[Job_Card]),'Fact Service_Raw'[SR_Type] = "First Free Service")
+		formatString: 0
+		lineageTag: 909bfbcc-06b6-4615-ab32-e4216424e7a6
+
+	measure '1st Service Retention%' = DIVIDE([1st Service],[Total Sold])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 75903e4b-2430-4dae-84c1-39a90e5938f1
+
+	measure '2nd Service' = CALCULATE(COUNT('Fact Service_Raw'[Job_Card]),'Fact Service_Raw'[SR_Type] = "Second Free Service")
+		formatString: 0
+		lineageTag: b76154cb-d8a4-4440-a7fb-18f88a57088c
+
+	measure '2nd Service Retention%' = DIVIDE([2nd Service],[1st Service])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f5882255-9446-4a86-b885-077b25f6a9f3
+
+	measure '3rd Service' = CALCULATE(COUNT('Fact Service_Raw'[Job_Card]),'Fact Service_Raw'[SR_Type] = "Third Free Service")
+		formatString: 0
+		lineageTag: b48821a4-c2f7-4d91-b3ee-8635578279e6
+
+	measure 'Total Job Card Without PDI' = CALCULATE( COUNT('Fact Service_Raw'[Job_Card]), NOT 'Fact Service_Raw'[SR_Type] = "PDI")
+		formatString: 0
+		lineageTag: af403387-2f22-4e12-b353-d9e4b0046ff0
+
+	measure 'YTD Total Job Card' = TOTALYTD([Total Job Card Without PDI], Dim_Date[Date],"31/3")
+		formatString: 0
+		lineageTag: 5e20183d-5c5f-407d-a2a1-71074cc5a3d0
+
+	measure 'LYTD Total Job Card' = CALCULATE([YTD Total Job Card] , DATEADD(Dim_Date[Date],-1,YEAR))
+		formatString: 0
+		lineageTag: 2152fb9b-f7ee-40f2-9353-03d1c3ca82ae
+
+	measure 'YoY Job Card Growth' = DIVIDE([YTD Total Job Card],[LYTD Total Job Card])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: ea0e752f-19e0-4a8b-9443-955acfaa6506
+
+	measure 'MTD Total Job Card' = CALCULATE([Total Job Card Without PDI],DATESMTD(Dim_Date[Date]))
+		formatString: 0
+		lineageTag: 2cd69563-8876-4df3-9e23-66a23511a675
+
+	measure 'LMTD Total Job Card' = CALCULATE([MTD Total Job Card], DATEADD(Dim_Date[Date],-1,MONTH))
+		formatString: 0
+		lineageTag: e7d5c810-88c1-498d-bf35-0ca4eca035b2
+
+	measure 'MoM Growth' = DIVIDE([MTD Total Job Card],[LMTD Total Job Card])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 149cba5f-23fe-4c70-a518-2f163f188d3e
+
+	measure 'Total Free Job Card' = ```
+			CALCULATE(DISTINCTCOUNT('Fact Service_Raw'[Job_Card]), 
+			                'Fact Service_Raw'[SR_Type] in {"First Free Service","Second Free Service","Third Free Service" })
+			```
+		formatString: 0
+		lineageTag: ff5614e3-1618-4dd7-8520-f850f761877a
+
+	measure 'YTD Free Job Card' = TOTALYTD([Total Free Job Card],Dim_Date[Date],"31/3")
+		formatString: 0
+		lineageTag: 29c55fc4-d380-4f24-bc20-44fdd9ce76b0
+
+	measure 'LYTD Free Job Card' = CALCULATE([YTD Free Job Card], DATEADD(Dim_Date[Date],-1,YEAR))
+		formatString: 0
+		lineageTag: 71d50a89-b33b-43c3-a961-5ac9d83a57f5
+
+	measure 'YoY Free Job Card Growth' = DIVIDE([YTD Free Job Card],[LYTD Free Job Card])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 3ee48c64-d4ce-40c5-9470-24aebb507312
+
+	measure 'LY MTD Total Job Card' = CALCULATE([MTD Total Job Card], DATEADD(Dim_Date[Date],-1,YEAR))
+		formatString: 0
+		lineageTag: 90301682-11a5-423a-a099-6f774faeb626
+
+	measure 'MTD vs LYMTD MoM Growth' = DIVIDE([MTD Total Job Card],[LY MTD Total Job Card])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d5002285-de23-4c67-aeaf-35cfaf16e885
+
+	measure 'MTD TLD Total Job Card' =
+			
+			var mxdate = MAX('Fact Service_Raw'[Closed_Date_Time - Copy])
+			 var startddate = EOMONTH(mxdate,-2)+1
+			 var enddates  = EDATE(mxdate,-1)
+			
+			
+			 RETURN
+			 CALCULATE([Total Job Card Without PDI], DATESBETWEEN(Dim_Date[Date],startddate, enddates)
+			 )
+		formatString: 0
+		lineageTag: a8e62f81-0839-4ea4-8901-2e674d469d6d
+
+	partition 'Service Mesures' = m
+		mode: import
+		queryGroup: 'Measure table'
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

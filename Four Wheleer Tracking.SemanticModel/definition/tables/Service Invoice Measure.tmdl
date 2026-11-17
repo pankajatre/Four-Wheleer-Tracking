@@ -1,0 +1,139 @@
+table 'Service Invoice Measure'
+	lineageTag: d147d66c-fa52-4718-81e0-39dd31971e20
+
+	measure 'Total Service Invoice Amount' = [Total Spares Invoice Amount] + [Total Labour Invoice Amount]
+		lineageTag: b2b56371-49bd-4091-961a-56ff76d998ba
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Discounts (Labour)' = SUM(VW_Master_Service_Invoice[Discounts_Labour])
+		lineageTag: ebbf89d8-81c8-4d53-9511-19bfdea470e7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Tax (Parts)' = SUM(VW_Master_Service_Invoice[Tax_Parts])
+		lineageTag: 2680c9a4-193a-4edc-833f-ec79e3fe2d91
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MTD Service Invoice' = TOTALMTD([Total Service Invoice Amount],Dim_Date[Date])
+		lineageTag: c4a86716-f985-442d-a54b-75ba30bcec45
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'LMTD Service Invoice' = CALCULATE([MTD Service Invoice],DATEADD(Dim_Date[Date],-1,MONTH))
+		lineageTag: 86474ad8-0923-432c-8d57-b7e80698d857
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Month on Month Growth% Service Invoice' = DIVIDE([MTD Service Invoice]-[LMTD Service Invoice],[LMTD Service Invoice])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f91d250a-3b31-4c0e-a76f-3afdd9d2e423
+
+	measure 'Spares per JC' =
+			DIVIDE([Total Spares Invoice Amount],
+			                    CALCULATE(
+			                                DISTINCTCOUNT('Fact Service_Raw'[Job_Card]),
+			                                NOT 'Fact Service_Raw'[SR_Type_Input] in {"PDI","Accident","Refurbish","Chassis Not Existing"})
+			                    )
+		lineageTag: ca79e345-47fe-464b-a605-75e84406e1fd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Labour per JC' =
+			DIVIDE([Total labour Invoice Amount],
+			                                CALCULATE(
+			                                DISTINCTCOUNT('Fact Service_Raw'[Job_Card]),
+			                                NOT 'Fact Service_Raw'[SR_Type_Input] in {"PDI","Accident","Refurbish","Chassis Not Existing"})
+			                    )
+		lineageTag: 9a56942c-9174-4c21-a285-e6e60aaca916
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Invoice per JC' = ```
+			DIVIDE([Total Service Invoice Amount], 
+			                CALCULATE(
+			                                DISTINCTCOUNT('Fact Service_Raw'[Job_Card]),
+			                                NOT 'Fact Service_Raw'[SR_Type_Input] in {"PDI","Accident","Refurbish","Chassis Not Existing"})
+			                    )
+			```
+		formatString: 0
+		lineageTag: 1e2e2ca7-2082-4169-8176-db60bfc17331
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Invoice Revenue per Vehicle' = ```
+			
+			                    DIVIDE([Total Service Invoice Amount],
+			                    CALCULATE(
+			                                DISTINCTCOUNT('Fact Service_Raw'[Chassis_No]),
+			                                NOT 'Fact Service_Raw'[SR_Type_Input] in {"PDI","Accident","Refurbish","Chassis Not xisting"})
+			                    )
+			```
+		formatString: 0
+		lineageTag: 4f177ea3-9462-411b-8a1b-a93992fc8a4d
+
+	measure 'MTD Invoice Per Job' = TOTALMTD([Invoice per JC], Dim_Date[Date])
+		formatString: 0
+		lineageTag: b4de64ec-7627-4334-9618-3d7fafd45785
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Spare Revenue per Vehicle' = ```
+			
+			                    DIVIDE([Total Spares Invoice Amount],
+			                    CALCULATE(
+			                                DISTINCTCOUNT('Fact Service_Raw'[Chassis_No]),
+			                                NOT 'Fact Service_Raw'[SR_Type_Input] in {"PDI","Accident","Refurbish","Chassis Not xisting"})
+			                    )
+			```
+		lineageTag: a572bc78-5450-43a7-b89b-60942fc09589
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MTD Invoice Revenue per Vehicle' = ```
+			
+			                    TOTALMTD([Invoice Revenue per Vehicle],Dim_Date[Date])
+			```
+		lineageTag: bac40dc8-74be-446a-b5a9-39fa754293cc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'LMTD Invoice Revenue per Vehicle' = CALCULATE([MTD Invoice Revenue per Vehicle],DATEADD(Dim_Date[Date],-1,MONTH))
+		lineageTag: 077b7ff8-f209-4d0e-a02f-95ac48b46429
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Delta Invoice Revenue Growth Per Vehicle' = [MTD Invoice Revenue per Vehicle] - [LMTD Invoice Revenue per Vehicle]
+		lineageTag: 3a663b96-f706-40b8-ba19-13a312cab56d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MTD Spare Revenue per Vehicle' = ```
+			
+			                    TOTALMTD([Spare Revenue per Vehicle],Dim_Date[Date])
+			```
+		lineageTag: 534dc0dd-125e-470b-98f0-72c42477fc01
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Delta Spare Revenue Growth Per Vehicle' = [MTD Spare Revenue per Vehicle] - [LMTD Parts Revenue per Vehicle]
+		lineageTag: b2f597e8-5c88-4a48-8e46-3f162af35527
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Service Invoice Measure' = m
+		mode: import
+		queryGroup: 'Measure table'
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

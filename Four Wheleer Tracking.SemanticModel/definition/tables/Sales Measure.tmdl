@@ -1,0 +1,84 @@
+table 'Sales Measure'
+	lineageTag: e4cd7cf0-9e79-4bed-83c7-e62df52cfc61
+
+	measure 'LYTD Total Sale' = CALCULATE([YTD Sale Chassis],SAMEPERIODLASTYEAR(Dim_Date[Date]))
+		formatString: 0
+		lineageTag: 4f1a9e6a-7996-4e94-8e61-af1dbf8ed9b8
+
+	measure 'Growth Running Total' = DIVIDE([Total Sold Running Total] ,[Total Sold Running Total LYTD])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 075dd01a-d4ec-408b-9ca7-4a149307d8f3
+
+	measure 'YTD Sale Chassis' = TOTALYTD([Total Sold],Dim_Date[Date],"31/3")
+		formatString: 0
+		lineageTag: a231918c-f929-4fee-a03a-14aab2048595
+
+	measure 'Total Sold Running Total' = CALCULATE([Total Sold],Dim_Date[Date] <= MAX(Dim_Date[Date]))
+		formatString: 0
+		lineageTag: e2d8a57c-1183-4df6-bec9-bf20cf0abfb0
+
+	measure 'Total Sold' = DISTINCTCOUNT('Fact Sales_Raw'[Chassis_NO])
+		formatString: 0
+		lineageTag: b43dd161-62b5-44db-a17a-c3854aaf1bcd
+
+	measure 'Total Sold Running Total LYTD' = CALCULATE([Total Sold Running Total], SAMEPERIODLASTYEAR(Dim_Date[Date]))
+		formatString: 0
+		lineageTag: a0307969-1036-4504-81b9-84d5b6db5673
+
+	measure 'YTD Growth Total Sale' = DIVIDE([YTD Sale Chassis],[LYTD Total Sale])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d3bb582e-1b65-4672-8f3a-10a7311411aa
+
+	measure 'MTD Sale Chassis' = TOTALMTD([Total Sold],Dim_Date[Date])
+		formatString: 0
+		lineageTag: 8f93b03b-8cb0-416d-b0b1-0981408e346d
+
+	measure 'LMTD TLD Sale Chassis' =
+			
+			CALCULATE(
+			    [Total Sold],
+			    DATESBETWEEN(
+			        Dim_Date[Date],
+			        EOMONTH(MAX('Fact Sales_Raw'[Invoice_Date]), -2) + 1,
+			        EOMONTH(MAX('Fact Sales_Raw'[Invoice_Date]), -1)
+			            - (DAY(EOMONTH(MAX('Fact Sales_Raw'[Invoice_Date]), -1)) - DAY(MAX('Fact Sales_Raw'[Invoice_Date])))
+			    )
+			)
+		formatString: 0
+		lineageTag: a919ea18-669d-447b-858a-230a9798936f
+
+	measure 'MTD Growth Total Sale' = DIVIDE([MTD Sale Chassis],[LMTD Sale Chassis])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 3fad5d55-06da-4e58-8f01-2fb0223dd5f8
+
+	measure 'LMTD Sale Chassis' = ```
+			
+			CALCULATE( [MTD Sale Chassis], DATEADD(Dim_Date[Date],-1,MONTH))
+			   
+			```
+		formatString: 0
+		lineageTag: 254b33fa-f372-4c25-a7f0-087de2478515
+
+	measure 'Last Year MTD Sale' = CALCULATE([MTD Sale Chassis],DATEADD(Dim_Date[Date],-1,YEAR))
+		formatString: 0
+		lineageTag: 6d9de874-d6f5-431d-9c38-65fa25193652
+
+	measure 'MTD vs LYMTD MoM Sales Growth' = DIVIDE([MTD Sale Chassis],[Last Year MTD Sale])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 8e46de74-bd9d-4b11-99ae-11b1825ce54b
+
+	partition 'Sales Measure' = m
+		mode: import
+		queryGroup: 'Measure table'
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

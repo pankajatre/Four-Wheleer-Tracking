@@ -1,0 +1,52 @@
+expression Growth =
+		let
+		    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+		    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+		    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+		in
+		    #"Removed Columns"
+	lineageTag: fccae96e-51fe-401f-8f54-0f5f62e65cfd
+	queryGroup: 'Measure table'
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
+expression Lob_Sales =
+		let
+		    Source = #"Fact Sales_Raw",
+		    #"Removed Other Columns" = Table.SelectColumns(Source,{"Product_Line"}),
+		    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+		    #"Added Conditional Column" = Table.AddColumn(#"Removed Duplicates", "Lob", each if Text.Contains([Product_Line], "EV") then "EV" else "PV")
+		in
+		    #"Added Conditional Column"
+	lineageTag: e0d8f42a-09b2-4142-9a96-d6c4a481734a
+	queryGroup: 'Dim Table'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression LOB_Service =
+		let
+		    Source = #"Fact Service_Raw",
+		    #"Removed Other Columns" = Table.SelectColumns(Source,{"Product_Line"}),
+		    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+		    #"Added Custom" = Table.AddColumn(#"Removed Duplicates", "Lob", each if Text.Contains([Product_Line], "EV") then "EV" else "PV"),
+		    #"Filtered Rows" = Table.SelectRows(#"Added Custom", each [Product_Line] <> null)
+		in
+		    #"Filtered Rows"
+	lineageTag: e1d2abd4-387a-445c-87ff-c628dfa99d2e
+	queryGroup: 'Dim Table'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression City_Parameter = "city" meta [IsParameterQuery=true, ExpressionIdentifier=#"City List", Type="Any", IsParameterQueryRequired=true]
+	lineageTag: df661fbe-6308-4c65-82b9-26dc48bbf173
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

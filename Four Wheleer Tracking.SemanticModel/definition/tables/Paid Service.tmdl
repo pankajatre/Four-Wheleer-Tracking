@@ -1,0 +1,100 @@
+table 'Paid Service'
+	lineageTag: d1cd6018-a4ab-4ea9-9d23-4e13d49da677
+
+	measure 'Card Paid Service' = ```
+			
+			VAR MaxDataDate =
+			    CALCULATE (
+			        MAX ( 'Fact Service_Raw'[Closed_Date_Time] ),
+			        ALL ( 'Fact Service_Raw'))
+			
+			VAR SelectedYear =
+			    SELECTEDVALUE ( Dim_Date[Year] )
+			
+			VAR CutoffDate =
+			    DATE (
+			        SelectedYear,
+			        MONTH ( MaxDataDate ),
+			        DAY ( MaxDataDate )
+			    )
+			
+			RETURN
+			CALCULATE(COUNTROWS('Fact Service_Raw'),'Fact Service_Raw'[SR_Type] IN {"Paid Service","Running Repairs"}
+			    --not'A1 Service_Raw'[SR Type] in { "Accident","Campaign","Refurbish"},
+			    --FILTER (
+			     --   ALL ( Dim_Date ),
+			      --  Dim_Date[Year] = SelectedYear
+			       --     && Dim_Date[Date] <= CutoffDate
+			    --)
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 5123f5dc-0571-4a74-8838-3cbc3cb69771
+
+	measure 'Paid Service Retention%' = DIVIDE([Repeat paid service customer count],[Paid service customer count])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 3629fa38-be41-4ade-a2c6-e1310775993c
+
+	measure 'Paid Service %' = DIVIDE([Total Paid Job Card],[Total Service (Without Campaign Refurbish PDI)])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1126e3be-69cd-4e07-ac79-daa3334bfd33
+
+	measure 'Paid service customer count' =
+			
+			CALCULATE([Service Till Date],'Fact Service_Raw'[SR_Type]="Paid Service")
+		formatString: 0
+		lineageTag: f29c2d6a-03ed-4852-a888-3b39bc81fd52
+
+	measure 'Repeat paid service customer count' =
+			
+			COUNTROWS(
+			            FILTER
+			                (
+			                    VALUES('Fact Service_Raw'[Chassis_No]),
+			                    CALCULATE(COUNTROWS('Fact Service_Raw'),'Fact Service_Raw'[SR_Type]="Paid Service")
+			                >1)
+			        )
+		formatString: 0
+		lineageTag: 558639d9-0e59-464b-967f-1b7de3d39215
+
+	measure 'Total Paid Job Card' =
+			CALCULATE
+			                        (DISTINCTCOUNT(
+			                            'Fact Service_Raw'[Job_Card]),
+			NOT'Fact Service_Raw'[SR_Type] IN {"First Free Service","Second Free Service","Third Free Service","PDI"} )
+		formatString: 0
+		lineageTag: 6a42573c-12d8-45f5-9cd5-52506d68b640
+
+	measure Measure
+		lineageTag: c20770d5-953c-48dd-8412-250fc62c8f12
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure 'YTD Paid Job Card' = TOTALYTD([Total Paid Job Card], Dim_Date[Date],"31/3")
+		formatString: 0
+		lineageTag: 7ae961d1-0971-4237-8c12-5004c23ef499
+
+	measure 'LYTD Paid Job Card' = CALCULATE([YTD Paid Job Card], DATEADD(Dim_Date[Date],-1,YEAR))
+		formatString: 0
+		lineageTag: a8ec9132-4341-4a82-845a-23cd434ec013
+
+	measure 'YoY Paid Job Card Growth' = DIVIDE([YTD paid Job Card],[LYTD paid Job Card])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 8e75382a-954e-4614-980e-aeae70d8c796
+
+	partition 'Paid Service' = m
+		mode: import
+		queryGroup: 'Measure table'
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

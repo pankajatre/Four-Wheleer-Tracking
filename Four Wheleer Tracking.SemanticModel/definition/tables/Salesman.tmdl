@@ -1,0 +1,34 @@
+table Salesman
+	lineageTag: f2189f6a-aee3-444e-b6aa-df13e1f65083
+
+	column 'DC Sales Man'
+		dataType: string
+		lineageTag: 9831a25b-36d2-464c-a9de-14008dbbd41a
+		summarizeBy: none
+		sourceColumn: DC Sales Man
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'GOOGLE SHEET NAME'
+		dataType: string
+		lineageTag: 0d964811-0ee6-4858-ba9a-7f1a90296f4d
+		summarizeBy: none
+		sourceColumn: GOOGLE SHEET NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Salesman = m
+		mode: import
+		queryGroup: 'Dim Table'
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("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", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"DC Sales Man" = _t, #"GOOGLE SHEET NAME" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"DC Sales Man", type text}, {"GOOGLE SHEET NAME", type text}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Changed Type", {"DC Sales Man"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

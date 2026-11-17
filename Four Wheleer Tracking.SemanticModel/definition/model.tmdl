@@ -1,0 +1,79 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup 'Measure table'
+
+	annotation PBI_QueryGroupOrder = 4
+
+queryGroup Others
+
+	annotation PBI_QueryGroupOrder = 5
+
+queryGroup Final/Remarks
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup 'Fact SQL Table'
+
+	annotation PBI_QueryGroupOrder = 3
+
+queryGroup 'Dim Table'
+
+	annotation PBI_QueryGroupOrder = 4
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["01 Base Measure","Paid Service","Growth","Growth (2)","Fact Sales_Raw","Fact Service_Raw","Vehicle_Service_Tracking","DC_Master","Age Bucket","Dim Service Location","Dim SR Type","Help Measure","Lob_Sales","LOB_Service","Dim Lob","Dim Model","VW_Master_Service_Invoice","Service Invoice Measure","City List","Indore_Ward","Colony List","Near by Centre","Sales Measure","Delivery_Location","Vehicle Base Measure","Service Mesures","Soldout_Shifted_Master","Salesman","Parts Revenue","Labour Revenue","City_Parameter"]
+
+annotation PBI_ProTooling = ["DevMode","DaxQueryView_Desktop"]
+
+ref table DateTableTemplate_4b02647d-a6c5-47bc-9a76-40cff1898450
+ref table Dim_Date
+ref table 'Volume Measure'
+ref table '01 Base Measure'
+ref table 'Paid Service'
+ref table 'Growth (2)'
+ref table 'Fact Sales_Raw'
+ref table 'Fact Service_Raw'
+ref table LocalDateTable_f5b36256-4d86-4195-993b-48df9883c372
+ref table Vehicle_Service_Tracking
+ref table LocalDateTable_5e0725d0-6576-45a1-b15c-e07524343b2e
+ref table LocalDateTable_1744306f-e9fc-4ce3-9e82-cd37958c804e
+ref table LocalDateTable_7cf3a45b-48a8-44ee-9381-f7a1b8ad9a4b
+ref table LocalDateTable_0260fc0f-9181-485a-9ac5-87ef31402d39
+ref table LocalDateTable_00acc482-1c1f-491d-b768-f9b87d6c91a1
+ref table 'Age Bucket'
+ref table 'Dim Service Location'
+ref table DC_Master
+ref table LocalDateTable_c7c56558-55af-452b-9567-151556acf3b4
+ref table 'Dim SR Type'
+ref table 'Help Measure'
+ref table 'Dim Lob'
+ref table 'Dim Model'
+ref table VW_Master_Service_Invoice
+ref table LocalDateTable_00c0ee82-75f8-493b-a198-29188b375782
+ref table 'Service Invoice Measure'
+ref table 'Test care'
+ref table 'labour part summ'
+ref table 'City List'
+ref table Indore_Ward
+ref table 'Colony List'
+ref table 'Near by Centre'
+ref table 'Sales Measure'
+ref table Delivery_Location
+ref table LocalDateTable_6a4df88c-b212-46db-a692-0007c1ca79e3
+ref table 'Vehicle Base Measure'
+ref table 'Service Mesures'
+ref table Soldout_Shifted_Master
+ref table Salesman
+ref table LocalDateTable_68c94321-39de-4152-b784-73bc4e956b94
+ref table 'Parts Revenue'
+ref table 'Labour Revenue'
+
+ref cultureInfo en-US
+

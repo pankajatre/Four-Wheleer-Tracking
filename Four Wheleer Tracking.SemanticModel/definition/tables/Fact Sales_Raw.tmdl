@@ -1,0 +1,204 @@
+table 'Fact Sales_Raw'
+	lineageTag: aba046d0-0b80-4611-ab13-cb00aee32ee0
+
+	column Financier
+		dataType: string
+		lineageTag: 56ff363b-ad82-48d1-952e-ee597146b2f7
+		summarizeBy: none
+		sourceColumn: Financier
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chassis_NO
+		dataType: string
+		lineageTag: 6b99d7a8-1c93-4de7-babd-f9bf8bb18e0f
+		summarizeBy: none
+		sourceColumn: Chassis_NO
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sale_Value
+		dataType: string
+		lineageTag: d2497a7e-eabd-4bda-bd8a-89694acd2e1d
+		summarizeBy: none
+		sourceColumn: Sale_Value
+
+		annotation SummarizationSetBy = Automatic
+
+	column Hypothecation
+		dataType: string
+		lineageTag: 1e5fbf8a-ea79-4bbc-a74a-a65b6af1d645
+		summarizeBy: none
+		sourceColumn: Hypothecation
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_Invoice_Amount
+		dataType: string
+		lineageTag: 98f30f13-3337-477a-9c84-fb1ccfae9297
+		summarizeBy: none
+		sourceColumn: Total_Invoice_Amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_Balance_Amount
+		dataType: string
+		lineageTag: ca18504e-e13c-4d09-995b-b32bfe2ec576
+		summarizeBy: none
+		sourceColumn: Invoice_Balance_Amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column Commercial_Invoice
+		dataType: string
+		lineageTag: e7fc636d-c224-4905-b71f-695dece0f742
+		summarizeBy: none
+		sourceColumn: Commercial_Invoice
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOB
+		dataType: string
+		lineageTag: a5e9a8c2-c3c5-4819-bd25-d88a92697c93
+		summarizeBy: none
+		sourceColumn: LOB
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order_No
+		dataType: string
+		lineageTag: 1dd73e75-dbcb-4978-a7c8-3feb60a3e303
+		summarizeBy: none
+		sourceColumn: Order_No
+
+		annotation SummarizationSetBy = Automatic
+
+	column Parent_Product_Line
+		dataType: string
+		lineageTag: 5d76b0e1-b9a7-4e72-a4d6-08c46bf12bcb
+		summarizeBy: none
+		sourceColumn: Parent_Product_Line
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_Description
+		dataType: string
+		lineageTag: 4036612c-7f83-4274-9229-c977a0cbd314
+		summarizeBy: none
+		sourceColumn: Product_Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_Line
+		dataType: string
+		lineageTag: 438ac0b4-ef1b-4534-a711-4538387ef04b
+		summarizeBy: none
+		sourceColumn: Product_Line
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_VC
+		dataType: string
+		lineageTag: 8329bc95-0329-4164-8951-97d523dd490a
+		summarizeBy: none
+		sourceColumn: Product_VC
+
+		annotation SummarizationSetBy = Automatic
+
+	column Customer_Name
+		dataType: string
+		lineageTag: 6ac89535-0475-4dc0-a4e3-5b1622d95e7a
+		summarizeBy: none
+		sourceColumn: Customer_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice
+		dataType: string
+		lineageTag: 2427521a-ec2d-41f9-ac09-49fdda34ea5f
+		summarizeBy: none
+		sourceColumn: Invoice
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bill_To_Account
+		dataType: string
+		lineageTag: 39b26ac0-f06e-4c4c-91c0-67610fb30101
+		summarizeBy: none
+		sourceColumn: Bill_To_Account
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_Status
+		dataType: string
+		lineageTag: 7fed1fd7-68fd-43e4-b5be-74d2c5e66e70
+		summarizeBy: none
+		sourceColumn: Invoice_Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: bfb1a26d-d2fa-45c0-b248-62d9ffc9b09f
+		summarizeBy: none
+		sourceColumn: Invoice_Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Bill_To_Last_Name
+		dataType: string
+		lineageTag: 6722a95e-6d81-47bb-807a-69af646da1bd
+		summarizeBy: none
+		sourceColumn: Bill_To_Last_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bill_To_First_Name
+		dataType: string
+		lineageTag: 45cf2cd2-9785-42b2-b5ae-6e9c50191f45
+		summarizeBy: none
+		sourceColumn: Bill_To_First_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'delivary location' = LOOKUPVALUE(DC_Master[Delivery_Location],DC_Master[Chassis_No],'Fact Sales_Raw'[Chassis_NO])
+		lineageTag: f233ea22-6600-4cf9-b902-795fd8fb4aff
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Delivary Location Final' = ```
+			SWITCH(TRUE(),
+			                            ISBLANK('Fact Sales_Raw'[delivary location]),"HO",
+			                            'Fact Sales_Raw'[delivary location] in {"Ujjain Mela","Co-Dealer"},"HO",'Fact Sales_Raw'[delivary location])
+			
+			```
+		lineageTag: cd378aa1-1cae-4eb9-83c9-808677810779
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Sales_Raw' = m
+		mode: import
+		queryGroup: 'Fact SQL Table'
+		source =
+				let
+				    Source = Sql.Databases("DESKTOP-M0KE14I\MSSQLSERVERSHYAM"),
+				    Tata = Source{[Name="Tata"]}[Data],
+				    dbo_VW_Master_Sales = Tata{[Schema="dbo",Item="VW_Master_Sales"]}[Data],
+				    #"Split Column by Delimiter" = Table.SplitColumn(dbo_VW_Master_Sales, "Parent_Product_Liine", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"Parent_Product_Liine.1", "Parent_Product_Liine.2"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"Parent_Product_Liine.1", type text}, {"Parent_Product_Liine.2", type text}}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Changed Type",{"Parent_Product_Liine.2"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Removed Columns1",{{"Invoice_Date", type datetime}}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Changed Type1",{{"Invoice_Date", type date}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type2",{{"Parent_Product_Liine.1", "Parent_Product_Line"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

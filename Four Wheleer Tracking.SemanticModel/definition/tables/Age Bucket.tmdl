@@ -1,0 +1,31 @@
+table 'Age Bucket'
+	lineageTag: 6548a567-097c-4c58-a46e-8c8213752328
+
+	column Year
+		dataType: string
+		lineageTag: ea8bfe99-92e1-411f-a27e-e780ddfaff90
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column SR
+		dataType: int64
+		formatString: 0
+		lineageTag: fd41df01-2642-4f08-a9e1-02d13a0bdb27
+		summarizeBy: none
+		sourceColumn: SR
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Age Bucket' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("Ncg7CoBADATQq0had8Ds/y4hhYUXsPP2wsCU70XYBT++536tmFuWMEdVVEZFUzRGQ1d0RsdQDMbAVEzGxFIsxj7lbZk/", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Year = _t, SR = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Year", type text}, {"SR", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

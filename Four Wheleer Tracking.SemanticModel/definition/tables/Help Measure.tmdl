@@ -1,0 +1,41 @@
+table 'Help Measure'
+	lineageTag: a4e891fc-75a3-451f-beb4-ce3e4a6c7da9
+
+	measure 'Service Table' = CALCULATE(MAX('Fact Service_Raw'[Closed_Date_Time - Copy]),ALL(Dim_Date))
+		formatString: Short Date
+		lineageTag: 50c19919-a942-4235-b744-0bfa7545e7d2
+
+	measure 'Sales Table' = CALCULATE(MAX('Fact Sales_Raw'[Invoice_Date]),ALL(Dim_Date))
+		formatString: Short Date
+		lineageTag: 522ba5a1-874d-4906-b1fa-c13bd95c7249
+
+	measure 'DC Table' = CALCULATE(MAX(DC_Master[Delivery_Date]),ALL(Dim_Date))
+		formatString: Short Date
+		lineageTag: fb7d054d-0ab5-4405-9ca9-ae0a9271d66d
+
+	measure 'Refresh Date Source' = ```
+			
+			Var Jobcard = calculate(Max('Fact Service_Raw'[Closed_Date_Time - Copy]),ALL(Dim_Date))
+			Var Sale_Inv = calculate(Max('Fact Sales_Raw'[Invoice_Date]),ALL(Dim_Date))
+			Var SR_Inv = calculate(MAX(VW_Master_Service_Invoice[Invoice_Date]),ALL(Dim_Date),ALL('Dim Lob'[Lob]))
+			Var DC = calculate(Max(DC_Master[Delivery_Date]),ALL(Dim_Date))
+			Return 
+			CONCATENATE(CONCATENATE(CONCATENATE(Concatenate(Concatenate(concatenate(Concatenate(" Snapshot Date - Jobcard:",Jobcard),"      Inv:"),Sale_Inv),"     SR_Inv:  "),SR_Inv),"         DC:"),DC)
+			```
+		lineageTag: c8b97894-7233-4dcb-9501-5aeb115ef402
+
+	partition 'Help Measure' = m
+		mode: import
+		queryGroup: 'Measure table'
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

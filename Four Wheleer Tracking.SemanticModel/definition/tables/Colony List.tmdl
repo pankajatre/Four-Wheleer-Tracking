@@ -1,0 +1,27 @@
+table 'Colony List'
+	lineageTag: 33f5ea39-1b21-4fea-953a-124f0e80391d
+
+	column 'Colony List'
+		dataType: string
+		lineageTag: a20e036d-27a9-467e-9f76-15a1413a7782
+		summarizeBy: none
+		sourceColumn: Colony List
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Colony List' = m
+		mode: import
+		source =
+				let
+				    Source = Indore_Ward,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"Locality_Area"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Duplicates", each ([Locality_Area] <> null)),
+				    Locality_Area = #"Filtered Rows"[Locality_Area]
+				in
+				    Locality_Area
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = List
+

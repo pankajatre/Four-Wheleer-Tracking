@@ -1,0 +1,45 @@
+table Soldout_Shifted_Master
+	lineageTag: d3244688-f0ed-4c17-9e3e-5faad1aba994
+
+	column Chassis_No
+		dataType: string
+		lineageTag: d0b0059d-580f-4735-a015-7302b9b8b46c
+		summarizeBy: none
+		sourceColumn: Chassis_No
+
+		annotation SummarizationSetBy = Automatic
+
+	column Final_Remark1
+		dataType: string
+		lineageTag: 2b9a1cef-2c17-4c92-8b8f-b0cb8db87b6e
+		summarizeBy: none
+		sourceColumn: Final_Remark1
+
+		annotation SummarizationSetBy = Automatic
+
+	column Final_Remark
+		dataType: string
+		lineageTag: 2d09d0e4-2e1c-48c9-985b-5325ed365303
+		summarizeBy: none
+		sourceColumn: Final_Remark
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Soldout_Shifted_Master = m
+		mode: import
+		queryGroup: Final/Remarks
+		source =
+				let
+				    Source = Sql.Databases("DESKTOP-M0KE14I\MSSQLSERVERSHYAM"),
+				    Tata = Source{[Name="Tata"]}[Data],
+				    dbo_Soldout_Shifted_Master = Tata{[Schema="dbo",Item="Soldout_Shifted_Master"]}[Data],
+				    #"Added Conditional Column" = Table.AddColumn(dbo_Soldout_Shifted_Master, "Custom", each if Text.Contains([Final_Remark], "Sold") then "Soldout" else if Text.Contains([Final_Remark], "Shifted") then "Shifted" else null),
+				    #"Filtered Rows" = Table.SelectRows(#"Added Conditional Column", each ([Custom] <> null)),
+				    #"Renamed Columns" = Table.RenameColumns(#"Filtered Rows",{{"Final_Remark", "Final_Remark1"}, {"Custom", "Final_Remark"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

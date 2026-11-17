@@ -1,0 +1,129 @@
+table 'Parts Revenue'
+	lineageTag: 6b8383a6-8677-4d2e-b040-fefb5a3a0219
+
+	measure 'Total Spares Invoice Amount' =
+			
+			SUMX(
+			    VW_Master_Service_Invoice,
+			    VAR SpareAmount =
+			        COALESCE(
+			            VW_Master_Service_Invoice[Final_Spares_Invoice_Amount],
+			            0
+			        )
+			    VAR TaxAmount =
+			        COALESCE(
+			            VW_Master_Service_Invoice[Tax_Parts],
+			            0
+			        )
+			    RETURN
+			        MAX(
+			            0,
+			            SpareAmount - TaxAmount
+			        )
+			)
+		lineageTag: 022e8cfc-f61e-4376-a6c6-66785a10f3ca
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YTD Service Invoice' = TOTALYTD([Total Service Invoice Amount],Dim_Date[Date],"31/3")
+		lineageTag: a8621cb2-1fd7-4941-b8b8-9790c8e51ca5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MTD Parts Revenue' = TOTALMTD([Total Spares Invoice Amount],Dim_Date[Date])
+		lineageTag: 7cb22641-b68a-458b-93d8-2c86853e0364
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YTD Parts Revenue' = TOTALYTD([Total Spares Invoice Amount],Dim_Date[Date],"31/3")
+		lineageTag: fd0e2a0c-5d62-498f-b357-b1457f00e5e2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YTD Per Vehicle Parts Revenue' = DIVIDE([YTD Parts Revenue],[YTD Total Job Card])
+		lineageTag: fd68f54d-fb09-4f53-8cb1-935e7a7fd722
+
+	measure 'LYTD Parts Revenue' = CALCULATE([YTD Parts Revenue],DATEADD(Dim_Date[Date],-1,YEAR))
+		lineageTag: 738fcf43-467e-4bf5-96fe-ec21ea32ba6c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Parts Revenue Growth YTDvsLYTD' = DIVIDE([YTD Parts Revenue],[LYTD Parts Revenue])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 9790559e-9b29-41ac-a6f5-788d4c28b962
+
+	measure 'LYTD Per Vehicle Parts Revenue' = DIVIDE([LYTD Parts Revenue],[LYTD Total Job Card])
+		lineageTag: 7d49b72a-d52d-44a1-ba1f-9422aa243abc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MTD Per Vehicle Parts Revenue' = DIVIDE([MTD Parts Revenue],[MTD Total Job Card])
+		lineageTag: 1613eff3-9855-40b5-9cbb-0633d30af125
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'LMTD TLD Parts Revenue' = ```
+			
+			VAR CutoffDay =
+			    DAY(
+			        CALCULATE(
+			            MAX(VW_Master_Service_Invoice[Invoice_Date]),
+			            ALL(Dim_Date)
+			        )
+			    )
+			VAR LastDates =
+			    MAX(Dim_Date[Date])
+			RETURN
+			CALCULATE(
+			    [Total Spares Invoice Amount],
+			    DATESBETWEEN(
+			        Dim_Date[Date],
+			        EOMONTH(LastDates,-2)+1,
+			        DATE(
+			            YEAR(EDATE(LastDates,-1)),
+			            MONTH(EDATE(LastDates,-1)),
+			            CutoffDay
+			        )
+			    )
+			)
+			
+			```
+		lineageTag: c9141d4c-ec79-48f9-a847-340abd9d7e2d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Parts Revenue Growth MTDvsLMTD TLD' = DIVIDE([MTD Parts Revenue],[LMTD TLD Parts Revenue])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: ee61f64a-0aca-41db-9b62-0956cb8b3967
+
+	measure 'LMTD Parts Revenue' = CALCULATE([MTD Parts Revenue],DATEADD(Dim_Date[Date],-1,MONTH))
+		lineageTag: 6be530ce-7e29-4974-8933-11b4f83a4d00
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Month on Month Growth% Parts Revenue' = DIVIDE([MTD Parts Revenue]-[LMTD Parts Revenue],[LMTD Parts Revenue])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: fb63cc1f-007a-463d-99c0-a4abf1e7f563
+
+	measure 'LMTD Parts Revenue per Vehicle' = DIVIDE([LMTD Parts Revenue],[LMTD Total Job Card])
+		lineageTag: d0631c39-f215-4486-b7be-bb52761cd340
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'test parts revenue' = SUM( VW_Master_Service_Invoice[Final_Spares_Invoice_Amount])
+		lineageTag: 49aa3a6b-0d6b-4b7a-a115-38ba241ad04e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Parts Revenue' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

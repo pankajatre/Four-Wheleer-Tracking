@@ -1,0 +1,499 @@
+table 'Fact Service_Raw'
+	lineageTag: bc5d3af0-4a73-46d5-ad10-d1bfe14f2029
+
+	column Delivery_Variance
+		dataType: string
+		lineageTag: 1b2c82b2-4e5f-4042-a9dd-d5086b76720f
+		summarizeBy: none
+		sourceColumn: Delivery_Variance
+
+		annotation SummarizationSetBy = Automatic
+
+	column Contact_Work_Phone
+		dataType: string
+		lineageTag: 607132d6-1664-4043-9f6c-d7d4b0cc70c8
+		summarizeBy: none
+		sourceColumn: Contact_Work_Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column NRC_Total
+		dataType: string
+		lineageTag: ac9871ae-2803-4a1b-8a41-490884fb92e3
+		summarizeBy: none
+		sourceColumn: NRC_Total
+
+		annotation SummarizationSetBy = Automatic
+
+	column Contact_Cell_Phone
+		dataType: string
+		lineageTag: 6fde7af5-2ce0-40cf-af5b-8e8cc06fc776
+		summarizeBy: none
+		sourceColumn: Contact_Cell_Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column Contact_Home_Phone
+		dataType: string
+		lineageTag: 7180c80b-a3a7-4272-a599-821af2def1e4
+		summarizeBy: none
+		sourceColumn: Contact_Home_Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column Kms
+		dataType: double
+		lineageTag: 48c94ed8-1e08-450b-9ee2-ef4fd0e14593
+		summarizeBy: sum
+		sourceColumn: Kms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Model
+		dataType: string
+		lineageTag: 8c45b57e-6890-4699-873c-151a64e88739
+		summarizeBy: none
+		sourceColumn: Model
+
+		annotation SummarizationSetBy = Automatic
+
+	column SR_Type_Input
+		dataType: string
+		lineageTag: 709b41aa-64aa-432a-9509-3a56fdc935cb
+		summarizeBy: none
+		sourceColumn: SR_Type_Input
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account_Phone
+		dataType: string
+		lineageTag: 28e38d92-f793-4ad0-a76e-4dcf45cc4836
+		summarizeBy: none
+		sourceColumn: Account_Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column Billing_Account
+		dataType: string
+		lineageTag: e135e205-33ac-41e6-9c29-b7f97e2f4281
+		summarizeBy: none
+		sourceColumn: Billing_Account
+
+		annotation SummarizationSetBy = Automatic
+
+	column Created_Date_Time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c493178d-ba1e-4162-ac02-dbbaad382d8f
+		summarizeBy: none
+		sourceColumn: Created_Date_Time
+
+		variation Variation
+			isDefault
+			relationship: 5af550e7-0d56-4d9c-8cb8-b1e23c7a8347
+			defaultHierarchy: LocalDateTable_f5b36256-4d86-4195-993b-48df9883c372.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Job_Card
+		dataType: string
+		lineageTag: a63327d0-d779-4b7c-b89a-797bcdbe1ef3
+		summarizeBy: none
+		sourceColumn: Job_Card
+
+		annotation SummarizationSetBy = Automatic
+
+	column Closed_Date_Time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 996133a1-e4e5-4c04-882a-0fc172b2e5d3
+		summarizeBy: none
+		sourceColumn: Closed_Date_Time
+
+		variation Variation
+			isDefault
+			relationship: 1e78d8c1-4023-40c0-8484-aabdfdf5d340
+			defaultHierarchy: LocalDateTable_c7c56558-55af-452b-9567-151556acf3b4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Completed_Date_Time
+		dataType: string
+		lineageTag: 5bbff271-b47d-4154-9b71-319d336971ba
+		summarizeBy: none
+		sourceColumn: Completed_Date_Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column Service_Request_No
+		dataType: string
+		lineageTag: eee965d4-41cc-4289-ba4d-e6f162d32384
+		summarizeBy: none
+		sourceColumn: Service_Request_No
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 1d805182-2763-4415-8f19-ede73720a4a1
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account
+		dataType: string
+		lineageTag: e09c8b3a-b688-43cc-8ed9-b71a6211ab71
+		summarizeBy: none
+		sourceColumn: Account
+
+		annotation SummarizationSetBy = Automatic
+
+	column Site
+		dataType: string
+		lineageTag: 166c4c6c-8fd4-4694-862f-f8f2d9e2895f
+		summarizeBy: none
+		sourceColumn: Site
+
+		annotation SummarizationSetBy = Automatic
+
+	column Contact_Phones_Res_Off_Mob
+		dataType: string
+		lineageTag: 66847440-0abc-416d-8d9b-18ba4b4bbabf
+		summarizeBy: none
+		sourceColumn: Contact_Phones_Res_Off_Mob
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vehicle_Sale_Date_Dealer
+		dataType: string
+		lineageTag: df828cb0-2cdc-4466-86ae-233d1dea5d51
+		summarizeBy: none
+		sourceColumn: Vehicle_Sale_Date_Dealer
+
+		annotation SummarizationSetBy = Automatic
+
+	column TM_Invoice_Date
+		dataType: string
+		lineageTag: 4306ee80-024d-4f83-8f1e-c51f21a43e74
+		summarizeBy: none
+		sourceColumn: TM_Invoice_Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Address
+		dataType: string
+		lineageTag: 964dacf7-f732-4707-8705-15ae6545a65f
+		summarizeBy: none
+		sourceColumn: Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column Last_Name
+		dataType: string
+		lineageTag: 6a08fbcf-65e3-477f-aa8d-c009fcc35379
+		summarizeBy: none
+		sourceColumn: Last_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column First_Name
+		dataType: string
+		lineageTag: 58545cd1-baef-4679-8673-323c55c10c6e
+		summarizeBy: none
+		sourceColumn: First_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Created
+		dataType: string
+		lineageTag: 20f949a9-53da-4541-b938-ac5c703d7804
+		summarizeBy: none
+		sourceColumn: Created
+
+		annotation SummarizationSetBy = Automatic
+
+	column Effective_Labour_Estimate
+		dataType: string
+		lineageTag: b2dd075e-1d32-4b96-8276-848408347b50
+		summarizeBy: none
+		sourceColumn: Effective_Labour_Estimate
+
+		annotation SummarizationSetBy = Automatic
+
+	column Labour_Estimate_Variance
+		dataType: string
+		lineageTag: 4435a958-20f5-4853-99da-519065ccbf88
+		summarizeBy: none
+		sourceColumn: Labour_Estimate_Variance
+
+		annotation SummarizationSetBy = Automatic
+
+	column Effective_Parts_Estimate
+		dataType: string
+		lineageTag: f4e01050-0f2e-458f-a84c-4e62fdf54afe
+		summarizeBy: none
+		sourceColumn: Effective_Parts_Estimate
+
+		annotation SummarizationSetBy = Automatic
+
+	column Parts_Estimate_Variance
+		dataType: string
+		lineageTag: 3fc98afe-e239-49b5-8102-34205931c7ff
+		summarizeBy: none
+		sourceColumn: Parts_Estimate_Variance
+
+		annotation SummarizationSetBy = Automatic
+
+	column Delivery_Variance_in_Hours
+		dataType: string
+		lineageTag: 96db9798-9c27-4b8d-a9e1-bbf2f1d1d63e
+		summarizeBy: none
+		sourceColumn: Delivery_Variance_in_Hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column EffectiveTotal_Estimate
+		dataType: string
+		lineageTag: 1ab60771-a733-4e83-b2aa-a26b33a3da35
+		summarizeBy: none
+		sourceColumn: EffectiveTotal_Estimate
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_Estimate_Variance
+		dataType: string
+		lineageTag: 65167d1c-4de5-45a9-9bf8-8ae7b30f4bf3
+		summarizeBy: none
+		sourceColumn: Total_Estimate_Variance
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOB
+		dataType: string
+		lineageTag: e8e4779a-6d39-4c7e-b30d-220b4fe200a5
+		summarizeBy: none
+		sourceColumn: LOB
+
+		annotation SummarizationSetBy = Automatic
+
+	column Parent_Product_Line
+		dataType: string
+		lineageTag: 106a3f84-674b-41a3-b8e4-39a6fa7c29b6
+		summarizeBy: none
+		sourceColumn: Parent_Product_Line
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_Line
+		dataType: string
+		lineageTag: 15a392c1-808e-4b6c-aa15-19e042c1064d
+		summarizeBy: none
+		sourceColumn: Product_Line
+
+		annotation SummarizationSetBy = Automatic
+
+	column Division
+		dataType: string
+		lineageTag: b6595ef8-01d2-488c-80b1-f3f394e5bb60
+		summarizeBy: none
+		sourceColumn: Division
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chassis_No
+		dataType: string
+		lineageTag: 5ad50f29-7107-48f9-a78e-2991cf340523
+		summarizeBy: none
+		sourceColumn: Chassis_No
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vehicle_Registration_Number
+		dataType: string
+		lineageTag: fa49fbd2-b1d6-49c7-a87f-79d297a006af
+		summarizeBy: none
+		sourceColumn: Vehicle_Registration_Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vehicle_Delivery_Date
+		dataType: string
+		lineageTag: 9d0545ec-a946-4111-b8e2-5803a52f4c6d
+		summarizeBy: none
+		sourceColumn: Vehicle_Delivery_Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Final_Labour_Amount
+		dataType: string
+		lineageTag: b7bb2d69-567a-4436-a54f-e3d79ff1910e
+		summarizeBy: none
+		sourceColumn: Final_Labour_Amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column Final_Spares_Amount
+		dataType: string
+		lineageTag: 5c0739c5-e638-456b-9ee8-b7c090b5cae7
+		summarizeBy: none
+		sourceColumn: Final_Spares_Amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_Order_Value
+		dataType: string
+		lineageTag: ad96dd9b-42e2-4c4f-89e4-84e38ce0977f
+		summarizeBy: none
+		sourceColumn: Total_Order_Value
+
+		annotation SummarizationSetBy = Automatic
+
+	column Balance_Payment_To_be_Adjusted
+		dataType: string
+		lineageTag: fe4a6410-bd48-47c7-b834-e5081d2e5115
+		summarizeBy: none
+		sourceColumn: Balance_Payment_To_be_Adjusted
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_Invoice_Amount
+		dataType: string
+		lineageTag: cfef0060-b09d-4b13-bea4-f88eb545e1a2
+		summarizeBy: none
+		sourceColumn: Total_Invoice_Amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column Delay_Reason
+		dataType: string
+		lineageTag: 8a4c6259-635d-4b59-b38e-e2f529d44c94
+		summarizeBy: none
+		sourceColumn: Delay_Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column SR_Type
+		dataType: string
+		lineageTag: fcb0b730-7224-40b6-8675-27bf6137490f
+		summarizeBy: none
+		sourceColumn: SR_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsPaidService?
+		dataType: int64
+		formatString: 0
+		lineageTag: 1b94feb2-9225-4396-ba17-afa828ebe389
+		summarizeBy: sum
+		sourceColumn: IsPaidService?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Closed_Date_Time - Copy'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8c60aaeb-7c2a-4aa8-af90-692a5d555ebc
+		summarizeBy: none
+		sourceColumn: Closed_Date_Time - Copy
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column IsBicholi
+		dataType: int64
+		formatString: 0
+		lineageTag: 0932e7aa-8e4b-4bb5-8a3e-dbe5f11ab688
+		summarizeBy: sum
+		sourceColumn: IsBicholi
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsRau
+		dataType: int64
+		formatString: 0
+		lineageTag: 4c757d43-fb87-4e36-921a-99e55bbe31b3
+		summarizeBy: sum
+		sourceColumn: IsRau
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsDhar
+		dataType: int64
+		formatString: 0
+		lineageTag: f30f9c1a-9bed-43e5-82a4-230f6d455356
+		summarizeBy: sum
+		sourceColumn: IsDhar
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsWorkshop
+		dataType: int64
+		formatString: 0
+		lineageTag: a787500f-0ee3-46e2-8dbe-c05ddaa805cb
+		summarizeBy: sum
+		sourceColumn: IsWorkshop
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsBadnawar
+		dataType: int64
+		formatString: 0
+		lineageTag: 54290c06-c497-4b3d-8781-127383599581
+		summarizeBy: sum
+		sourceColumn: IsBadnawar
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsKukshi
+		dataType: int64
+		formatString: 0
+		lineageTag: 883a6f15-0d39-4f88-a934-4e51da7a68f8
+		summarizeBy: sum
+		sourceColumn: IsKukshi
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsManawar
+		dataType: int64
+		formatString: 0
+		lineageTag: 48ba72d9-f5e9-4669-84f5-2eaf788c7de8
+		summarizeBy: sum
+		sourceColumn: IsManawar
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsDhamnod
+		dataType: int64
+		formatString: 0
+		lineageTag: 4757e7b8-e095-4e5d-bb13-b0773015f044
+		summarizeBy: sum
+		sourceColumn: IsDhamnod
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Service_Raw' = m
+		mode: import
+		queryGroup: 'Fact SQL Table'
+		source =
+				let
+				    Source = Sql.Databases("DESKTOP-M0KE14I\MSSQLSERVERSHYAM"),
+				    Tata = Source{[Name="Tata"]}[Data],
+				    dbo_vw_Master_service = Tata{[Schema="dbo",Item="vw_Master_service"]}[Data],
+				    #"Split Column by Delimiter" = Table.SplitColumn(dbo_vw_Master_service, "Parent_Product_Line", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"Parent_Product_Line.1", "Parent_Product_Line.2"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"Parent_Product_Line.1", type text}, {"Parent_Product_Line.2", type text}, {"Kms", type number}}),
+				    #"Sorted Rows" = Table.Sort(#"Changed Type",{{"Closed_Date_Time", Order.Descending}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Sorted Rows", {"Job_Card"}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Removed Duplicates",{"Parent_Product_Line.2"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns1",{{"Parent_Product_Line.1", "Parent_Product_Line"}}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Renamed Columns",{{"SR_Type", "SR_Type_Input"}, {"SR_Type1", "SR_Type"}})
+				in
+				    #"Renamed Columns1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,45 @@
+table Indore_Ward
+	lineageTag: 1916abb9-760c-45b2-9a7d-24d09018b987
+
+	column Ward_Name
+		dataType: string
+		lineageTag: a1138637-5821-43eb-ad64-26faa3753e10
+		summarizeBy: none
+		sourceColumn: Ward_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Locality_Area
+		dataType: string
+		lineageTag: f02a99a5-4e45-46a2-ae6e-22674421ad6f
+		summarizeBy: none
+		sourceColumn: Locality_Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tata_Near_by
+		dataType: string
+		lineageTag: 8bcc7d1e-9596-44a9-b2dc-4354acc5bb58
+		summarizeBy: none
+		sourceColumn: Tata_Near_by
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Indore_Ward = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("DESKTOP-M0KE14I\MSSQLSERVERSHYAM"),
+				    Honda = Source{[Name="Honda"]}[Data],
+				    dbo_Indore_Ward = Honda{[Schema="dbo",Item="Indore_Ward"]}[Data],
+				    #"Trimmed Text" = Table.TransformColumns(dbo_Indore_Ward,{{"Locality_Area", Text.Trim, type text}}),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Trimmed Text",{{"Locality_Area", Text.Proper, type text}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Capitalized Each Word", each [Locality_Area] <> null),
+				    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows",{"Honda_Near_by"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

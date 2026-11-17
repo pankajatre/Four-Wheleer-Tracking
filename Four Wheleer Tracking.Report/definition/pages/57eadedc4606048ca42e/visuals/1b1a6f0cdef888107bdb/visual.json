@@ -1,0 +1,102 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "1b1a6f0cdef888107bdb",
+  "position": {
+    "x": 606.16740088105723,
+    "y": 28.193832599118945,
+    "z": 4000,
+    "height": 235.41850220264317,
+    "width": 322.81938325991189,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indore_Ward"
+                    }
+                  },
+                  "Property": "Ward_Name"
+                }
+              },
+              "queryRef": "Indore_Ward.Ward_Name",
+              "nativeQueryRef": "Ward_Name",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Vehicle_Service_Tracking"
+                        }
+                      },
+                      "Property": "Chassis_No"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "Min(Vehicle_Service_Tracking.Chassis_No)",
+              "nativeQueryRef": "Count of Chassis_No"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Vehicle_Service_Tracking"
+                      }
+                    },
+                    "Property": "Chassis_No"
+                  }
+                },
+                "Function": 5
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "155.49999030161962D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Indore_Ward.Ward_Name"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,122 @@
+relationship 5af550e7-0d56-4d9c-8cb8-b1e23c7a8347
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Fact Service_Raw'.Created_Date_Time
+	toColumn: LocalDateTable_f5b36256-4d86-4195-993b-48df9883c372.Date
+
+relationship eb40b73f-597b-40c2-af54-3396336fa7b6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Vehicle_Service_Tracking.Invoice_Date
+	toColumn: LocalDateTable_5e0725d0-6576-45a1-b15c-e07524343b2e.Date
+
+relationship 419f9d26-de58-43c8-94bc-fd805150f7d5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Vehicle_Service_Tracking.Delivery_Date
+	toColumn: LocalDateTable_1744306f-e9fc-4ce3-9e82-cd37958c804e.Date
+
+relationship df6746cd-ec47-4592-b057-51f7b0dc6a85
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Vehicle_Service_Tracking.'First SR Date'
+	toColumn: LocalDateTable_7cf3a45b-48a8-44ee-9381-f7a1b8ad9a4b.Date
+
+relationship 088221a2-c6da-46a8-abfb-de66c7071c4b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Vehicle_Service_Tracking.'Last SR Date'
+	toColumn: LocalDateTable_0260fc0f-9181-485a-9ac5-87ef31402d39.Date
+
+relationship 3fc94f3f-c8a9-4bcb-9a95-91d474bb51b1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Vehicle_Service_Tracking.'NEXT DATE FOR PAID SERVICE'
+	toColumn: LocalDateTable_00acc482-1c1f-491d-b768-f9b87d6c91a1.Date
+
+relationship 3482e1b7-7ab6-b735-9659-05b2733e6e87
+	fromColumn: Vehicle_Service_Tracking.'Age Bucket'
+	toColumn: 'Age Bucket'.Year
+
+relationship AutoDetected_b60c1d04-bb7c-4ea7-8917-4dad0000849f
+	fromColumn: 'Fact Service_Raw'.Division
+	toColumn: 'Dim Service Location'.Division
+
+relationship 1e78d8c1-4023-40c0-8484-aabdfdf5d340
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Fact Service_Raw'.Closed_Date_Time
+	toColumn: LocalDateTable_c7c56558-55af-452b-9567-151556acf3b4.Date
+
+relationship AutoDetected_bc899806-84ce-4c25-8d39-d1c37b979338
+	fromColumn: 'Fact Service_Raw'.SR_Type_Input
+	toColumn: 'Dim SR Type'.SR_Type_Input
+
+relationship AutoDetected_2ab5a1f9-85d1-437d-8cfb-29cf711f6b2f
+	fromColumn: 'Fact Sales_Raw'.Product_Line
+	toColumn: 'Dim Lob'.Product_Line
+
+relationship AutoDetected_0c84982e-7d8d-44e0-8d27-1724b4f7a8e5
+	fromColumn: 'Fact Service_Raw'.Product_Line
+	toColumn: 'Dim Lob'.Product_Line
+
+relationship a5138f8d-7a0d-4eea-aacc-c09678aff4f5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_Master_Service_Invoice.Invoice_Date
+	toColumn: LocalDateTable_00c0ee82-75f8-493b-a198-29188b375782.Date
+
+relationship 9edb99f6-dbd5-defa-b595-3f604b23a815
+	fromColumn: VW_Master_Service_Invoice.Order
+	toColumn: 'Fact Service_Raw'.Job_Card
+
+relationship 059004e9-eb62-71b9-5b1c-7ae8309cd8dd
+	fromColumn: Vehicle_Service_Tracking.Colony
+	toColumn: Indore_Ward.Locality_Area
+
+relationship fecc753c-3eec-48ab-8447-58ef852aa662
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Vehicle_Service_Tracking.'Second Last SR Date'
+	toColumn: LocalDateTable_6a4df88c-b212-46db-a692-0007c1ca79e3.Date
+
+relationship 7a4d89df-bc8b-0b3f-6c52-262c3cc0c500
+	fromColumn: 'Fact Service_Raw'.'Closed_Date_Time - Copy'
+	toColumn: Dim_Date.Date
+
+relationship ca061acc-77f5-0d75-fe45-a07f59ac2c0b
+	fromColumn: Vehicle_Service_Tracking.'First System Login Date'
+	toColumn: Dim_Date.Date
+
+relationship aa39c5f6-c75d-3244-d6b8-d74642a50107
+	fromColumn: 'Fact Sales_Raw'.Invoice_Date
+	toColumn: Dim_Date.Date
+
+relationship AutoDetected_aaddcabd-4ca8-4ee5-ad7d-301382047682
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Soldout_Shifted_Master.Chassis_No
+	toColumn: Vehicle_Service_Tracking.Chassis_No
+
+relationship f7efe9a5-eee0-95b0-623a-6f8a4d3a517c
+	fromColumn: DC_Master.Sales_Man
+	toColumn: Salesman.'DC Sales Man'
+
+relationship 1f0b05a9-e429-48b6-b110-9096a7b41b89
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DC_Master.Delivery_Date
+	toColumn: LocalDateTable_68c94321-39de-4152-b784-73bc4e956b94.Date
+
+relationship AutoDetected_1942e4f7-3f41-49dd-87cf-286f93c60dd1
+	fromColumn: Vehicle_Service_Tracking.Delivery_Location
+	toColumn: Delivery_Location.Delivery_Location
+
+relationship AutoDetected_38a60993-a810-43a9-99ce-4dc6b190a055
+	fromColumn: DC_Master.Delivery_Location
+	toColumn: Delivery_Location.Delivery_Location
+
+relationship 9fa3d88f-f955-fd08-c559-81365b0ec88c
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Fact Sales_Raw'.Chassis_NO
+	toColumn: DC_Master.Chassis_No
+
+relationship d021fcdc-0e27-1d3c-36eb-bb15ae37b717
+	fromColumn: 'Fact Service_Raw'.Parent_Product_Line
+	toColumn: 'Dim Model'.Model_name
+
+relationship 989208c5-b58c-fd07-2c29-692f9ae15345
+	fromColumn: 'Fact Sales_Raw'.Parent_Product_Line
+	toColumn: 'Dim Model'.Model_name
+

@@ -1,0 +1,26 @@
+table Delivery_Location
+	lineageTag: cde4fc10-94f8-4896-9fcf-cdc18b5ecb89
+
+	column Delivery_Location
+		dataType: string
+		lineageTag: 2dbd3bcc-dbf6-4d98-ae45-4cf5ed72f0da
+		summarizeBy: none
+		sourceColumn: Delivery_Location
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Delivery_Location = m
+		mode: import
+		queryGroup: 'Fact SQL Table'
+		source =
+				let
+				    Source = DC_Master,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"Delivery_Location"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns")
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,33 @@
+table 'Dim Lob'
+	lineageTag: ea62adb4-358a-41b9-a570-845a540f3d62
+
+	column Product_Line
+		dataType: string
+		lineageTag: ba98df14-ba01-41e2-b66d-d99108acde7b
+		summarizeBy: none
+		sourceColumn: Product_Line
+
+		annotation SummarizationSetBy = Automatic
+
+	column Lob
+		dataType: string
+		lineageTag: 751c9e85-99cc-4cdf-a070-ecb62ba56cf5
+		summarizeBy: none
+		sourceColumn: Lob
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim Lob' = m
+		mode: import
+		queryGroup: 'Dim Table'
+		source =
+				let
+				    Source = Table.Combine({LOB_Service, Lob_Sales}),
+				    #"Removed Duplicates" = Table.Distinct(Source)
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

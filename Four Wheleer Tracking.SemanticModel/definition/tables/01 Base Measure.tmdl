@@ -1,0 +1,270 @@
+table '01 Base Measure'
+	lineageTag: f0e3999a-9896-43f4-b4c0-8c4cb62ae397
+
+	measure 'LY Base Running Total' = CALCULATE([Running Total Vehicles base],DATEADD(Dim_Date[Date],-1,YEAR))
+		formatString: 0
+		lineageTag: df84a0fc-4ce3-45a5-906d-ceb367a95c45
+
+	measure 'Not Connected' =
+			CALCULATE
+			                    (
+			                        COUNTROWS(Vehicle_Service_Tracking),
+			                      --  RELATEDTABLE('Final Remarks_July-2026'),
+			                       -- ISBLANK('Final Remarks_July-2026'[Final Category]),
+			                        ALL(Vehicle_Service_Tracking[Chassis_No])
+			                    )
+		formatString: 0
+		lineageTag: 508424ba-f2b0-4968-9736-20c535cddd26
+
+	measure 'Sales Chassis Test' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT('Fact Sales_Raw'[Chassis_NO]),
+			    REMOVEFILTERS('Dim Service Location')
+			)
+		formatString: 0
+		lineageTag: 41de52dc-667c-4104-96a1-84ac0cd0a9f8
+
+	measure 'Avg Kms' = AVERAGE('Fact Service_Raw'[Kms])
+		formatString: 0
+		lineageTag: 8e5a1356-d281-46df-85c5-acab83477259
+
+	measure 'Delivered Vehicles' =
+			
+			DISTINCTCOUNT('Fact Sales_Raw'[Chassis_NO])
+		formatString: 0
+		lineageTag: 89a4a061-380f-471b-89a8-a9ad40608de6
+
+	measure 'Our Serviced Vehicles' =
+			
+			COUNTROWS(
+			    INTERSECT(
+			        VALUES('Fact Service_Raw'[Chassis_No]),
+			        VALUES('Fact Sales_Raw'[Chassis_NO])
+			    )
+			)
+		formatString: 0
+		lineageTag: f7adcbe4-b144-493b-8877-3a048020157d
+
+	measure 'Running Total Vehicles base' =
+			
+			
+			VAR CurrentFY =
+			    SELECTEDVALUE(Dim_Date[Fiscal Year])
+			
+			VAR FYStartYear =
+			    VALUE(LEFT(CurrentFY, 4))
+			
+			VAR FYEndDate =
+			    DATE(FYStartYear + 1, 3, 31)
+			
+			VAR MaxSalesDate =
+			    CALCULATE(
+			        MAX('Fact Sales_Raw'[Invoice_Date]),
+			        REMOVEFILTERS(Dim_Date)
+			    )
+			
+			VAR MaxServiceDate =
+			    CALCULATE(
+			        MAX('Fact Service_Raw'[Closed_Date_Time - Copy]),
+			        REMOVEFILTERS(Dim_Date)
+			    )
+			
+			VAR OverallMaxDate =
+			    MAX(MaxSalesDate, MaxServiceDate)
+			
+			VAR CutOffDate =
+			    MIN(FYEndDate, OverallMaxDate)
+			
+			VAR SalesChassis =
+			    CALCULATETABLE(
+			        VALUES('Fact Sales_Raw'[Chassis_NO]),
+			        REMOVEFILTERS(Dim_Date),
+			        REMOVEFILTERS('Dim Service Location'),
+			        REMOVEFILTERS('Dim Model'),
+			        'Fact Sales_Raw'[Invoice_Date] <= CutOffDate
+			    )
+			
+			VAR ServiceChassis =
+			    CALCULATETABLE(
+			        VALUES('Fact Service_Raw'[Chassis_No]),NOT 'Fact Service_Raw'[SR_Type] = "PDI",
+			        REMOVEFILTERS(Dim_Date),
+			        REMOVEFILTERS('Dim Service Location'),
+			        REMOVEFILTERS('Dim Model'[Model_name]),
+			        'Fact Service_Raw'[Closed_Date_Time - Copy] <= CutOffDate
+			    )
+			
+			RETURN
+			    COUNTROWS(
+			        DISTINCT(
+			            UNION(
+			                SalesChassis,
+			                ServiceChassis
+			            )
+			        )
+			    )
+		formatString: 0
+		lineageTag: b99713c7-e97d-4e2f-8533-3cd5bc9ccf93
+
+	measure 'Total Service (with Campaign Refurbish PDI)' = ```
+			
+			    CALCULATE
+			    (
+			        COUNT('Fact Service_Raw'[Job_Card]),
+			        'Fact Service_Raw'[SR_Type] in {"Campaign", "Refurbish","PDI"}
+			    )
+			```
+		formatString: 0
+		lineageTag: d33c9ac5-4690-4241-b08b-8e9b42ca4712
+
+	measure 'Cy Base Growth %' =
+			DIVIDE
+			                (
+			                    [Running Total Vehicles base],
+			                     [LY Base Running Total]
+			                )-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 67ef3e4d-7880-47f4-ab3e-cb325d354f4f
+
+	measure 'Serviced Base' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT('Fact Service_Raw'[Chassis_No]),
+			    NOT'Fact Service_Raw'[SR_Type] in {"PDI","Accident"})
+		formatString: 0
+		lineageTag: 7a1f7db3-b1a1-4094-8824-9e89bc3472b6
+
+	measure 'YTD Serviced Base' = TOTALYTD([Serviced Base],Dim_Date[Date],"31/3")
+		formatString: 0
+		lineageTag: 4fe1d7ab-58d7-4847-b3bd-dd372c026a1d
+
+	measure 'LYTD Serviced Base' = CALCULATE([YTD Serviced Base],DATEADD(Dim_Date[Date],-1,YEAR))
+		formatString: 0
+		lineageTag: 323ea55e-bf9a-476a-904f-0636a5bc1734
+
+	measure 'MTD Serviced Base' = TOTALmTD([Serviced Base],Dim_Date[Date])
+		formatString: 0
+		lineageTag: 4bea80e0-6a02-45b2-a086-3c1ae84286d2
+
+	measure 'LMTD TLD Serviced Base' = ```
+			
+			VAR maxdate = MAX('Fact Service_Raw'[Closed_Date_Time - Copy])
+			var fd = EOMONTH(maxdate,-2)+1
+			var ed = EDATE(maxdate,-1)
+			RETURN
+			CALCULATE([MTD Serviced Base], DATESBETWEEN(Dim_Date[Date],fd,ed))
+			
+			```
+		formatString: 0
+		lineageTag: 2fe9a481-1aa7-4c9d-b6a0-d5a2e5c61226
+
+	measure 'YoY Serviced Growth' = DIVIDE([YTD Serviced Base],[LYTD Serviced Base])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c3b032c1-927b-4be4-a56f-efbf7fb77837
+
+	measure 'MoM Serviced Growth' = DIVIDE([mtd Serviced Base],[lmtd TLD Serviced Base])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1da80265-af7e-4d91-83d9-a4255c3318bb
+
+	measure 'CY Serviced Convertation %' = DIVIDE([YTD Serviced Base],[Running Total Vehicles base])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 54b84be7-39d1-44fd-bc2b-6ce787619d93
+
+	measure 'LY Serviced Convertation %' = DIVIDE([LYTD Serviced Base],[LY Base Running Total])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: ad225521-00a6-4176-89b5-99c09a00519d
+
+	measure 'Delta CY vs LY Serviced Convertation' = [CY Serviced Convertation %] - [LY Serviced Convertation %]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 5b85414d-377a-4dfc-a4a5-31f1a554efb2
+
+	measure 'CM Serviced Convertation %' = DIVIDE([mtd Serviced Base],[Running Total Vehicles base])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 92d174d1-7435-490e-8846-78be77be9ef5
+
+	measure 'LY Base Growth %' = CALCULATE([Cy Base Growth %],DATEADD(Dim_Date[Date],-365,DAY))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 6bd5447e-c18a-4828-baf4-f2aefa55d3e4
+
+	measure 'Delta CY vs LY Base Growth' = [Cy Base Growth %] - [LY Base Growth %]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 34d4fe54-0047-43f7-83f4-7565cc49ba96
+
+	measure 'Total Vehicles New' =
+			
+			VAR CurrentFY =
+			    SELECTEDVALUE(Dim_Date[Fiscal Year])
+			
+			VAR FYStartYear =
+			    VALUE(LEFT(CurrentFY, 4))
+			
+			VAR FYEndDate =
+			    DATE(FYStartYear + 1, 3, 31)
+			
+			VAR MaxSalesDate =
+			    CALCULATE(
+			        MAX('Fact Sales_Raw'[Invoice_Date]),
+			        REMOVEFILTERS(Dim_Date)
+			    )
+			
+			VAR MaxServiceDate =
+			    CALCULATE(
+			        MAX('Fact Service_Raw'[Closed_Date_Time - Copy]),
+			        REMOVEFILTERS(Dim_Date)
+			    )
+			
+			VAR OverallMaxDate =
+			    MAX(MaxSalesDate, MaxServiceDate)
+			
+			VAR CutOffDate =
+			    MIN(FYEndDate, OverallMaxDate)
+			
+			VAR SalesChassis =
+			    CALCULATETABLE(
+			        VALUES('Fact Sales_Raw'[Chassis_NO]),
+			        REMOVEFILTERS(Dim_Date),
+			        REMOVEFILTERS('Dim Service Location'),
+			        REMOVEFILTERS('Dim Model'),
+			        'Fact Sales_Raw'[Invoice_Date] <= CutOffDate
+			    )
+			
+			VAR ServiceChassis =
+			    CALCULATETABLE(
+			        VALUES('Fact Service_Raw'[Chassis_No]),NOT 'Fact Service_Raw'[SR_Type] = "PDI",
+			        REMOVEFILTERS(Dim_Date),
+			        REMOVEFILTERS('Dim Service Location'),
+			        REMOVEFILTERS('Dim Model'[Model_name]),
+			        'Fact Service_Raw'[Closed_Date_Time - Copy] <= CutOffDate
+			    )
+			
+			RETURN
+			    COUNTROWS(
+			        DISTINCT(
+			            UNION(
+			                SalesChassis,
+			                ServiceChassis
+			            )
+			        )
+			    )
+		formatString: 0
+		lineageTag: 3ca99873-29ac-4d1a-a98d-fb3e0ee19cf5
+
+	measure 'LMTD Serviced Base' = CALCULATE([MTD Serviced Base], DATEADD(Dim_Date[Date],-1,MONTH))
+		formatString: 0
+		lineageTag: e6407379-4198-4372-8934-12b63f0cc2ab
+
+	partition '01 Base Measure' = m
+		mode: import
+		queryGroup: 'Measure table'
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+
